@@ -1,3 +1,3 @@
-const noop = () => {}
+const noop = (..._args: unknown[]) => {}
 
 export default noop
