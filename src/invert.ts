@@ -1,13 +1,7 @@
-const invert = <T extends string | number | symbol>(
+const swap = <T, U>([k, v]: [T, U]): [U, T] => [v, k]
+const invert = <T extends PropertyKey>(
   obj: Record<string, T>
-): Record<T, string> => {
-  const newObj = {} as Record<T, string>
-
-  Object.keys(obj).forEach((key) => {
-    newObj[obj[key]] = key
-  })
-  return newObj
-}
+): Record<string, string> => Object.fromEntries(Object.entries(obj).map(swap))
 
 export const swapKeyValue = invert
 export default invert
