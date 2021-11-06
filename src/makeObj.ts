@@ -1,10 +1,4 @@
-const makeObj = <T>(keys: string[], defaultValue: T = null) => {
-  const obj: Record<string, T> = {}
-
-  keys.forEach((key) => {
-    obj[key] = defaultValue
-  })
-  return obj
-}
+const makeObj = <T>(keys: string[], defaultValue: T = null) =>
+  Object.fromEntries(keys.map((key) => [key, defaultValue]))
 
 export default makeObj
