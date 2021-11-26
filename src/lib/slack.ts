@@ -1,6 +1,6 @@
 type Payload = {
   text: string
-  channel: string
+  channel?: string
   username?: string
   icon_emoji?: string
 }

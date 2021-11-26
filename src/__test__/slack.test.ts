@@ -26,12 +26,10 @@ test('makeSlackParams', () => {
   expect(
     makeSlackParams('https://example.com/token/abc', {
       text: 'hello',
-      channel: '#general',
     })
   ).toMatchInlineSnapshot(`
     Object {
       "data": Object {
-        "channel": "#general",
         "text": "hello",
       },
       "headers": Object {
