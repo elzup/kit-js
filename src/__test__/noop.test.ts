@@ -1,4 +1,4 @@
-import noop from '../noop'
+import noop from '../lib/noop'
 
 test('noop', () => {
   expect(noop()).toMatchInlineSnapshot(`undefined`)

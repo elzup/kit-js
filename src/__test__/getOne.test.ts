@@ -1,4 +1,4 @@
-import getOne from '../getOne'
+import getOne from '../lib/getOne'
 
 test('getOne', () => {
   expect(getOne(undefined)).toMatchInlineSnapshot(`""`)
