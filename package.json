@@ -1,6 +1,6 @@
 {
   "name": "@elzup/kit",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "elzup&#39;s utils",
   "access": "public",
   "license": "MIT",
@@ -16,7 +16,8 @@
     "lint": "eslint --ext .ts,.tsx",
     "test": "jest src",
     "test:cov": "jest src --coverage --ci --runInBand",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "yarn build && yarn publish"
   },
   "husky": {
     "hooks": {
