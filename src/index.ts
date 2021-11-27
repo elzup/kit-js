@@ -2,6 +2,7 @@ import clean from './lib/clean'
 import * as constants from './lib/constants'
 import countup from './lib/countup'
 import * as format from './lib/format'
+import { getEnv } from './lib/getEnv'
 import getOne from './lib/getOne'
 import invert from './lib/invert'
 import makeMap from './lib/makeMap'
@@ -14,6 +15,7 @@ export default {
   constants,
   countup,
   format,
+  getEnv,
   getOne,
   invert,
   makeMap,
