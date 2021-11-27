@@ -1,4 +1,4 @@
-import { makeSlackParams } from '../lib/slack'
+import { makeSlackParams } from '../slack'
 
 test('makeSlackParams', () => {
   expect(

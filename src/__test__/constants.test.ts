@@ -1,4 +1,4 @@
-import * as constants from '../lib/constants'
+import * as constants from '../constants'
 
 test('constants', () => {
   expect(constants).toMatchInlineSnapshot(`

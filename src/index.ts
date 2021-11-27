@@ -1,25 +1,11 @@
-import clean from './lib/clean'
-import * as constants from './lib/constants'
-import countup from './lib/countup'
-import * as format from './lib/format'
-import { getEnv } from './lib/getEnv'
-import getOne from './lib/getOne'
-import invert from './lib/invert'
-import makeMap from './lib/makeMap'
-import makeObj from './lib/makeObj'
-import noop from './lib/noop'
-import * as slack from './lib/slack'
-
-export default {
-  clean,
-  constants,
-  countup,
-  format,
-  getEnv,
-  getOne,
-  invert,
-  makeMap,
-  makeObj,
-  noop,
-  slack,
-}
+// export { *  as format }from './format'
+export * as slack from './slack'
+export * as constants from './constants'
+export { getEnv } from './getEnv'
+export { default as countup } from './countup'
+export { default as getOne } from './getOne'
+export { default as invert } from './invert'
+export { default as makeMap } from './makeMap'
+export { default as makeObj } from './makeObj'
+export { default as noop } from './noop'
+export { default as clean } from './clean'

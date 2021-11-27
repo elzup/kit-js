@@ -1,4 +1,4 @@
-import { getEnv } from '../lib/getEnv'
+import { getEnv } from '../getEnv'
 
 test('getEnv', () => {
   process.env.GET_ENV_TEST_KEY = 'GET_ENV_TEST_VALUE'

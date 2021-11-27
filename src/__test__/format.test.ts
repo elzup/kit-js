@@ -1,4 +1,4 @@
-import { pad, pad02, round } from '../lib/format'
+import { pad, pad02, round } from '../format'
 
 test('pad', () => {
   expect(pad(123, 5)).toMatchInlineSnapshot(`"00123"`)

@@ -1,4 +1,4 @@
-import makeMap from '../lib/makeMap'
+import makeMap from '../makeMap'
 
 test('makeObj', () => {
   expect(makeMap(['a', 'b'])).toMatchInlineSnapshot(`
