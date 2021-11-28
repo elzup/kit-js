@@ -8,6 +8,7 @@ Object {
   "charAbc123": "abcdefghijklmnopqrstuvwxyz0123456789",
   "charAlphabets": "abcdefghijklmnopqrstuvwxyz",
   "charNums": "0123456789",
+  "isDev": false,
 }
 `)
 })
