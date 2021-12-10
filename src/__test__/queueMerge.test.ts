@@ -20,5 +20,5 @@ test('queueMerge', () => {
     range(20).map(() => range(60 * 24 * 30).map((i) => ({ i }))),
     (v) => v.i
   )
-  expect(Date.now() - t).toBeLessThan(100)
+  expect(Date.now() - t).toBeLessThan(500)
 })
