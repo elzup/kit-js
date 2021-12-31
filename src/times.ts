@@ -10,3 +10,9 @@ export const times = (date: Date) => {
 }
 
 export const timesNow = () => times(new Date())
+
+const SEC = 1000
+const MIN = 60 * SEC
+
+export const jpDate = (date: Date) =>
+  new Date(+date + (date.getTimezoneOffset() + 9 * 60) * MIN)
