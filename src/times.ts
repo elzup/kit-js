@@ -14,5 +14,9 @@ export const timesNow = () => times(new Date())
 const SEC = 1000
 const MIN = 60 * SEC
 
-export const jpDate = (date: Date) =>
-  new Date(+date + (date.getTimezoneOffset() + 9 * 60) * MIN)
+const JP_SHIFT_HOUR = 9
+
+export const shiftDate = (date: Date, hour = 0) =>
+  new Date(+date + (date.getTimezoneOffset() + Math.floor(hour * 60)) * MIN)
+
+export const jpDate = (date: Date) => shiftDate(date, JP_SHIFT_HOUR)

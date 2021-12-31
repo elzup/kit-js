@@ -1,6 +1,6 @@
 import { formatHms, formatTime, formatYmd } from '../formatTime'
 
-import { times, timesNow, jpDate } from '../times'
+import { times, timesNow, jpDate, shiftDate } from '../times'
 
 beforeAll(() => jest.useFakeTimers('modern'))
 afterAll(jest.useRealTimers)
@@ -41,6 +41,13 @@ test('formatTime', () => {
   expect(formatHms(date)).toMatchInlineSnapshot(`"06:07:08"`)
 })
 
+test('shiftDate', () => {
+  const date = new Date(2123, 4 - 1, 5, 6 + 9, 7, 8)
+
+  expect(shiftDate(date, 0)).toMatchInlineSnapshot(`2123-04-04T21:07:08.000Z`)
+  expect(shiftDate(date, -6)).toMatchInlineSnapshot(`2123-04-04T15:07:08.000Z`)
+  expect(shiftDate(date, 5)).toMatchInlineSnapshot(`2123-04-05T02:07:08.000Z`)
+})
 test('jpDate', () => {
   const date = new Date(2123, 4 - 1, 5, 6 + 9, 7, 8)
 
