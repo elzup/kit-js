@@ -1,6 +1,8 @@
 // export { *  as format }from './format'
 export * as slack from './slack'
 export * as constants from './constants'
+export * as times from './times'
+export * as formatTime from './formatTime'
 export { getEnv } from './getEnv'
 export { default as countup } from './countup'
 export { default as getOne } from './getOne'
