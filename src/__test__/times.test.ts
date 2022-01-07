@@ -5,11 +5,10 @@ import { times, timesNow, jpDate, shiftDate } from '../times'
 beforeAll(() => jest.useFakeTimers('modern'))
 afterAll(jest.useRealTimers)
 
-const date = new Date(2123, 4 - 1, 5, 6 + 9, 7, 8)
+const date = new Date(4836348428000)
+// "2123-04-05 06:07:08"
 
 test('times', () => {
-  const date = new Date(2123, 4 - 1, 5, 6 + 9, 7, 8)
-
   jest.setSystemTime(date)
 
   expect(timesNow()).toMatchInlineSnapshot(`
