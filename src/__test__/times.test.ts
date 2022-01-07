@@ -32,12 +32,10 @@ test('formatTime', () => {
 })
 
 test('shiftDate', () => {
-  jest.setSystemTime(date)
-  expect(+shiftDate(date, 0)).toMatchInlineSnapshot(`4836316028000`)
-  expect(+shiftDate(date, -6)).toMatchInlineSnapshot(`4836294428000`)
-  expect(+shiftDate(date, 5)).toMatchInlineSnapshot(`4836334028000`)
+  expect(shiftDate(date, 0)).toMatchInlineSnapshot(`2123-04-04T21:07:08.000Z`)
+  expect(shiftDate(date, -6)).toMatchInlineSnapshot(`2123-04-04T15:07:08.000Z`)
+  expect(shiftDate(date, 5)).toMatchInlineSnapshot(`2123-04-05T02:07:08.000Z`)
 })
 test('jpDate', () => {
-  jest.setSystemTime(date)
-  expect(+jpDate(date)).toMatchInlineSnapshot(`4836348428000`)
+  expect(jpDate(date)).toMatchInlineSnapshot(`2123-04-05T06:07:08.000Z`)
 })
