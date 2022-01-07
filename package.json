@@ -37,13 +37,15 @@
     "personal"
   ],
   "devDependencies": {
+    "@swc/core": "^1.2.127",
+    "@swc/jest": "^0.2.15",
     "@types/jest": "27.0.3",
     "@types/node": "16.11.11",
     "babel-jest": "27.0.6",
     "eslint": "8.3.0",
     "eslint-config-nzap": "4.4.0",
     "husky": "7.0.4",
-    "jest": "27.0.6",
+    "jest": "^27.4.5",
     "lint-staged": "11.2.6",
     "prettier": "2.5.0",
     "ts-jest": "27.0.7",
