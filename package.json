@@ -37,8 +37,8 @@
     "personal"
   ],
   "devDependencies": {
-    "@types/jest": "27.0.3",
-    "@types/node": "16.11.11",
+    "@types/jest": "27.4.0",
+    "@types/node": "16.11.19",
     "babel-jest": "27.0.6",
     "eslint": "8.3.0",
     "eslint-config-nzap": "4.4.0",
