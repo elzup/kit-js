@@ -31,9 +31,6 @@ test('formatTime', () => {
 })
 
 test('shiftDate', () => {
-  console.log(+date)
-  console.log(date.getTimezoneOffset())
-
   expect(shiftDate(date, 0).getHours()).toMatchInlineSnapshot(`15`)
   expect(shiftDate(date, -6).getHours()).toMatchInlineSnapshot(`9`)
   expect(shiftDate(date, 5).getHours()).toMatchInlineSnapshot(`20`)
