@@ -34,10 +34,10 @@ test('shiftDate', () => {
   console.log(+date)
   console.log(date.getTimezoneOffset())
 
-  expect(shiftDate(date, 0)).toMatchInlineSnapshot(`2123-04-05T06:07:08.000Z`)
-  expect(shiftDate(date, -6)).toMatchInlineSnapshot(`2123-04-05T00:07:08.000Z`)
-  expect(shiftDate(date, 5)).toMatchInlineSnapshot(`2123-04-05T11:07:08.000Z`)
+  expect(shiftDate(date, 0).getHours()).toMatchInlineSnapshot(`15`)
+  expect(shiftDate(date, -6).getHours()).toMatchInlineSnapshot(`9`)
+  expect(shiftDate(date, 5).getHours()).toMatchInlineSnapshot(`20`)
 })
 test('jpDate', () => {
-  expect(jpDate(date)).toMatchInlineSnapshot(`2123-04-05T15:07:08.000Z`)
+  expect(jpDate(date).getHours()).toMatchInlineSnapshot(`0`)
 })
