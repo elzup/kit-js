@@ -1,4 +1,5 @@
 // export { *  as format }from './format'
+export * as rand from './rand'
 export * as slack from './slack'
 export * as constants from './constants'
 export * as times from './times'
