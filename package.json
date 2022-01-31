@@ -14,7 +14,9 @@
     "build": "tsc --project tsconfig.build.json",
     "deploy": "npm run build && yarn publish",
     "lint": "eslint --ext .ts,.tsx",
-    "test": "jest src",
+    "test": "yarn test:jest && yarn test:unimported",
+    "test:jest": "jest src",
+    "test:unimported": "unimported",
     "test:cov": "jest src --coverage --ci --runInBand",
     "prepare": "husky install",
     "release": "yarn build && yarn publish"
