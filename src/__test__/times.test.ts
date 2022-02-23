@@ -1,5 +1,5 @@
 import { formatHms, formatTime, formatYmd } from '../formatTime'
-import { jpDate, shiftDate, times } from '../times'
+import { jpDate, shiftDate, times, ymd, ymdNum } from '../times'
 
 beforeAll(() => jest.useFakeTimers('modern'))
 afterAll(jest.useRealTimers)
@@ -37,4 +37,11 @@ test('shiftDate', () => {
 })
 test('jpDate', () => {
   expect(jpDate(date).getHours()).toMatchInlineSnapshot(`0`)
+})
+
+test('ymd', () => {
+  jest.setSystemTime(lDate)
+
+  expect(ymd(lDate)).toMatchInlineSnapshot(`"21230405"`)
+  expect(ymdNum(lDate)).toMatchInlineSnapshot(`21230405`)
 })

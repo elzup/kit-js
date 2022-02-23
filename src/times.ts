@@ -20,3 +20,9 @@ export const shiftDate = (date: Date, hour = 0) =>
   new Date(+date + (date.getTimezoneOffset() + Math.floor(hour * 60)) * MIN)
 
 export const jpDate = (date: Date) => shiftDate(date, JP_SHIFT_HOUR)
+
+export const ymd = (date: Date) =>
+  String(date.getFullYear()).padStart(4, '0') +
+  String(date.getMonth() + 1).padStart(2, '0') +
+  String(date.getDate()).padStart(2, '0')
+export const ymdNum = (date: Date) => Number(ymd(date))
