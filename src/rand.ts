@@ -11,6 +11,7 @@ const randNext = ({ x, y, z, w }: RandState): RandState => {
 
 const initState = { x: 123456789, y: 362436069, z: 521288629 }
 
+/* @deprecated */
 export const rand = (seed: number) => randNext({ ...initState, w: seed }).w
 export function randGen(seed = 88675123) {
   let state = { ...initState, w: seed }

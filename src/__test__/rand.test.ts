@@ -1,4 +1,4 @@
-import { randRange, randGen, rand } from '../rand'
+import { randRange, randGen } from '../rand'
 
 test('rand', () => {
   const rf = randGen(1)
@@ -17,7 +17,6 @@ test('rand', () => {
       1598121209,
     ]
   `)
-  expect(rand(1)).toBe(-638953871)
   expect(randRange(123, 1, 5)).toMatchInlineSnapshot(`4`)
   expect(randRange(123, 0, 5)).toMatchInlineSnapshot(`5`)
 })
