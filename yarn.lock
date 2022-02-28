@@ -4271,7 +4271,7 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-unimported@^1.19.1:
+unimported@1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/unimported/-/unimported-1.19.1.tgz#c61556cbf7151f0b221ab6a3e1b7f6e686376ce4"
   integrity sha512-p/8XnPnJbL+QhaI5qoBjT4XyJjSz0cXqK6z5JJEIF7HItZLHDldU4XjojnwJEqwghN1fzWJ8bMkPxi614m1/bQ==
