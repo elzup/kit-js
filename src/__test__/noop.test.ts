@@ -1,4 +1,4 @@
-import noop, { tagNoop } from '../noop'
+import { noop, tagNoop } from '../index'
 
 test('noop', () => {
   expect(noop()).toMatchInlineSnapshot(`undefined`)

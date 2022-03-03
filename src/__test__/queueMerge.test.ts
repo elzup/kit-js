@@ -1,5 +1,4 @@
-import { queueMerge } from '../queueMerge'
-import { range } from '../range'
+import { queueMerge, range } from '../index'
 
 test('queueMerge', () => {
   expect(

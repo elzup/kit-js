@@ -1,5 +1,13 @@
-import { formatHms, formatTime, formatYmd } from '../formatTime'
-import { jpDate, shiftDate, times, ymd, ymdNum } from '../times'
+import {
+  formatHms,
+  formatTime,
+  formatYmd,
+  jpDate,
+  shiftDate,
+  times,
+  ymd,
+  ymdNum,
+} from '../index'
 
 beforeAll(() => jest.useFakeTimers('modern'))
 afterAll(jest.useRealTimers)

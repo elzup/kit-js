@@ -1,7 +1,8 @@
-import { groupByFunc } from '..'
+import { groupByFunc } from '../index'
 
 test('groupBy', () => {
-  expect(groupByFunc([1, 2, 3, 4], (v) => v % 2)).toMatchInlineSnapshot(`
+  expect(groupByFunc([1, 2, 3, 4], (v) => String(v % 2)))
+    .toMatchInlineSnapshot(`
     Object {
       "0": Array [
         2,

@@ -1,4 +1,20 @@
-import * as constants from '../constants'
+import {
+  charABC,
+  charABCabc123,
+  charAbc123,
+  charAlphabets,
+  charNums,
+  isDev,
+} from '../index'
+
+const constants = {
+  charABC,
+  charABCabc123,
+  charAbc123,
+  charAlphabets,
+  charNums,
+  isDev,
+}
 
 test('constants', () => {
   expect(constants).toMatchInlineSnapshot(`

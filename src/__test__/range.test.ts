@@ -1,4 +1,4 @@
-import { range } from '../range'
+import { range } from '../index'
 
 test('range', () => {
   expect(range(0)).toStrictEqual([])

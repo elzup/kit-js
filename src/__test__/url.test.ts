@@ -1,4 +1,4 @@
-import { googleSearchUrl, googleSearchImageUrl } from '../url'
+import { googleSearchUrl, googleSearchImageUrl } from '../index'
 
 test('url', () => {
   expect(googleSearchUrl('abc')).toMatchInlineSnapshot(

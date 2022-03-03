@@ -1,4 +1,4 @@
-import identity from '../identity'
+import { identity } from '../index'
 
 test('identity', () => {
   expect(identity('abc')).toMatchInlineSnapshot(`"abc"`)

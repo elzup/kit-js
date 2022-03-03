@@ -1,4 +1,4 @@
-import { comps } from '../comps'
+import { comps } from '../index'
 
 test('comps', () => {
   expect(comps([1, 2])).toStrictEqual([[1, 2]])

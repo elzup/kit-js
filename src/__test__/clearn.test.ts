@@ -1,4 +1,4 @@
-import clean from '../clean'
+import { clean } from '../index'
 
 test('clean', () => {
   expect(clean({})).toMatchInlineSnapshot(`Object {}`)

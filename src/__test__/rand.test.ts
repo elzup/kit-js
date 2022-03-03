@@ -1,4 +1,4 @@
-import { randRange, randGen } from '../rand'
+import { randRange, randGen } from '../index'
 
 test('rand', () => {
   const rf = randGen(1)

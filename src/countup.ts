@@ -1,4 +1,4 @@
-const countup = (arr: (string | number)[]) => {
+export const countup = (arr: (string | number)[]) => {
   const m = new Map<string | number, number>()
 
   arr.forEach((v) => {
@@ -6,5 +6,3 @@ const countup = (arr: (string | number)[]) => {
   })
   return m
 }
-
-export default countup
