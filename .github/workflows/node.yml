@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - '**/readme.md'
   pull_request:
-    types: [opened, reopened]
 
 jobs:
   build:
