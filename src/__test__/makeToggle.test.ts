@@ -1,13 +1,7 @@
 import { makeToggle } from '../index'
+import { toggle } from '../makeToggle'
 
 describe('makeToggle', () => {
-  it('default boolean', () => {
-    const toggleBool = makeToggle()
-
-    expect(toggleBool(true)).toBe(false)
-    expect(toggleBool(false)).toBe(true)
-  })
-
   it('premitive array', () => {
     const toggleArr = makeToggle([1, 2, 3])
 
@@ -22,9 +16,18 @@ describe('makeToggle', () => {
   })
 
   it('enum type', () => {
-    const toggleArr = makeToggle(['a', 'b', 'c'])
+    const ids = ['a', 'b', 'c'] as const
+
+    const toggleArr = makeToggle(ids)
 
     expect(toggleArr('a')).toBe('b')
+    // expect(toggleArr('d')).toBe('b')
+  })
+
+  it('undefined', () => {
+    const toggleArr = makeToggle([])
+
+    expect(toggleArr('a')).toBe(undefined)
   })
 
   describe('no hit', () => {
@@ -33,5 +36,10 @@ describe('makeToggle', () => {
 
       expect(toggleNum(101)).toBe(1)
     })
+  })
+
+  it('toggle util', () => {
+    expect(toggle(true)).toBe(false)
+    expect(toggle(false)).toBe(true)
   })
 })

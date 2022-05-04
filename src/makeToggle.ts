@@ -1,9 +1,9 @@
-export const makeToggle = <T extends any = boolean>(
-  arr: T[] = [true, false] as any[]
-): ((v: T) => T) => {
+export const makeToggle = <T>(arr: readonly T[]): ((v: T) => T) => {
   return (v) => {
     const cur = arr.indexOf(v)
 
     return arr[(cur + 1) % arr.length]
   }
 }
+
+export const toggle = makeToggle([true, false])
