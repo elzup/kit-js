@@ -1,7 +1,4 @@
-export function queueMerge<T>(
-  queues: readonly T[][],
-  comp: (a: T) => number
-): T[] {
+export function queueMerge<T>(queues: T[][], comp: (a: T) => number): T[] {
   const result: T[] = []
 
   while (true) {
@@ -20,8 +17,15 @@ export function queueMerge<T>(
 
     if (minv === undefined) break
 
-    queues[mini].shift()
-    result.push(minv)
+    const v = queues[mini].shift()
+
+    if (v !== undefined) result.push(v)
   }
   return result
 }
+
+export const mergeSortArr = <T>(
+  sorted1: T[],
+  sorted2: T[],
+  orderBy: (a: T) => number
+) => queueMerge([sorted1, sorted2], orderBy)
