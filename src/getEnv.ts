@@ -8,9 +8,9 @@ export const getEnv = (
 ) => {
   const value = process.env[key]
 
-  if (required && !value) {
+  if (required && value === undefined) {
     requiredCallback()
   }
 
-  return value || defaultValue
+  return value ?? defaultValue
 }

@@ -1,5 +1,5 @@
 export const getOne = (v: string | string[] | undefined): string => {
-  if (!v) return ''
+  if (v === undefined) return ''
   return typeof v === 'object' ? v[0] : v
 }
 

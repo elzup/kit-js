@@ -7,7 +7,7 @@ export const groupByFunc = <T, K extends string>(
   a.forEach((item) => {
     const key = fieldFn(item)
 
-    if (!groups[key]) groups[key] = [] as T[]
+    if (groups[key] === undefined) groups[key] = [] as T[]
 
     groups[key].push(item)
   })

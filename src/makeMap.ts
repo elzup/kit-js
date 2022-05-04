@@ -1,2 +1,4 @@
-export const makeMap = <T>(keys: string[], defaultValue: T = null) =>
-  new Map(keys.map((k) => [k, defaultValue]))
+export const makeMap = <T>(
+  keys: readonly string[],
+  defaultValue: T = null as any
+) => new Map(keys.map((k) => [k, defaultValue]))
