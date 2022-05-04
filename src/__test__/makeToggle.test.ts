@@ -5,7 +5,7 @@ describe('makeToggle', () => {
     const toggleBool = makeToggle()
 
     expect(toggleBool(true)).toBe(false)
-    // expect(toggleBool(false)).toBe(true)
+    expect(toggleBool(false)).toBe(true)
   })
 
   it('premitive array', () => {
@@ -16,8 +16,9 @@ describe('makeToggle', () => {
   })
 
   it('cyclable', () => {
-    // const toggleArr = makeToggle([1, 2, 3])
-    // expect(toggleArr(3)).toBe(1)
+    const toggleArr = makeToggle([1, 2, 3])
+
+    expect(toggleArr(3)).toBe(1)
   })
 
   it('enum type', () => {

@@ -4,6 +4,6 @@ export const makeToggle = <T extends any = boolean>(
   return (v) => {
     const cur = arr.indexOf(v)
 
-    return arr[cur + 1]
+    return arr[(cur + 1) % arr.length]
   }
 }
