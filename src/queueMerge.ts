@@ -20,11 +20,8 @@ export function queueMerge<T>(
 
     if (minv === undefined) break
 
-    const log = queues[mini].shift()
-
-    if (log === undefined) continue
-
-    result.push(log)
+    queues[mini].shift()
+    result.push(minv)
   }
   return result
 }
