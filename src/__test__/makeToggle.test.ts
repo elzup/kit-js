@@ -5,6 +5,25 @@ describe('makeToggle', () => {
     const toggleBool = makeToggle()
 
     expect(toggleBool(true)).toBe(false)
-    expect(toggleBool(false)).toBe(true)
+    // expect(toggleBool(false)).toBe(true)
+  })
+
+  it('premitive array', () => {
+    const toggleArr = makeToggle([1, 2, 3])
+
+    expect(toggleArr(1)).toBe(2)
+    expect(toggleArr(2)).toBe(3)
+  })
+
+  it('cyclable', () => {
+    // const toggleArr = makeToggle([1, 2, 3])
+    // expect(toggleArr(3)).toBe(1)
+  })
+
+  it('enum type', () => {
+    const toggleArr = makeToggle(['a', 'b', 'c'])
+
+    expect(toggleArr('a')).toBe('b')
+    // TODO: error expect(toggleArr('c')).toBe('b')
   })
 })
