@@ -1,5 +1,11 @@
+const calcStep = (start: number, end?: number, step0?: number) => {
+  if (step0 !== undefined) return step0
+  if (end === undefined || start <= end) return 1
+  return -1
+}
+
 export const range = (start: number, end?: number, step0?: number) => {
-  const step = step0 !== undefined ? step0 : start < end ? 1 : -1
+  const step = calcStep(start, end, step0)
 
   if (step === 0) throw new Error('step cannot be zero')
 
