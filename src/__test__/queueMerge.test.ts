@@ -13,11 +13,15 @@ test('queueMerge', () => {
   ).toStrictEqual([1, 2, 3, 4, 5, 6])
 
   expect(queueMerge([[], []], () => 0)).toMatchInlineSnapshot(`Array []`)
-  const t = Date.now()
 
-  queueMerge(
-    range(20).map(() => range(60 * 24 * 30).map((i) => ({ i }))),
-    (v) => v.i
-  )
-  expect(Date.now() - t).toBeLessThan(500)
+  expect(
+    queueMerge(
+      [
+        [-1, 0],
+        [-2, 0, 1],
+        [0, 2],
+      ],
+      (v) => v
+    )
+  ).toStrictEqual([-2, -1, 0, 0, 0, 1, 2])
 })

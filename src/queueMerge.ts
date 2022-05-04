@@ -1,4 +1,7 @@
-export function queueMerge<T>(queues: T[][], comp: (a: T) => number): T[] {
+export function queueMerge<T>(
+  queues: readonly T[][],
+  comp: (a: T) => number
+): T[] {
   const result: T[] = []
 
   while (true) {
@@ -6,22 +9,20 @@ export function queueMerge<T>(queues: T[][], comp: (a: T) => number): T[] {
     let mini = 0
 
     queues.forEach((v, i) => {
-      if (!v[0]) return
+      if (v.length === 0) return
       const time = comp(v[0])
 
-      if (!minv || time < minv) {
+      if (minv === undefined || time < minv) {
         minv = time
         mini = i
       }
     })
 
-    // console.log(minv)
-
-    if (!minv) break
+    if (minv === undefined) break
 
     const log = queues[mini].shift()
 
-    if (!log) continue
+    if (log === undefined) continue
 
     result.push(log)
   }
