@@ -1,3 +1,4 @@
+import { expectType } from 'tsd'
 import { makeToggle } from '../index'
 import { toggle } from '../makeToggle'
 
@@ -18,16 +19,20 @@ describe('makeToggle', () => {
   it('enum type', () => {
     const ids = ['a', 'b', 'c'] as const
 
+    type Id = typeof ids[number]
+
     const toggleArr = makeToggle(ids)
 
     expect(toggleArr('a')).toBe('b')
     // expect(toggleArr('d')).toBe('b')
+    expectType<(n: Id) => Id>(toggleArr)
   })
 
+  // eslint-disable-next-line jest/expect-expect
   it('undefined', () => {
     const toggleArr = makeToggle([])
 
-    expect(toggleArr('a')).toBe(undefined)
+    expectType<(n: never) => never>(toggleArr)
   })
 
   describe('no hit', () => {
