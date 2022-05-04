@@ -25,6 +25,13 @@ describe('makeToggle', () => {
     const toggleArr = makeToggle(['a', 'b', 'c'])
 
     expect(toggleArr('a')).toBe('b')
-    // TODO: error expect(toggleArr('c')).toBe('b')
+  })
+
+  describe('no hit', () => {
+    it('default first arg', () => {
+      const toggleNum = makeToggle([1, 2, 3])
+
+      expect(toggleNum(101)).toBe(1)
+    })
   })
 })
