@@ -1,4 +1,4 @@
-import { mergeSortArr } from '../mergeSortArr'
+import { mergeSortArr } from '../index'
 
 test('mergeSortArr', () => {
   expect(mergeSortArr([1, 2, 2, 4], [2, 3, 5, 6], (v) => v)).toStrictEqual([
