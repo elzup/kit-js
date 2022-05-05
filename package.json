@@ -39,20 +39,20 @@
     "personal"
   ],
   "devDependencies": {
-    "@swc/core": "1.2.174",
+    "@swc/core": "1.2.177",
     "@swc/jest": "0.2.20",
-    "@types/jest": "27.4.1",
-    "@types/node": "17.0.21",
-    "babel-jest": "27.5.1",
+    "@types/jest": "27.5.0",
+    "@types/node": "17.0.31",
+    "babel-jest": "28.0.3",
     "eslint": "8.14.0",
-    "eslint-config-nzap": "5.3.0",
+    "eslint-config-nzap": "5.3.1",
     "husky": "7.0.4",
-    "jest": "27.5.1",
+    "jest": "28.0.3",
     "lint-staged": "12.4.1",
     "prettier": "2.6.2",
-    "ts-jest": "27.1.4",
+    "ts-jest": "28.0.1",
     "tsd": "^0.20.0",
     "typescript": "4.6.4",
-    "unimported": "1.19.1"
+    "unimported": "1.20.0"
   }
 }
