@@ -14,15 +14,3 @@ export const groupByFunc = <T, K extends string>(
 
   return groups
 }
-
-// export const groupBy = <T, K extends string>(
-//   a: T[],
-//   field: string | ((t: T) => K)
-// ) => {
-//   if (typeof field === 'function') {
-//     return groupByFunc(a, field)
-//   }
-//   type A = T extends { [field]: infer U } ? U : never
-
-//   return groupByFunc<T, A>(a, (t: T) => t[field])
-// }
