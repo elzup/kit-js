@@ -5,6 +5,7 @@ import {
   jpDate,
   shiftDate,
   times,
+  timesNow,
   ymd,
   ymdNum,
 } from '../index'
@@ -30,6 +31,18 @@ test('times', () => {
     }
   `)
 })
+test('timesNow', () => {
+  expect(timesNow()).toMatchInlineSnapshot(`
+    Object {
+      "day": 5,
+      "hour": 6,
+      "minute": 7,
+      "month": 4,
+      "second": 8,
+      "year": 2123,
+    }
+  `)
+})
 
 test('formatTime', () => {
   jest.setSystemTime(lDate)
@@ -39,6 +52,7 @@ test('formatTime', () => {
 })
 
 test('shiftDate', () => {
+  expect(shiftDate(date).getHours()).toMatchInlineSnapshot(`15`)
   expect(shiftDate(date, 0).getHours()).toMatchInlineSnapshot(`15`)
   expect(shiftDate(date, -6).getHours()).toMatchInlineSnapshot(`9`)
   expect(shiftDate(date, 5).getHours()).toMatchInlineSnapshot(`20`)

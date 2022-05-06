@@ -11,4 +11,5 @@ test('transpose', () => {
     ['a', 'c', 'd'],
     ['b', 'd', 'e'],
   ])
+  expect(transpose([])).toStrictEqual([])
 })

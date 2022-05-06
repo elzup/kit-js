@@ -25,14 +25,14 @@ export { noop, tagNoop } from './noop'
 export { mergeSortArr, queueMerge } from './queueMerge'
 export { range } from './range'
 export {
-  randRange,
-  seedRand,
-  shuffle,
-  sample,
   choise,
   randGen,
+  randRange,
+  sample,
+  seedRand,
+  shuffle,
 } from './seedRand'
 export { makeSlackParams } from './slack'
-export { jpDate, shiftDate, times, ymd, ymdNum } from './times'
+export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
 export { transpose } from './transpose'
 export { googleSearchImageUrl, googleSearchUrl } from './url'

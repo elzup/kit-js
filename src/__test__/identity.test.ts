@@ -1,4 +1,4 @@
-import { identity } from '../index'
+import { identity, pass } from '../index'
 
 test('identity', () => {
   expect(identity('abc')).toMatchInlineSnapshot(`"abc"`)
@@ -15,5 +15,5 @@ Object {
   "a": 1,
 }
 `)
-  expect(identity()).toMatchInlineSnapshot(`undefined`)
+  expect(pass('alias')).toMatchInlineSnapshot(`"alias"`)
 })
