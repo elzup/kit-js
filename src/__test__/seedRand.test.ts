@@ -11,6 +11,8 @@ import {
 test('rand', () => {
   const paralels = range(10).map((n) => seedRand(String(n)))
 
+  expect(seedRand(1)).toMatchInlineSnapshot(`0.4519428262831776`)
+  expect(seedRand('1')).toMatchInlineSnapshot(`0.4519428262831776`)
   expect(paralels).toMatchInlineSnapshot(`
     Array [
       0.402037404151159,

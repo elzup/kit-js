@@ -3,10 +3,11 @@ import crypto from 'crypto'
 const MAX = 2 ** 32
 const ALGORITHM = 'sha256'
 
-export const seedRandBuf = (seed: string) =>
-  crypto.createHash(ALGORITHM).update(seed).digest()
+type Seed = number | string
+export const seedRandBuf = (seed: Seed) =>
+  crypto.createHash(ALGORITHM).update(String(seed)).digest()
 
-export const seedRandAdnvance = (seed: string) => {
+export const seedRandAdnvance = (seed: Seed) => {
   const buf = seedRandBuf(seed)
 
   return {
@@ -16,9 +17,9 @@ export const seedRandAdnvance = (seed: string) => {
   }
 }
 
-export const seedRand = (seed: string) => seedRandAdnvance(seed).num
+export const seedRand = (seed: Seed) => seedRandAdnvance(seed).num
 
-export const randRange = (seed: string, min: number, max?: number) =>
+export const randRange = (seed: Seed, min: number, max?: number) =>
   randRangeHit(seedRand(seed), min, max)
 
 export const randRangeHit = (v: number, min: number, max?: number) => {
@@ -28,8 +29,8 @@ export const randRangeHit = (v: number, min: number, max?: number) => {
   return low + Math.floor(v * d)
 }
 
-export const shuffle = <T>(seed: string, arr: T[]): T[] => {
-  const a = arr.map((v, i) => ({ v, r: seedRand(seed + `${i}`) }))
+export const shuffle = <T>(seed: Seed, arr: T[]): T[] => {
+  const a = arr.map((v, i) => ({ v, r: seedRand(`${seed}${i}`) }))
 
   a.sort((a, b) => a.r - b.r)
   return a.map(({ v }) => v)
