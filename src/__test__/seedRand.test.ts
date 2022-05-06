@@ -1,4 +1,12 @@
-import { randRange, range, seedRand, shuffle, choise, sample } from '../index'
+import {
+  randRange,
+  range,
+  seedRand,
+  shuffle,
+  choise,
+  sample,
+  randGen,
+} from '../index'
 
 test('rand', () => {
   const paralels = range(10).map((n) => seedRand(String(n)))
@@ -56,4 +64,16 @@ test('choise', () => {
   const res = choise('a', [1, 2, 3, 4, 5])
 
   expect(res).toMatchInlineSnapshot(`3`)
+})
+test('randGen', () => {
+  const r = randGen('a')
+  const res = [r.next().value, r.next().value, r.next().value]
+
+  expect(res).toMatchInlineSnapshot(`
+    Array [
+      0.873368340806717,
+      0.4372768375470124,
+      0.28616679732544187,
+    ]
+  `)
 })

@@ -24,7 +24,14 @@ export { makeToggle } from './makeToggle'
 export { noop, tagNoop } from './noop'
 export { mergeSortArr, queueMerge } from './queueMerge'
 export { range } from './range'
-export { randRange, seedRand, shuffle, sample, choise } from './seedRand'
+export {
+  randRange,
+  seedRand,
+  shuffle,
+  sample,
+  choise,
+  randGen,
+} from './seedRand'
 export { makeSlackParams } from './slack'
 export { jpDate, shiftDate, times, ymd, ymdNum } from './times'
 export { transpose } from './transpose'

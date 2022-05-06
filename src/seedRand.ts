@@ -18,11 +18,14 @@ export const seedRandAdnvance = (seed: string) => {
 
 export const seedRand = (seed: string) => seedRandAdnvance(seed).num
 
-export const randRange = (seed: string, min: number, max?: number) => {
+export const randRange = (seed: string, min: number, max?: number) =>
+  randRangeHit(seedRand(seed), min, max)
+
+export const randRangeHit = (v: number, min: number, max?: number) => {
   const [low, high] = max === undefined ? [0, min] : [min, max]
   const d = high - low
 
-  return low + Math.floor(seedRand(seed) * d)
+  return low + Math.floor(v * d)
 }
 
 export const shuffle = <T>(seed: string, arr: T[]): T[] => {
@@ -37,3 +40,9 @@ export const choise = <T>(seed: string, arr: T[]): T | undefined =>
 
 export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
   shuffle(seed, arr).slice(0, n)
+
+export function* randGen(seed: string): Generator<number, void, number> {
+  for (let i = 0; ; i++) {
+    yield seedRand(seed + `${i}`)
+  }
+}
