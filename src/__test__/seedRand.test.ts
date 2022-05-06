@@ -1,6 +1,4 @@
-import { randRange } from '..'
-import { seedRand } from '../rand'
-import { range } from '../range'
+import { randRange, range, seedRand } from '../index'
 
 test('rand', () => {
   const paralels = range(10).map((n) => seedRand(String(n)))
