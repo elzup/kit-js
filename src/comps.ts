@@ -12,5 +12,5 @@ export function comps<T>(a: T[], n = 2): T[][] {
 
   const b = a.slice(n - 1, a.length)
 
-  return b.map((v, i) => a.slice(i, i + n))
+  return b.map((_v, i) => a.slice(i, i + n))
 }
