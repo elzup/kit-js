@@ -24,3 +24,12 @@ export const randRange = (seed: string, min: number, max?: number) => {
 
   return low + Math.floor(seedRand(seed) * d)
 }
+
+export const shuffle = <T>(seed: string, arr: T[]): T[] => {
+  const a = arr.map((v, i) => ({ v, r: seedRand(seed + `${i}`) }))
+
+  a.sort((a, b) => a.r - b.r)
+  return a.map(({ v }) => v)
+}
+// export const choise = <T>(seed: string, arr: T, v: number = 1) => {
+// }
