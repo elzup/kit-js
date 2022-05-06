@@ -31,5 +31,9 @@ export const shuffle = <T>(seed: string, arr: T[]): T[] => {
   a.sort((a, b) => a.r - b.r)
   return a.map(({ v }) => v)
 }
-// export const choise = <T>(seed: string, arr: T, v: number = 1) => {
-// }
+
+export const choise = <T>(seed: string, arr: T[]): T | undefined =>
+  sample(seed, arr, 1)[0]
+
+export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
+  shuffle(seed, arr).slice(0, n)
