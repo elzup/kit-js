@@ -1,25 +1,26 @@
-export const randRange = (seed: number, min: number, max: number) =>
-  (Math.abs(rand(seed)) % (max - min + 1)) + min
+import crypto from 'crypto'
 
-type RandState = { x: number; y: number; z: number; w: number }
-const randNext = ({ x, y, z, w }: RandState): RandState => {
-  const t = x ^ (x << 11)
-  const nw = w ^ (w >>> 19) ^ (t ^ (t >>> 8))
+const MAX = 2 ** 32
+const ALGORITHM = 'sha256'
 
-  return { x: y, y: z, z: w, w: nw }
-}
+export const seedRandBuf = (seed: string) =>
+  crypto.createHash(ALGORITHM).update(seed).digest()
 
-const initState = { x: 123456789, y: 362436069, z: 521288629 }
-
-/* @deprecated */
-export const rand = (seed: number) => randNext({ ...initState, w: seed }).w
-export function randGen(seed = 88675123) {
-  let state = { ...initState, w: seed }
+export const seedRandAdnvance = (seed: string) => {
+  const buf = seedRandBuf(seed)
 
   return {
-    next: () => {
-      state = randNext(state)
-      return state.w
-    },
+    seed,
+    num: buf.readUInt32LE() / (MAX + 1), // 0 <= num < 1
+    buf,
   }
+}
+
+export const seedRand = (seed: string) => seedRandAdnvance(seed).num
+
+export const randRange = (seed: string, min: number, max?: number) => {
+  const [low, high] = max === undefined ? [0, min] : [min, max]
+  const d = high - low
+
+  return low + Math.floor(seedRand(seed) * d)
 }

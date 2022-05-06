@@ -1,22 +1,30 @@
-import { randRange, randGen } from '../index'
+import { randRange } from '..'
+import { seedRand } from '../rand'
+import { range } from '../range'
 
 test('rand', () => {
-  const rf = randGen(1)
+  const paralels = range(10).map((n) => seedRand(String(n)))
 
-  expect([...Array(10)].map(() => rf.next()).flat()).toMatchInlineSnapshot(`
+  expect(paralels).toMatchInlineSnapshot(`
     Array [
-      -638953871,
-      504890836,
-      -1873192399,
-      -1873199053,
-      462149015,
-      -983349865,
-      -1615788072,
-      -978086715,
-      -2133735799,
-      1598121209,
+      0.402037404151159,
+      0.4519428262831776,
+      0.22800373001303437,
+      0.5205082477721134,
+      0.466661589810005,
+      0.48855864594491233,
+      0.06935065401034647,
+      0.6070710700920152,
+      0.19632543153215073,
+      0.15280676466580323,
     ]
   `)
-  expect(randRange(123, 1, 5)).toMatchInlineSnapshot(`4`)
-  expect(randRange(123, 0, 5)).toMatchInlineSnapshot(`5`)
+})
+
+test('randRange', () => {
+  const v1 = randRange('a1', 10)
+  const v2 = randRange('a1', 20, 30)
+
+  expect(v1).toMatchInlineSnapshot(`4`)
+  expect(v2).toMatchInlineSnapshot(`24`)
 })
