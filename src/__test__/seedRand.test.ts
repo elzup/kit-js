@@ -52,9 +52,15 @@ test('shuffle', () => {
 })
 
 test('sample', () => {
-  const res = sample('a', [1, 2, 3, 4, 5], 3)
+  const res1 = sample('a', [1, 2, 3, 4, 5])
+  const res3 = sample('a', [1, 2, 3, 4, 5], 3)
 
-  expect(res).toMatchInlineSnapshot(`
+  expect(res1).toMatchInlineSnapshot(`
+    Array [
+      3,
+    ]
+  `)
+  expect(res3).toMatchInlineSnapshot(`
     Array [
       3,
       2,

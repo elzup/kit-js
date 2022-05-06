@@ -9,6 +9,9 @@ test('getEnv', () => {
   expect(getEnv('GET_ENV_TEST_KEY', 'development')).toMatchInlineSnapshot(
     `"GET_ENV_TEST_VALUE"`
   )
+  expect(getEnv('GET_ENV_TEST_KEY_NON', 'development')).toMatchInlineSnapshot(
+    `"development"`
+  )
 
   expect(() => {
     getEnv('NONE_ENV', 'development', true)
