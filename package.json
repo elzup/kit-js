@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "repository": "elzup/kit-js",
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
@@ -39,6 +39,7 @@
     "personal"
   ],
   "devDependencies": {
+    "@elzup/tsconfig": "^1.0.2",
     "@swc/core": "1.2.177",
     "@swc/jest": "0.2.20",
     "@types/jest": "27.5.0",

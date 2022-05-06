@@ -3,7 +3,7 @@ export function comps2<T>(a: T[]): [T, T][] {
 
   const [, ...b] = a
 
-  return b.map((v, i) => [a[i], b[i]])
+  return b.map((_v, i) => [a[i], b[i]])
 }
 
 export function comps<T>(a: T[], n = 2): T[][] {

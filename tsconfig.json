@@ -1,15 +1,9 @@
 {
+  "extends": "@elzup/tsconfig",
   "compilerOptions": {
     "module": "commonjs",
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "lib": ["es2020", "dom", "es5"],
-    "sourceMap": true,
-    "declaration": true,
+    "noUncheckedIndexedAccess": false,
+    "noPropertyAccessFromIndexSignature": false,
     "outDir": "lib",
     "baseUrl": ".",
     "paths": {
