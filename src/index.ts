@@ -1,5 +1,6 @@
 export { asciify, isAscii } from './ascii'
 export { chunk } from './chunk'
+export { chunkStr } from './chunkStr'
 export { clean } from './clean'
 export { comps, comps2 } from './comps'
 export {
