@@ -1,3 +1,4 @@
+export { anyHashMatch, sha512Hex } from './anyHashMatch'
 export { asciify, isAscii } from './ascii'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
