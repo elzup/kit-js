@@ -24,6 +24,7 @@ export { makeToggle } from './makeToggle'
 export { noop, tagNoop } from './noop'
 export { mergeSortArr, queueMerge } from './queueMerge'
 export { range } from './range'
+export { rangeAdv } from './rangeAdv'
 export {
   choise,
   randGen,
