@@ -9,7 +9,10 @@ export {
   charAbc123,
   charABCabc123,
   charAlphabets,
+  charMisidentify,
+  charNonMisidentify,
   charNums,
+  charStrongNonMisidentify,
   isDev,
 } from './constants'
 export { countup } from './countup'
