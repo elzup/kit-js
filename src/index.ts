@@ -2,6 +2,7 @@ export { anyHashMatch, sha512Hex } from './anyHashMatch'
 export { asciify, isAscii } from './ascii'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
+export { clamp } from './clamp'
 export { clean } from './clean'
 export { comps, comps2 } from './comps'
 export {
