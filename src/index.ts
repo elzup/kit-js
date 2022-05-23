@@ -41,6 +41,7 @@ export {
   shuffle,
 } from './seedRand'
 export { makeSlackParams } from './slack'
+export { sortBy, sortByHoc } from './sortBy'
 export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
 export { transpose } from './transpose'
 export { googleSearchImageUrl, googleSearchUrl } from './url'
