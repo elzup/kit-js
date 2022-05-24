@@ -1,4 +1,4 @@
-import { permutation } from '..'
+import { permutation, permutationBase } from '..'
 
 describe('permutation', () => {
   it('works', () => {
@@ -16,6 +16,15 @@ describe('permutation', () => {
 
   it('without len', () => {
     expect(permutation([1, 2])).toStrictEqual([
+      [1, 2],
+      [2, 1],
+    ])
+  })
+
+  it('permutationBase', () => {
+    const res = permutationBase([1, 2])
+
+    expect(res).toStrictEqual([
       [1, 2],
       [2, 1],
     ])
