@@ -1,4 +1,4 @@
-import { permutation, permutationBase } from '..'
+import { permutation, permutationBase } from '../index'
 
 describe('permutation', () => {
   it('works', () => {
