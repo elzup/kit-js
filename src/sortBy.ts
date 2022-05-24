@@ -4,7 +4,7 @@ export const sortBy = <T>(a: T[], f: ScoreFunc<T>) => {
   a.sort((a, b) => f(a) - f(b))
 }
 
-export const sortByHoc =
+export const sortByHo =
   <T>(f: ScoreFunc<T>) =>
   (a: T, b: T) =>
     f(a) - f(b)
