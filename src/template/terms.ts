@@ -10,7 +10,7 @@ type Terms = {
   mains: Term[]
   foot: string
 }
-export const genTerms = (orgName: string, orgCall = '運営チーム'): Terms => ({
+export const genTerms = (orgName: string, orgCall = '当社'): Terms => ({
   head: {
     name: '利用規約',
     text: `この利用規約(以下，「本規約」といいます。)は，${orgName}(以下，「${orgCall}」といいます。)がこのウェブサイト上で提供するサービス(以下，「本サービス」といいます。)の利用条件を定めるものです。登録ユーザーの皆さま(以下，「ユーザー」といいます。)には，本規約に従って，本サービスをご利用いただきます。`,
