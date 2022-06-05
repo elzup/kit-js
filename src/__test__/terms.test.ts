@@ -3,6 +3,7 @@ import { genTerms } from '../index'
 
 test('genTerms', () => {
   const terms = genTerms('anozon研究チーム', '運営チーム')
+  const terms2 = genTerms('anozon研究チーム')
   const text = `# ${terms.head.name}
 ${terms.head.text ?? ''}
 
@@ -32,6 +33,9 @@ ${v.subs.map((sub) => `  - ${sub}`).join('\n')}`
 ${terms.foot}
 `
 
+  expect(terms2.head.text).toMatchInlineSnapshot(
+    `"この利用規約(以下，「本規約」といいます。)は，anozon研究チーム(以下，「当社」といいます。)がこのウェブサイト上で提供するサービス(以下，「本サービス」といいます。)の利用条件を定めるものです。登録ユーザーの皆さま(以下，「ユーザー」といいます。)には，本規約に従って，本サービスをご利用いただきます。"`
+  )
   expect(terms.head.text).toMatchInlineSnapshot(
     `"この利用規約(以下，「本規約」といいます。)は，anozon研究チーム(以下，「運営チーム」といいます。)がこのウェブサイト上で提供するサービス(以下，「本サービス」といいます。)の利用条件を定めるものです。登録ユーザーの皆さま(以下，「ユーザー」といいます。)には，本規約に従って，本サービスをご利用いただきます。"`
   )
