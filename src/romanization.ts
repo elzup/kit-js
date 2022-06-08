@@ -1,20 +1,33 @@
-type Option = { skip: boolean }
+type Option = { skip: boolean; stretch: boolean }
 
-const defaultOpt: Option = { skip: true }
+const defaultOpt: Option = { skip: true, stretch: true }
 
-export const romanization = (s: string, opt?: Option) => {
-  const { skip } = { ...defaultOpt, ...opt }
+const toHiraShift = (c: string) => String.fromCharCode(c.charCodeAt(0) - 0x60)
+const toHira = (s: string) => s.replace(/[\u30a1-\u30f6]/g, toHiraShift)
 
-  return [...s]
-    .map((c) => {
-      const i = table.indexOf(c)
+export const remoanizationChar = (
+  c: string,
+  nc: string,
+  { skip, stretch }: Option
+) => {
+  const i = table.indexOf(toHira(c))
 
-      if (i === -1) return skip ? '' : c
-      const vi = i % 5
-      const ci = Math.floor(i / 5)
+  if (i >= 0) {
+    const vi = i % 5
+    const ci = Math.floor(i / 5)
 
-      return consonants[ci] + vowels[vi]
-    })
+    return consonants[ci] + vowels[vi]
+  }
+  if (stretch && 'ー〜'.includes(c)) return '-'
+  return skip ? '' : c
+}
+
+export const romanization = (s: string, opt?: Partial<Option>) => {
+  const compOpt = { ...defaultOpt, ...opt }
+  const chars = [...s]
+
+  return chars
+    .map((c, i) => remoanizationChar(c, chars[i + 1] ?? '', compOpt))
     .join('')
 }
 
@@ -29,9 +42,9 @@ const table = [
   'なにぬねの',
   'はひふへほ',
   'まみむめも',
-  'やーゆーよ',
+  'やいゆえよ',
   'らりるれろ',
-  'わーーーを',
+  'わいうえを',
   'がぎぐげご',
   'ざじずぜぞ',
   'だぢづでど',

@@ -13,6 +13,12 @@ describe('romanization', () => {
     expect(romanization('てa漢😸', { skip: true })).toBe('te')
   })
 
-  it.todo('stretch')
-  it.todo('xya')
+  it('stretch', () => {
+    expect(romanization('コードルール')).toBe('ko-doru-ru')
+    expect(romanization('コードルール', { stretch: true })).toBe('ko-doru-ru')
+    expect(romanization('コードルール', { stretch: false })).toBe('kodoruru')
+  })
+  // it('xya', () => {
+  //   expect(romanization('しゃー')).toBe('gazidubepo')
+  // })
 })
