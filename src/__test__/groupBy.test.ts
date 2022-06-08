@@ -3,8 +3,9 @@ import { groupByFunc } from '../index'
 
 describe('groupBy', () => {
   it('numbers', () => {
-    expect(groupByFunc([1, 2, 3, 4], (v) => String(v % 2)))
-      .toMatchInlineSnapshot(`
+    const groups = groupByFunc([1, 2, 3, 4], (v) => String(v % 2))
+
+    expect(groups).toMatchInlineSnapshot(`
           Object {
             "0": Array [
               2,
@@ -16,6 +17,7 @@ describe('groupBy', () => {
             ],
           }
       `)
+    expectType<Record<number, number[]>>(groups)
   })
 
   it('enum key', () => {
