@@ -14,13 +14,13 @@ export const schedulingPick = <T>([...a]: ScheduleItem<T>[]): [
 
   if (cur === undefined) return [[], []]
 
-  ans.push(cur?.id)
+  ans.push(cur.id)
 
   for (let i = 0; i < a.length; i++) {
-    if (a[i].start > cur.end) {
-      let cur = a[i]
+    if (cur.end <= a[i].start) {
+      cur = a[i]
 
-      ans.push(cur?.id)
+      ans.push(cur.id)
       a.splice(i, 1)
       i--
     }
@@ -29,11 +29,18 @@ export const schedulingPick = <T>([...a]: ScheduleItem<T>[]): [
   return [ans, a]
 }
 
-export const scheduling = <T>([...a]: ScheduleItem<T>[]): T[][] => {
+export const scheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
+  let arr = [...a]
   const ans: T[][] = []
 
-  a.sort((v, w) => v.start - w.start)
+  arr.sort((v, w) => v.start - w.start)
 
-  while (a.length > 0) {}
-  return []
+  while (arr.length > 0) {
+    const [ids, after] = schedulingPick(arr)
+
+    arr = after
+
+    ans.push(ids)
+  }
+  return ans
 }
