@@ -1,10 +1,15 @@
-export const romanization = (s: string) => {
-  return s
-    .split('')
+type Option = { skip: boolean }
+
+const defaultOpt: Option = { skip: true }
+
+export const romanization = (s: string, opt?: Option) => {
+  const { skip } = { ...defaultOpt, ...opt }
+
+  return [...s]
     .map((c) => {
       const i = table.indexOf(c)
 
-      if (i === -1) return c
+      if (i === -1) return skip ? '' : c
       const vi = i % 5
       const ci = Math.floor(i / 5)
 

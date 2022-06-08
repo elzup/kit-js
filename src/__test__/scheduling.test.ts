@@ -1,6 +1,10 @@
 import { scheduling, schedulingBy, schedulingPick } from '../index'
 
 describe('schedulingPick', () => {
+  it('emp', () => {
+    expect(schedulingPick([])).toStrictEqual([[], []])
+  })
+
   it('single', () => {
     const [ids, after] = schedulingPick([
       { id: 'a', start: 1, end: 10 },
@@ -63,6 +67,10 @@ describe('schedulingPick', () => {
 })
 
 describe('scheduling', () => {
+  it('emp', () => {
+    expect(scheduling([])).toStrictEqual([])
+  })
+
   it('single', () => {
     const ids = scheduling([
       { id: 'a', start: 1, end: 10 },
