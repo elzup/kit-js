@@ -32,6 +32,7 @@ export { permutation, permutationBase } from './permutation'
 export { mergeSortArr, queueMerge } from './queueMerge'
 export { range } from './range'
 export { rangeAdv } from './rangeAdv'
+export { romanization } from './romanization'
 export {
   choise,
   randGen,
