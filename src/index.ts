@@ -33,6 +33,7 @@ export { mergeSortArr, queueMerge } from './queueMerge'
 export { range } from './range'
 export { rangeAdv } from './rangeAdv'
 export { romanization } from './romanization'
+export { scheduling, schedulingPick } from './scheduling'
 export {
   choise,
   randGen,
