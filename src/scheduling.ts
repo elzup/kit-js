@@ -1,3 +1,5 @@
+import { keyBy } from './keyBy'
+
 type ScheduleItem<T> = {
   id: T
   start: number
@@ -43,4 +45,20 @@ export const scheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
     ans.push(ids)
   }
   return ans
+}
+
+export const schedulingBy = <T>(
+  a: T[],
+  toSchedule: (v: T) => ScheduleItem<string>
+): T[][] => {
+  const k = a.map((v) => {
+    const s = toSchedule(v)
+
+    return { v, s, id: s.id }
+  })
+  const res = scheduling(k.map((v) => v.s))
+
+  const byId = keyBy(k, (k) => k.s.id)
+
+  return res.map((row) => row.map((id) => byId[id].v))
 }

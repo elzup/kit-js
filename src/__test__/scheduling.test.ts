@@ -1,4 +1,4 @@
-import { schedulingPick, scheduling } from '../index'
+import { scheduling, schedulingBy, schedulingPick } from '../index'
 
 describe('schedulingPick', () => {
   it('single', () => {
@@ -40,7 +40,6 @@ describe('schedulingPick', () => {
     ])
 
     expect(ids).toStrictEqual(['a', 'c'])
-    // expect(after).toMatchInlineSnapshot(`
     expect(after).toMatchInlineSnapshot(`
         Array [
           Object {
@@ -93,6 +92,62 @@ describe('scheduling', () => {
     ])
 
     expect(ids).toStrictEqual([['a', 'c'], ['b', 'e'], ['d']])
-    // expect(after).toMatchInlineSnapshot(`
+  })
+})
+
+describe('schedulingBy', () => {
+  it('order', () => {
+    const schedule = schedulingBy(
+      [
+        { myid: 'id-a', begin: '2000', end: '2022' },
+        { myid: 'id-b', begin: '2005', end: '2015' },
+        { myid: 'id-c', begin: '2010', end: '2020' },
+        { myid: 'id-d', begin: '2012', end: '2020' },
+        { myid: 'id-e', begin: '2016', end: '2017' },
+      ],
+      (v) => ({
+        id: v.myid.split('-')[1],
+        start: Number(v.begin),
+        end: Number(v.end),
+      })
+    )
+
+    expect(schedule).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "begin": "2000",
+            "end": "2022",
+            "myid": "id-a",
+          },
+        ],
+        Array [
+          Object {
+            "begin": "2005",
+            "end": "2015",
+            "myid": "id-b",
+          },
+          Object {
+            "begin": "2016",
+            "end": "2017",
+            "myid": "id-e",
+          },
+        ],
+        Array [
+          Object {
+            "begin": "2010",
+            "end": "2020",
+            "myid": "id-c",
+          },
+        ],
+        Array [
+          Object {
+            "begin": "2012",
+            "end": "2020",
+            "myid": "id-d",
+          },
+        ],
+      ]
+    `)
   })
 })
