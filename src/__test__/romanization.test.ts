@@ -18,6 +18,13 @@ describe('romanization', () => {
     expect(romanization('コードルール', { stretch: true })).toBe('ko-doru-ru')
     expect(romanization('コードルール', { stretch: false })).toBe('kodoruru')
   })
+  it('nn', () => {
+    expect(romanization('さんま')).toBe('sanma')
+    expect(romanization('たんい')).toBe('tanni')
+    expect(romanization('たんに')).toBe('tannni')
+    expect(romanization('ん')).toBe('n')
+  })
+
   // it('xya', () => {
   //   expect(romanization('しゃー')).toBe('gazidubepo')
   // })
