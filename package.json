@@ -19,6 +19,7 @@
     "test:unimported": "unimported",
     "test:cov": "jest src --coverage --ci --runInBand",
     "prepare": "husky install",
+    "depcruise": "depcruise --config .dependency-cruiser.js --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg",
     "release": "yarn build && yarn publish"
   },
   "husky": {
