@@ -1,10 +1,5 @@
-import crypto from 'crypto'
 import { chunkStr } from './chunkStr'
-
-const ALGORITHM = 'sha512'
-
-export const sha512Hex = (s: string) =>
-  crypto.createHash(ALGORITHM).update(String(s)).digest().toString('hex')
+import { sha512Hex } from './hash'
 
 const hashMatch = (
   hash: string,

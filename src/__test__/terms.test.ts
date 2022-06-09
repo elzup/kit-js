@@ -1,5 +1,4 @@
-import { sha512Hex } from '../anyHashMatch'
-import { genTerms } from '../index'
+import { genTerms, sha512Hex } from '../index'
 
 test('genTerms', () => {
   const terms = genTerms('anozon研究チーム', '運営チーム')
