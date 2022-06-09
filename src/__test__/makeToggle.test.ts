@@ -1,6 +1,5 @@
 import { expectType } from 'tsd'
-import { makeToggle } from '../index'
-import { toggle } from '../makeToggle'
+import { makeCycle, makeToggle, toggle } from '../index'
 
 describe('makeToggle', () => {
   it('premitive array', () => {
@@ -8,6 +7,7 @@ describe('makeToggle', () => {
 
     expect(toggleArr(1)).toBe(2)
     expect(toggleArr(2)).toBe(3)
+    expect(toggleArr(3)).toBe(1)
   })
 
   it('cyclable', () => {
@@ -46,5 +46,11 @@ describe('makeToggle', () => {
   it('toggle util', () => {
     expect(toggle(true)).toBe(false)
     expect(toggle(false)).toBe(true)
+  })
+
+  it('alias makeCycle', () => {
+    const toggleArr = makeCycle([1, 2, 3])
+
+    expect(toggleArr(3)).toBe(1)
   })
 })

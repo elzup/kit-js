@@ -6,4 +6,5 @@ export const makeToggle = <T>(arr: readonly T[]): ((v: T) => T) => {
   }
 }
 
+export const makeCycle = makeToggle
 export const toggle = makeToggle([true, false])
