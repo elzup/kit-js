@@ -1,4 +1,5 @@
-import { pad02, times } from './index'
+import { pad02 } from './format'
+import { times } from './times'
 
 export const formatYmd = (date: Date) => {
   const { year, month, day } = times(date)
