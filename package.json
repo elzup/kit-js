@@ -17,7 +17,8 @@
     "test": "yarn test:jest && yarn test:unimported",
     "test:jest": "jest src",
     "test:unimported": "unimported",
-    "test:cov": "jest src --coverage --ci --runInBand",
+    "test:cov": "jest src --coverage",
+    "test:badges": "yarn test:cov && istanbul-badges-readme",
     "prepare": "husky install",
     "depcruise": "depcruise --config .dependency-cruiser.js --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg",
     "release": "yarn build && yarn publish"
