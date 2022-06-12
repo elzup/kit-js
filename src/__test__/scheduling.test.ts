@@ -15,6 +15,16 @@ describe('schedulingPick', () => {
     expect(ids).toStrictEqual(['a', 'b', 'c'])
     expect(after).toMatchInlineSnapshot(`Array []`)
   })
+
+  it('number', () => {
+    const [ids] = schedulingPick([
+      { id: 101, start: 1, end: 10 },
+      { id: 102, start: 5, end: 15 },
+      { id: 103, start: 10, end: 20 },
+    ])
+
+    expect(ids).toStrictEqual([101, 103])
+  })
   it('dup', () => {
     const [ids, after] = schedulingPick([
       { id: 'a', start: 1, end: 10 },

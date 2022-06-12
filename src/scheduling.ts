@@ -1,9 +1,9 @@
 import { keyBy } from './keyBy'
 
-type ScheduleItem<T> = {
+type ScheduleItem<T, K extends string | number = number> = {
   id: T
-  start: number
-  end: number
+  start: K
+  end: K
 }
 // Extract the column containing the first item.
 // It does not extract the highest number of items.
