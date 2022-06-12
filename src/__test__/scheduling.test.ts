@@ -16,11 +16,11 @@ describe('schedulingPick', () => {
     expect(after).toMatchInlineSnapshot(`Array []`)
   })
 
-  it('number', () => {
+  it('string range', () => {
     const [ids] = schedulingPick([
-      { id: 101, start: 1, end: 10 },
-      { id: 102, start: 5, end: 15 },
-      { id: 103, start: 10, end: 20 },
+      { id: 101, start: '10-01', end: '10-10' },
+      { id: 102, start: '10-05', end: '10-15' },
+      { id: 103, start: '10-10', end: '10-20' },
     ])
 
     expect(ids).toStrictEqual([101, 103])

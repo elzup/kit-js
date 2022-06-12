@@ -7,10 +7,9 @@ type ScheduleItem<T, K extends string | number = number> = {
 }
 // Extract the column containing the first item.
 // It does not extract the highest number of items.
-export const schedulingPick = <T>([...a]: ScheduleItem<T>[]): [
-  T[],
-  ScheduleItem<T>[]
-] => {
+export const schedulingPick = <T, K extends string | number = number>([
+  ...a
+]: ScheduleItem<T, K>[]): [T[], ScheduleItem<T, K>[]] => {
   const ans: T[] = []
   let cur = a.shift()
 
