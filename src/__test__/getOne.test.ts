@@ -1,9 +1,9 @@
 import { getOne, unarray } from '../index'
 
 test('getOne', () => {
-  expect(getOne(undefined)).toMatchInlineSnapshot(`""`)
-  expect(getOne('ab')).toMatchInlineSnapshot(`"ab"`)
-  expect(getOne(['ab', 'cd'])).toMatchInlineSnapshot(`"ab"`)
+  expect(getOne(undefined)).toBe(undefined)
+  expect(getOne('ab')).toBe('ab')
+  expect(unarray(['ab', 'cd'])).toBe(undefined)
 
-  expect(unarray(['alias'])).toMatchInlineSnapshot(`"alias"`)
+  expect(unarray(['alias'])).toBe(undefined)
 })
