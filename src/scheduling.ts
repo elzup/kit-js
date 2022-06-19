@@ -61,3 +61,40 @@ export const schedulingBy = <T>(
 
   return res.map((row) => row.map((id) => byId[id].v))
 }
+
+const last = <T>(a: T[]): T | undefined => a[a.length - 1]
+
+export const easeSchedulingTry = <T, K extends string | number = number>(
+  [...a]: ScheduleItem<T, K>[],
+  n: number
+): T[][] | false => {
+  if (n <= 0) throw new Error('n must be greater than 0')
+  const ans: ScheduleItem<T, K>[][] = []
+
+  for (let j = 0; j < n; j++) ans[j] = []
+
+  let p = 0
+
+  for (const v of a) {
+    let inserted = false
+
+    for (let j = 0; j < n; j++) {
+      const i = p % n
+
+      p++
+
+      const tail = last(ans[i])
+
+      if (tail === undefined || tail.end <= v.start) {
+        ans[i].push(v)
+        inserted = true
+        break
+      }
+    }
+    if (!inserted) {
+      return false
+    }
+  }
+
+  return ans.map((v) => v.map((e) => e.id))
+}
