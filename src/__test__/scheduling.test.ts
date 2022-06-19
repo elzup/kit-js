@@ -1,5 +1,10 @@
-import { scheduling, schedulingBy, schedulingPick } from '../index'
-import { easeSchedulingTry } from '../scheduling'
+import {
+  easeScheduling,
+  easeSchedulingTry,
+  scheduling,
+  schedulingBy,
+  schedulingPick,
+} from '../index'
 
 describe('schedulingPick', () => {
   it('emp', () => {
@@ -210,17 +215,18 @@ describe('easeSchedulingTry', () => {
     expect(easeSchedulingTry(items, 4)).toStrictEqual(ids)
   })
 })
-// describe('easeScheduling', () => {
-//   it('dup', () => {
-//     const items = [
-//       { id: 'a', start: 1, end: 10 },
-//       { id: 'b', start: 5, end: 15 },
-//       { id: 'c', start: 10, end: 20 },
-//       { id: 'd', start: 12, end: 20 },
-//       { id: 'e', start: 16, end: 17 },
-//     ]
-//     const ids = [['a', 'd'], ['b', 'e'], ['c']]
 
-//     expect(easeSchedule(items, ids)).toStrictEqual(ids)
-//   })
-// })
+describe('easeScheduling', () => {
+  it('any size', () => {
+    const items = [
+      { id: 'a', start: 1, end: 10 },
+      { id: 'b', start: 5, end: 15 },
+      { id: 'c', start: 10, end: 20 },
+      { id: 'd', start: 12, end: 20 },
+      { id: 'e', start: 16, end: 17 },
+    ]
+    const ids = [['a', 'd'], ['b', 'e'], ['c']]
+
+    expect(easeScheduling(items)).toStrictEqual(ids)
+  })
+})

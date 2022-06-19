@@ -1,4 +1,5 @@
 import { keyBy } from './keyBy'
+import { range } from './range'
 
 type ScheduleItem<T, K extends string | number = number> = {
   id: T
@@ -97,4 +98,28 @@ export const easeSchedulingTry = <T, K extends string | number = number>(
   }
 
   return ans.map((v) => v.map((e) => e.id))
+}
+
+export const easeScheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
+  let ans: T[][] = []
+
+  for (const i of range(a.length)) {
+    const res = easeSchedulingTry(a, i + 1)
+
+    if (res !== false) {
+      ans = res
+      break
+    }
+  }
+
+  range(a.length).some((i) => {
+    const res = easeSchedulingTry(a, i + 1)
+
+    if (res === false) return false
+
+    ans = res
+    return true
+  })
+
+  return ans
 }
