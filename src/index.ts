@@ -26,6 +26,7 @@ export { hash, makeHash, sha512Hex } from './hash'
 export { identity, pass } from './identity'
 export { invert, swap, swapKeyValue } from './invert'
 export { keyBy } from './keyBy'
+export { last } from './last'
 export { makeMap } from './makeMap'
 export { makeObj } from './makeObj'
 export { makeCycle, makeToggle, toggle } from './makeToggle'
@@ -38,10 +39,11 @@ export { range } from './range'
 export { rangeAdv } from './rangeAdv'
 export { romanization } from './romanization'
 export {
-  easeScheduling,
-  easeSchedulingTry,
   scheduling,
   schedulingBy,
+  schedulingEase,
+  schedulingEaseBy,
+  schedulingEaseTry,
   schedulingPick,
 } from './scheduling'
 export {

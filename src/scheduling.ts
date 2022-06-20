@@ -1,4 +1,5 @@
 import { keyBy } from './keyBy'
+import { last } from './last'
 import { range } from './range'
 
 type ScheduleItem<T, K extends string | number = number> = {
@@ -31,6 +32,8 @@ export const schedulingPick = <T, K extends string | number = number>([
   return [ans, a]
 }
 
+type ScheduleFunc = <T>(a: ScheduleItem<T>[]) => T[][]
+
 export const scheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
   let arr = [...a]
   const ans: T[][] = []
@@ -50,22 +53,31 @@ export const scheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
 export const schedulingBy = <T>(
   a: T[],
   toSchedule: (v: T) => ScheduleItem<string>
+): T[][] => withSchedulingBy(a, toSchedule, scheduling)
+
+export const schedulingEaseBy = <T>(
+  a: T[],
+  toSchedule: (v: T) => ScheduleItem<string>
+): T[][] => withSchedulingBy(a, toSchedule, schedulingEase)
+
+export const withSchedulingBy = <T>(
+  a: T[],
+  toSchedule: (v: T) => ScheduleItem<string>,
+  scheduleFunc: ScheduleFunc
 ): T[][] => {
   const k = a.map((v) => {
     const s = toSchedule(v)
 
     return { v, s, id: s.id }
   })
-  const res = scheduling(k.map((v) => v.s))
+  const res = scheduleFunc(k.map((v) => v.s))
 
   const byId = keyBy(k, (k) => k.s.id)
 
   return res.map((row) => row.map((id) => byId[id].v))
 }
 
-const last = <T>(a: T[]): T | undefined => a[a.length - 1]
-
-export const easeSchedulingTry = <T, K extends string | number = number>(
+export const schedulingEaseTry = <T, K extends string | number = number>(
   [...a]: ScheduleItem<T, K>[],
   n: number
 ): T[][] | false => {
@@ -100,26 +112,17 @@ export const easeSchedulingTry = <T, K extends string | number = number>(
   return ans.map((v) => v.map((e) => e.id))
 }
 
-export const easeScheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
+export const schedulingEase = <T>(a: ScheduleItem<T>[]): T[][] => {
   let ans: T[][] = []
 
   for (const i of range(a.length)) {
-    const res = easeSchedulingTry(a, i + 1)
+    const res = schedulingEaseTry(a, i + 1)
 
     if (res !== false) {
       ans = res
       break
     }
   }
-
-  range(a.length).some((i) => {
-    const res = easeSchedulingTry(a, i + 1)
-
-    if (res === false) return false
-
-    ans = res
-    return true
-  })
 
   return ans
 }

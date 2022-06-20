@@ -1,8 +1,9 @@
 import {
-  easeScheduling,
-  easeSchedulingTry,
   scheduling,
   schedulingBy,
+  schedulingEase,
+  schedulingEaseBy,
+  schedulingEaseTry,
   schedulingPick,
 } from '../index'
 
@@ -119,64 +120,7 @@ describe('scheduling', () => {
   })
 })
 
-describe('schedulingBy', () => {
-  it('order', () => {
-    const schedule = schedulingBy(
-      [
-        { myid: 'id-a', begin: '2000', end: '2022' },
-        { myid: 'id-b', begin: '2005', end: '2015' },
-        { myid: 'id-c', begin: '2010', end: '2020' },
-        { myid: 'id-d', begin: '2012', end: '2020' },
-        { myid: 'id-e', begin: '2016', end: '2017' },
-      ],
-      (v) => ({
-        id: v.myid.split('-')[1],
-        start: Number(v.begin),
-        end: Number(v.end),
-      })
-    )
-
-    expect(schedule).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "begin": "2000",
-            "end": "2022",
-            "myid": "id-a",
-          },
-        ],
-        Array [
-          Object {
-            "begin": "2005",
-            "end": "2015",
-            "myid": "id-b",
-          },
-          Object {
-            "begin": "2016",
-            "end": "2017",
-            "myid": "id-e",
-          },
-        ],
-        Array [
-          Object {
-            "begin": "2010",
-            "end": "2020",
-            "myid": "id-c",
-          },
-        ],
-        Array [
-          Object {
-            "begin": "2012",
-            "end": "2020",
-            "myid": "id-d",
-          },
-        ],
-      ]
-    `)
-  })
-})
-
-describe('easeSchedulingTry', () => {
+describe('schedulingEaseTry', () => {
   it('match size', () => {
     const items = [
       { id: 'a', start: 1, end: 10 },
@@ -187,7 +131,7 @@ describe('easeSchedulingTry', () => {
     ]
     const ids = [['a', 'd'], ['b', 'e'], ['c']]
 
-    expect(easeSchedulingTry(items, 3)).toStrictEqual(ids)
+    expect(schedulingEaseTry(items, 3)).toStrictEqual(ids)
   })
 
   it('less size', () => {
@@ -199,7 +143,7 @@ describe('easeSchedulingTry', () => {
       { id: 'e', start: 16, end: 17 },
     ]
 
-    expect(easeSchedulingTry(items, 2)).toStrictEqual(false)
+    expect(schedulingEaseTry(items, 2)).toStrictEqual(false)
   })
 
   it('wide size', () => {
@@ -212,13 +156,13 @@ describe('easeSchedulingTry', () => {
     ]
     const ids = [['a', 'e'], ['b'], ['c'], ['d']]
 
-    expect(easeSchedulingTry(items, 4)).toStrictEqual(ids)
+    expect(schedulingEaseTry(items, 4)).toStrictEqual(ids)
   })
 })
 
-describe('easeScheduling', () => {
+describe('schedulingEase', () => {
   it('empty', () => {
-    expect(easeScheduling([])).toStrictEqual([])
+    expect(schedulingEase([])).toStrictEqual([])
   })
 
   it('any size', () => {
@@ -231,7 +175,7 @@ describe('easeScheduling', () => {
     ]
     const ids = [['a', 'd'], ['b', 'e'], ['c']]
 
-    expect(easeScheduling(items)).toStrictEqual(ids)
+    expect(schedulingEase(items)).toStrictEqual(ids)
   })
 
   it('shuffle', () => {
@@ -243,11 +187,101 @@ describe('easeScheduling', () => {
       { id: 'e', start: 5, end: 6 },
     ]
 
-    expect(easeScheduling(items)).toStrictEqual([
+    expect(schedulingEase(items)).toStrictEqual([
       ['a'],
       ['b', 'e'],
       ['c'],
       ['d'],
     ])
+  })
+})
+
+const yearSchedules = [
+  { myid: 'id-a', begin: '2000', end: '2003' },
+  { myid: 'id-b', begin: '2003', end: '2007' },
+  { myid: 'id-c', begin: '2004', end: '2006' },
+  { myid: 'id-d', begin: '2006', end: '2009' },
+  { myid: 'id-e', begin: '2007', end: '2010' },
+]
+const yearToSchedule = (v: { myid: string; begin: string; end: string }) => ({
+  id: v.myid.split('-')[1],
+  start: Number(v.begin),
+  end: Number(v.end),
+})
+
+describe('schedulingBy', () => {
+  it('order', () => {
+    const schedule = schedulingBy(yearSchedules, yearToSchedule)
+
+    expect(schedule).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "begin": "2000",
+            "end": "2003",
+            "myid": "id-a",
+          },
+          Object {
+            "begin": "2003",
+            "end": "2007",
+            "myid": "id-b",
+          },
+          Object {
+            "begin": "2007",
+            "end": "2010",
+            "myid": "id-e",
+          },
+        ],
+        Array [
+          Object {
+            "begin": "2004",
+            "end": "2006",
+            "myid": "id-c",
+          },
+          Object {
+            "begin": "2006",
+            "end": "2009",
+            "myid": "id-d",
+          },
+        ],
+      ]
+    `)
+  })
+  it('schedulingEaseBy', () => {
+    const schedule = schedulingEaseBy(yearSchedules, yearToSchedule)
+
+    expect(schedule).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "begin": "2000",
+            "end": "2003",
+            "myid": "id-a",
+          },
+          Object {
+            "begin": "2004",
+            "end": "2006",
+            "myid": "id-c",
+          },
+          Object {
+            "begin": "2006",
+            "end": "2009",
+            "myid": "id-d",
+          },
+        ],
+        Array [
+          Object {
+            "begin": "2003",
+            "end": "2007",
+            "myid": "id-b",
+          },
+          Object {
+            "begin": "2007",
+            "end": "2010",
+            "myid": "id-e",
+          },
+        ],
+      ]
+    `)
   })
 })
