@@ -40,15 +40,7 @@ describe('schedulingPick', () => {
     ])
 
     expect(ids).toStrictEqual(['a', 'c'])
-    expect(after).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "end": 15,
-            "id": "b",
-            "start": 5,
-          },
-        ]
-      `)
+    expect(after).toStrictEqual([{ end: 15, id: 'b', start: 5 }])
   })
 
   it('complex', () => {
@@ -61,25 +53,11 @@ describe('schedulingPick', () => {
     ])
 
     expect(ids).toStrictEqual(['a', 'c'])
-    expect(after).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "end": 15,
-            "id": "b",
-            "start": 5,
-          },
-          Object {
-            "end": 20,
-            "id": "d",
-            "start": 12,
-          },
-          Object {
-            "end": 17,
-            "id": "e",
-            "start": 16,
-          },
-        ]
-      `)
+    expect(after).toStrictEqual([
+      { end: 15, id: 'b', start: 5 },
+      { end: 20, id: 'd', start: 12 },
+      { end: 17, id: 'e', start: 16 },
+    ])
   })
 })
 
@@ -213,75 +191,31 @@ describe('schedulingBy', () => {
   it('order', () => {
     const schedule = schedulingBy(yearSchedules, yearToSchedule)
 
-    expect(schedule).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "begin": "2000",
-            "end": "2003",
-            "myid": "id-a",
-          },
-          Object {
-            "begin": "2003",
-            "end": "2007",
-            "myid": "id-b",
-          },
-          Object {
-            "begin": "2007",
-            "end": "2010",
-            "myid": "id-e",
-          },
-        ],
-        Array [
-          Object {
-            "begin": "2004",
-            "end": "2006",
-            "myid": "id-c",
-          },
-          Object {
-            "begin": "2006",
-            "end": "2009",
-            "myid": "id-d",
-          },
-        ],
-      ]
-    `)
+    expect(schedule).toStrictEqual([
+      [
+        { begin: '2000', end: '2003', myid: 'id-a' },
+        { begin: '2003', end: '2007', myid: 'id-b' },
+        { begin: '2007', end: '2010', myid: 'id-e' },
+      ],
+      [
+        { begin: '2004', end: '2006', myid: 'id-c' },
+        { begin: '2006', end: '2009', myid: 'id-d' },
+      ],
+    ])
   })
   it('schedulingEaseBy', () => {
     const schedule = schedulingEaseBy(yearSchedules, yearToSchedule)
 
-    expect(schedule).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "begin": "2000",
-            "end": "2003",
-            "myid": "id-a",
-          },
-          Object {
-            "begin": "2004",
-            "end": "2006",
-            "myid": "id-c",
-          },
-          Object {
-            "begin": "2006",
-            "end": "2009",
-            "myid": "id-d",
-          },
-        ],
-        Array [
-          Object {
-            "begin": "2003",
-            "end": "2007",
-            "myid": "id-b",
-          },
-          Object {
-            "begin": "2007",
-            "end": "2010",
-            "myid": "id-e",
-          },
-        ],
-      ]
-    `)
+    expect(schedule).toStrictEqual([
+      [
+        { begin: '2000', end: '2003', myid: 'id-a' },
+        { begin: '2004', end: '2006', myid: 'id-c' },
+        { begin: '2006', end: '2009', myid: 'id-d' },
+      ],
+      [
+        { begin: '2003', end: '2007', myid: 'id-b' },
+        { begin: '2007', end: '2010', myid: 'id-e' },
+      ],
+    ])
   })
 })
