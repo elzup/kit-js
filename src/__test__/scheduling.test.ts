@@ -217,6 +217,10 @@ describe('easeSchedulingTry', () => {
 })
 
 describe('easeScheduling', () => {
+  it('empty', () => {
+    expect(easeScheduling([])).toStrictEqual([])
+  })
+
   it('any size', () => {
     const items = [
       { id: 'a', start: 1, end: 10 },
@@ -228,5 +232,22 @@ describe('easeScheduling', () => {
     const ids = [['a', 'd'], ['b', 'e'], ['c']]
 
     expect(easeScheduling(items)).toStrictEqual(ids)
+  })
+
+  it('shuffle', () => {
+    const items = [
+      { id: 'a', start: 1, end: 10 },
+      { id: 'b', start: 2, end: 5 },
+      { id: 'c', start: 3, end: 10 },
+      { id: 'd', start: 4, end: 5 },
+      { id: 'e', start: 5, end: 6 },
+    ]
+
+    expect(easeScheduling(items)).toStrictEqual([
+      ['a'],
+      ['b', 'e'],
+      ['c'],
+      ['d'],
+    ])
   })
 })
