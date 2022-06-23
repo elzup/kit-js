@@ -136,6 +136,12 @@ describe('schedulingEaseTry', () => {
 
     expect(schedulingEaseTry(items, 4)).toStrictEqual(ids)
   })
+
+  it('arg error', () => {
+    expect(() => {
+      schedulingEaseTry([], -1)
+    }).toThrowErrorMatchingInlineSnapshot(`"n must be greater than 0"`)
+  })
 })
 
 describe('schedulingEase', () => {
@@ -203,6 +209,7 @@ describe('schedulingBy', () => {
       ],
     ])
   })
+
   it('schedulingEaseBy', () => {
     const schedule = schedulingEaseBy(yearSchedules, yearToSchedule)
 

@@ -40,6 +40,7 @@ test('pickUrlMb', () => {
   const multiByteUrls = pickUrlMb(
     'hoge\nabhttps://a.com/piyo/あいう?q=%7Ba%3A1%7D\nhttps://あ.jp'
   )
+  const nonMatch = pickUrl('\nhoge\n')
 
   expect(multiByteUrls).toMatchInlineSnapshot(`
     Array [
@@ -47,4 +48,5 @@ test('pickUrlMb', () => {
       "https://あ.jp",
     ]
   `)
+  expect(nonMatch).toMatchInlineSnapshot(`Array []`)
 })
