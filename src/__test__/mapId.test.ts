@@ -1,4 +1,4 @@
-import { mapId } from '../mapId'
+import { mapId } from '../index'
 
 test('mapId', () => {
   expect(mapId([{ name: 'a' }, { name: 'b' }])).toMatchInlineSnapshot(`
