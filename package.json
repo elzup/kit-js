@@ -44,7 +44,7 @@
     "@elzup/tsconfig": "^1.0.2",
     "@swc/core": "1.2.207",
     "@swc/jest": "0.2.21",
-    "@types/jest": "28.1.1",
+    "@types/jest": "28.1.4",
     "@types/node": "17.0.31",
     "babel-jest": "28.0.3",
     "eslint": "8.14.0",
