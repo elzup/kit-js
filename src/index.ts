@@ -57,6 +57,8 @@ export {
 } from './seedRand'
 export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
+export { stringify } from './stringify'
+export { fullWidth, halfWidth } from './strWidth'
 export { genTerms } from './template/terms'
 export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
 export { transpose } from './transpose'
