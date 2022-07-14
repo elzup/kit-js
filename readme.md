@@ -16,10 +16,18 @@
 $ npm install @elzup/kit
 ```
 
+## Doc
+
+[./src/\_\_test\_\_](./src/__test__)
+
 ## Usage
 
 ```js
 const { hoge } = require('@elzup/kit')
+
+/* tree shaking */
+// const { hoge } = require('@elzup/kit/lib/hoge')
+
 hoge()
 ```
 
