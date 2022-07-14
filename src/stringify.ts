@@ -1,3 +1,11 @@
+type StringifyFunc = (v: unknown) => false | string
+
+const stringifyTrans = (v: unknown, funcs: StringifyFunc[]): string => {
+  const res = funcs.map((f) => f(v)).find((v) => v !== false)
+
+  return typeof res === 'string' ? res : String(v)
+}
+
 export const stringify = (
   v: unknown,
   converter: {
@@ -7,12 +15,16 @@ export const stringify = (
     arr?: (a: unknown[]) => string
   }
 ): string => {
-  if (converter.nul && v === null) return converter.nul()
-  if (converter.obj && typeof v === 'object' && v !== null)
-    return converter.obj(v)
-  if (converter.num && typeof v === 'number') return converter.num(v)
-  if (converter.arr && Array.isArray(v)) return converter.arr(v)
-  return String(v)
+  const funcs: StringifyFunc[] = []
+
+  funcs.push((v) => (v === null && converter.nul ? converter.nul() : false))
+  funcs.push(
+    (v) => (typeof v === 'object' && v !== null && converter.obj?.(v)) ?? false
+  )
+  funcs.push((v) => (typeof v === 'number' && converter.num?.(v)) ?? false)
+  funcs.push((v) => (Array.isArray(v) && converter.arr?.(v)) ?? false)
+
+  return stringifyTrans(v, funcs)
 }
 
 // const escapeMmd = (s: string) => zen2han(s.replace(/[()（） ・]/g, ''))
