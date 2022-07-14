@@ -23,6 +23,8 @@ describe('stringify', () => {
   })
 
   it('arr', () => {
-    expect(stringify([], { num: (n) => `(${n})` })).toBe('(10)')
+    expect(stringify([1, 2, 3, 'ok'], { arr: (a) => a.join(',') })).toBe(
+      '1,2,3,ok'
+    )
   })
 })
