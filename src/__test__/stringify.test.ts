@@ -7,8 +7,14 @@ describe('stringify', () => {
         nul: () => 'null hit',
         obj: () => 'obj hit',
         num: () => 'num hit',
+        arr: () => 'arr hit',
       })
     ).toBe('hoge')
+    expect(stringify('hoge', {})).toBe('hoge')
+    expect(stringify({}, {})).toBe('[object Object]')
+    expect(stringify(null, {})).toBe('null')
+    expect(stringify(10, {})).toBe('10')
+    expect(stringify([1, 2, 3, 'ok'], {})).toBe('1,2,3,ok')
   })
   it('obj', () => {
     expect(stringify({}, { obj: JSON.stringify })).toBe('{}')

@@ -17,12 +17,12 @@ export const stringify = (
 ): string => {
   const funcs: StringifyFunc[] = []
 
-  funcs.push((v) => (v === null && converter.nul ? converter.nul() : false))
+  funcs.push((v) => v === null && (converter.nul?.() ?? false))
   funcs.push(
-    (v) => (typeof v === 'object' && v !== null && converter.obj?.(v)) ?? false
+    (v) => typeof v === 'object' && v !== null && (converter.obj?.(v) ?? false)
   )
-  funcs.push((v) => (typeof v === 'number' && converter.num?.(v)) ?? false)
-  funcs.push((v) => (Array.isArray(v) && converter.arr?.(v)) ?? false)
+  funcs.push((v) => typeof v === 'number' && (converter.num?.(v) ?? false))
+  funcs.push((v) => Array.isArray(v) && (converter.arr?.(v) ?? false))
 
   return stringifyTrans(v, funcs)
 }
