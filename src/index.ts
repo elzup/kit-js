@@ -1,7 +1,7 @@
 export { shiftChar } from './shiftChar'
 
 export { anyHashMatch } from './anyHashMatch'
-export { asciify, isAscii } from './ascii'
+export { trimNonAscii, isAscii, asciify } from './ascii'
 export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'

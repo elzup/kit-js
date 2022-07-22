@@ -1,3 +1,4 @@
+import { trimNonAscii } from '../ascii'
 import { asciify, isAscii } from '../index'
 
 test('isAscii', () => {
@@ -5,7 +6,9 @@ test('isAscii', () => {
   expect(isAscii('あ')).toBeFalsy()
   expect(isAscii('A \n)-.')).toBeFalsy()
 })
-test('pickAscii', () => {
-  expect(asciify('a')).toBe('a')
+test('trimNonAscii', () => {
+  expect(trimNonAscii('a')).toBe('a')
+  expect(trimNonAscii('a')).toBe('a')
+  expect(trimNonAscii('いaあ b　')).toBe('a b')
   expect(asciify('いaあ b　')).toBe('a b')
 })
