@@ -1,7 +1,5 @@
-export { shiftChar } from './shiftChar'
-
 export { anyHashMatch } from './anyHashMatch'
-export { trimNonAscii, isAscii, asciify } from './ascii'
+export { asciify, isAscii, trimNonAscii } from './ascii'
 export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
@@ -18,6 +16,8 @@ export {
   charNums,
   charStrongNonMisidentify,
   isDev,
+  printableAscii,
+  safePrintableAscii,
 } from './constants'
 export { countup } from './countup'
 export { pad, pad02, round } from './format'
@@ -57,6 +57,7 @@ export {
   seedRand,
   shuffle,
 } from './seedRand'
+export { shiftChar } from './shiftChar'
 export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
 export { stringify } from './stringify'

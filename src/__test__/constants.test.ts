@@ -8,6 +8,8 @@ import {
   charNums,
   charStrongNonMisidentify,
   isDev,
+  printableAscii,
+  safePrintableAscii,
 } from '../index'
 
 const constants = {
@@ -20,6 +22,8 @@ const constants = {
   charMisidentify,
   charNonMisidentify,
   charStrongNonMisidentify,
+  printableAscii,
+  safePrintableAscii,
 }
 
 test('constants', () => {
@@ -34,6 +38,8 @@ test('constants', () => {
       "charNums": "0123456789",
       "charStrongNonMisidentify": "ACHJKMNTXY34",
       "isDev": false,
+      "printableAscii": " !\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~",
+      "safePrintableAscii": "!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~",
     }
   `)
 })
