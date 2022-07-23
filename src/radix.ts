@@ -14,3 +14,8 @@ export const decToRadix = (n: number, base: number): number[] => {
   }
   return digits
 }
+
+export const radixToDec = (digits: number[], base: number): number =>
+  digits
+    .map((d, i) => d * base ** (digits.length - i - 1))
+    .reduce((a, b) => a + b, 0)
