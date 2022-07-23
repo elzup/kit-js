@@ -23,4 +23,3 @@ export const printableAscii = printableAscii1 + printableAscii2
  * omit `"`, `'`, space, backslash, backquote
  * */
 export const safePrintableAscii = `!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~`
-console.log(printableAscii)
