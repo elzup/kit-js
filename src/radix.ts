@@ -1,5 +1,6 @@
 export const decToRadix = (n: number, base: number): number[] => {
-  if (base < 0) throw new Error('base must be positive')
+  if (n < 0) throw new Error('n must be >= 0')
+  if (base <= 0) throw new Error('base must be > 0')
 
   const digits: number[] = []
   let nn: number = n
@@ -7,7 +8,7 @@ export const decToRadix = (n: number, base: number): number[] => {
   while (nn > 0) {
     const d = nn % base
 
-    digits.push(d)
+    digits.unshift(d)
 
     nn = Math.floor(nn / base)
   }
