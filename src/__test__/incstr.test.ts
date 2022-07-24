@@ -36,8 +36,8 @@ describe('incstr', () => {
     expect(() => incstr('0', 1, '')).toThrowErrorMatchingInlineSnapshot(
       `"tableStr is empty"`
     )
-    // expect(() => incstr('z', 1, '0abc')).toThrowErrorMatchingInlineSnapshot(
-    //   `"another"`
-    // )
+    expect(() => incstr('z', 1, '0abc')).toThrowErrorMatchingInlineSnapshot(
+      `"'z' is not a digit char"`
+    )
   })
 })

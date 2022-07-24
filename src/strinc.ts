@@ -5,7 +5,10 @@ import { decToRadix, radixToDec } from './radix'
 type TableMap = { [key: string]: number }
 
 export const parseDigits = (str: string, table: TableMap): number[] =>
-  str.split('').map((c) => table[c])
+  str.split('').map((c) => {
+    if (table[c] === undefined) throw new Error(`'${c}' is not a digit char`)
+    return table[c]
+  })
 export const encodeDigits = (digits: number[], tableStr: string): string =>
   digits.map((n) => tableStr[n] ?? '').join('')
 
