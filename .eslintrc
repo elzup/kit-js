@@ -1,6 +1,7 @@
 {
   "extends": ["nzap", "nzap/typescript", "nzap/jest"],
   "rules": {
+    "no-prototype-builtins": "error",
     "@typescript-eslint/no-explicit-any": "off"
   },
   "globals": {

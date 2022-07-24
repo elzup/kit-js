@@ -62,6 +62,7 @@ export {
 export { shiftChar } from './shiftChar'
 export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
+export { encodeDigits, incstr, parseDigits } from './strinc'
 export { stringify } from './stringify'
 export { fullWidth, halfWidth } from './strWidth'
 export { genTerms } from './template/terms'
