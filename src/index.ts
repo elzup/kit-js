@@ -42,7 +42,7 @@ export { mergeSortArr, queueMerge } from './queueMerge'
 export { decToRadix, radixToDec } from './radix'
 export { range } from './range'
 export { rangeAdv } from './rangeAdv'
-export { romanization, romanizationChar } from './romanization'
+export { romanization } from './romanization'
 export {
   scheduling,
   schedulingBy,
@@ -57,6 +57,8 @@ export {
   randRange,
   sample,
   seedRand,
+  seedRandAdvance,
+  seedRandBuf,
   shuffle,
 } from './seedRand'
 export { shiftChar } from './shiftChar'

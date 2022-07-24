@@ -7,7 +7,7 @@ type Seed = number | string
 export const seedRandBuf = (seed: Seed) =>
   crypto.createHash(ALGORITHM).update(String(seed)).digest()
 
-export const seedRandAdnvance = (seed: Seed) => {
+export const seedRandAdvance = (seed: Seed) => {
   const buf = seedRandBuf(seed)
 
   return {
@@ -17,17 +17,17 @@ export const seedRandAdnvance = (seed: Seed) => {
   }
 }
 
-export const seedRand = (seed: Seed) => seedRandAdnvance(seed).num
+export const seedRand = (seed: Seed) => seedRandAdvance(seed).num
 
-export const randRange = (seed: Seed, min: number, max?: number) =>
-  randRangeHit(seedRand(seed), min, max)
-
-export const randRangeHit = (v: number, min: number, max?: number) => {
+const randRangeHit = (v: number, min: number, max?: number) => {
   const [low, high] = max === undefined ? [0, min] : [min, max]
   const d = high - low
 
   return low + Math.floor(v * d)
 }
+
+export const randRange = (seed: Seed, min: number, max?: number) =>
+  randRangeHit(seedRand(seed), min, max)
 
 export const shuffle = <T>(seed: Seed, arr: T[]): T[] => {
   const a = arr.map((v, i) => ({ v, r: seedRand(`${seed}${i}`) }))

@@ -1,11 +1,13 @@
 import {
+  choise,
+  randGen,
   randRange,
   range,
-  seedRand,
-  shuffle,
-  choise,
   sample,
-  randGen,
+  seedRand,
+  seedRandAdvance,
+  seedRandBuf,
+  shuffle,
 } from '../index'
 
 test('rand', () => {
@@ -27,6 +29,22 @@ test('rand', () => {
       0.15280676466580323,
     ]
   `)
+})
+test('seedRandBuf', () => {
+  const resBuf = seedRandBuf('abc')
+
+  expect(resBuf.toString('base64')).toMatchInlineSnapshot(
+    `"ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0="`
+  )
+})
+test('seedRandAdvance', () => {
+  const res = seedRandAdvance('abc')
+
+  expect(res.num).toMatchInlineSnapshot(`0.7464366390494545`)
+  expect(res.seed).toMatchInlineSnapshot(`"abc"`)
+  expect(res.buf.toString('base64')).toMatchInlineSnapshot(
+    `"ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0="`
+  )
 })
 
 test('randRange', () => {

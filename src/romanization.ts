@@ -27,11 +27,7 @@ const table = [
   'ぱぴぷぺぽ',
 ].join('')
 
-export const romanizationChar = (
-  c: string,
-  nc: string,
-  { skip, stretch }: Option
-) => {
+const romanizationChar = (c: string, nc: string, { skip, stretch }: Option) => {
   const i = table.indexOf(c)
 
   if (i >= 0) {
