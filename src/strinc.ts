@@ -14,9 +14,18 @@ export const incstr = (
   add = 1,
   tableStr = char123abcABC
 ): string => {
+  if (tableStr.length === 0) throw new Error('tableStr is empty')
+  if (s.length >= 2 && s.startsWith(tableStr[0]))
+    throw new Error(`left end is zero padding by '${tableStr[0]}'`)
+
   const radix = tableStr.length
   const table: TableMap = invert(tableStr, Number)
-  const d = radixToDec(parseDigits(s, table), radix) + add
 
-  return encodeDigits(decToRadix(d, radix), tableStr)
+  const digits = parseDigits(s, table)
+  const d = radixToDec(digits, radix)
+  const nextD = d + add
+
+  if (nextD < 0) return ''
+
+  return encodeDigits(decToRadix(nextD, radix), tableStr)
 }

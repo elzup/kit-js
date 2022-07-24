@@ -19,4 +19,5 @@ test('radixToDec', () => {
   expect(radixToDec([1, 1, 0, 0, 1, 0, 0], 2)).toBe(100)
   expect(radixToDec([4, 3, 2, 1], 10)).toBe(4321)
   expect(radixToDec([5, 0, 6, 6, 4], 7)).toBe(12345)
+  expect(radixToDec([], 2)).toBe(0)
 })
