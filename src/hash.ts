@@ -1,7 +1,7 @@
-import crypto from 'crypto'
+import { createHash } from 'crypto'
 
 export const hash = (s: string, algorithm: string, enc: BufferEncoding) =>
-  crypto.createHash(algorithm).update(String(s)).digest().toString(enc)
+  createHash(algorithm).update(String(s)).digest().toString(enc)
 export const makeHash =
   (algorithm: string, enc: BufferEncoding) => (s: string) =>
     hash(s, algorithm, enc)
