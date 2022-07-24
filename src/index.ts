@@ -7,6 +7,7 @@ export { clamp } from './clamp'
 export { clean } from './clean'
 export { comps, comps2 } from './comps'
 export {
+  char123abcABC,
   charABC,
   charAbc123,
   charABCabc123,

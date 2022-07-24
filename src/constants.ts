@@ -2,7 +2,18 @@ export const charAlphabets = 'abcdefghijklmnopqrstuvwxyz'
 export const charNums = '0123456789'
 export const charABC = charAlphabets.toUpperCase()
 export const charAbc123 = charAlphabets + charNums
-export const charABCabc123 = charABC + charAbc123
+
+/**
+ * alphabets and number chars
+ * [A-Za-z0-9]
+ * */
+export const charABCabc123 = charABC + charAlphabets + charNums
+
+/**
+ * number chars and alphabets
+ * [0-9a-zA-Z]
+ * */
+export const char123abcABC = charNums + charAlphabets + charABC
 export const isDev = process?.env?.['NODE_ENV'] === 'development'
 
 export const charNonMisidentify = 'ACDEFHJKMNPRTUVWXYZ2347'

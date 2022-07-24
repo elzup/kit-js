@@ -1,4 +1,5 @@
 import {
+  char123abcABC,
   charABC,
   charAbc123,
   charABCabc123,
@@ -16,6 +17,7 @@ const constants = {
   charABC,
   charABCabc123,
   charAbc123,
+  char123abcABC,
   charAlphabets,
   charNums,
   isDev,
@@ -29,6 +31,7 @@ const constants = {
 test('constants', () => {
   expect(constants).toMatchInlineSnapshot(`
     Object {
+      "char123abcABC": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "charABC": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "charABCabc123": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       "charAbc123": "abcdefghijklmnopqrstuvwxyz0123456789",
