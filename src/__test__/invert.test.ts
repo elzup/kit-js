@@ -15,4 +15,17 @@ test('invert', () => {
       "alias": "a",
     }
   `)
+
+  expect(invert('ab')).toMatchInlineSnapshot(`
+    Object {
+      "a": "0",
+      "b": "1",
+    }
+  `)
+  expect(invert(['c', 'd'])).toMatchInlineSnapshot(`
+    Object {
+      "c": "0",
+      "d": "1",
+    }
+  `)
 })
