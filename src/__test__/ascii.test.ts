@@ -1,5 +1,4 @@
-import { trimNonAscii } from '../ascii'
-import { asciify, isAscii } from '../index'
+import { asciify, isAscii, trimNonAscii } from '../index'
 
 test('isAscii', () => {
   expect(isAscii('a')).toBeTruthy()

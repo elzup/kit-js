@@ -60,7 +60,7 @@ export const schedulingEaseBy = <T>(
   toSchedule: (v: T) => ScheduleItem<string>
 ): T[][] => withSchedulingBy(a, toSchedule, schedulingEase)
 
-export const withSchedulingBy = <T>(
+const withSchedulingBy = <T>(
   a: T[],
   toSchedule: (v: T) => ScheduleItem<string>,
   scheduleFunc: ScheduleFunc

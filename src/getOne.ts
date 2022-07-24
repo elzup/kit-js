@@ -3,5 +3,3 @@ export const getOne = (
 ): string | undefined => (typeof v === 'string' ? v : undefined)
 
 export const unarray = getOne
-
-export default getOne

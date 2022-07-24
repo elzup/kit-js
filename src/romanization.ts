@@ -27,7 +27,7 @@ const table = [
   'ぱぴぷぺぽ',
 ].join('')
 
-export const remoanizationChar = (
+export const romanizationChar = (
   c: string,
   nc: string,
   { skip, stretch }: Option
@@ -51,7 +51,7 @@ export const romanization = (s: string, opt?: Partial<Option>) => {
   const chars = [...toHira(s)]
 
   return chars
-    .map((c, i) => remoanizationChar(c, chars[i + 1] ?? '', compOpt))
+    .map((c, i) => romanizationChar(c, chars[i + 1] ?? '', compOpt))
     .join('')
 }
 

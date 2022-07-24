@@ -42,7 +42,7 @@ export { mergeSortArr, queueMerge } from './queueMerge'
 export { decToRadix, radixToDec } from './radix'
 export { range } from './range'
 export { rangeAdv } from './rangeAdv'
-export { romanization } from './romanization'
+export { romanization, romanizationChar } from './romanization'
 export {
   scheduling,
   schedulingBy,
