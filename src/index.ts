@@ -1,5 +1,5 @@
 export { anyHashMatch } from './anyHashMatch'
-export { asciify, isAscii, trimNonAscii } from './ascii'
+export { asciify, controlCharLib, isAscii, trimNonAscii } from './ascii'
 export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
