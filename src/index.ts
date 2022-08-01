@@ -1,5 +1,6 @@
 export { anyHashMatch } from './anyHashMatch'
 export { asciify, controlCharLib, isAscii, trimNonAscii } from './ascii'
+export { binstr, hex2bin, hexCharToBin } from './binary'
 export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
