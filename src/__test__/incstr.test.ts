@@ -1,4 +1,4 @@
-import { encodeDigits, incstr, parseDigits } from '../index'
+import { encodeDigits, incstr, incstrBase90, parseDigits } from '../index'
 
 test('parseDigits', () => {
   const abcLib = { a: 0, b: 1, c: 2, d: 3, e: 4 }
@@ -45,5 +45,10 @@ describe('incstr', () => {
     expect(() => incstr('z', 1, '0abc')).toThrowErrorMatchingInlineSnapshot(
       `"'z' is not a digit char"`
     )
+  })
+
+  it('incstr base90', () => {
+    expect(incstrBase90('ab')).toStrictEqual('ac')
+    expect(incstrBase90('ab*')).toStrictEqual('ab+')
   })
 })

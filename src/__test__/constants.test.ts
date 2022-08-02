@@ -11,6 +11,7 @@ import {
   isDev,
   printableAscii,
   safePrintableAscii,
+  base90,
 } from '../index'
 
 const constants = {
@@ -26,11 +27,13 @@ const constants = {
   charStrongNonMisidentify,
   printableAscii,
   safePrintableAscii,
+  base90,
 }
 
 test('constants', () => {
   expect(constants).toMatchInlineSnapshot(`
     Object {
+      "base90": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./:;<=>?@[]^_{|}~",
       "char123abcABC": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "charABC": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "charABCabc123": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",

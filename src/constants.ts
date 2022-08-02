@@ -32,5 +32,11 @@ export const printableAscii = printableAscii1 + printableAscii2
 /**
  * printable ASCII chars without chars tend to call escape
  * omit `"`, `'`, space, backslash, backquote
+ * `!#$%&()*+,-./` + `[0-9]` + `:;<=>?@` + `[A-Z]` + `[]^_` + `[a-z]` + `{|}~`
  * */
 export const safePrintableAscii = `!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~`
+/**
+ * printable ASCII chars without chars tend to call escape
+ * `[0-9]` + `[a-z]` + `[A-Z]` + `!#$%&()*+,-./:;<=>?@[]^_{|}~`
+ * */
+export const base90 = `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./:;<=>?@[]^_{|}~`
