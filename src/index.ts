@@ -68,7 +68,13 @@ export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
 export { encodeDigits, incstr, incstrBase90, parseDigits } from './strinc'
 export { stringify } from './stringify'
-export { fullWidth, halfWidth } from './strWidth'
+export {
+  fullWidth,
+  halfWidth,
+  halfyParens,
+  halfySigns,
+  hardNormalizeText,
+} from './strWidth'
 export { genTerms } from './template/terms'
 export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
 export { transpose } from './transpose'

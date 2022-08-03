@@ -13,3 +13,45 @@ const shiftToFullWidth = (c: string) => shiftChar(c, SHIFT)
 
 export const fullWidth = (s: string) =>
   s.replace(HALF_WIDTH_CHARS, shiftToFullWidth)
+
+const FULL_WIDTH_SIGN_PAIRS = [
+  ['　', ''],
+  ['！', '!'],
+  ['？', '?'],
+  ['／', '/'],
+  ['＼', '\\'],
+  ['、，', ','],
+  ['。．', '.'],
+  ['：', ':'],
+  ['；', ';'],
+  ['´｀¨‘’', "'"],
+  ['＿', '_'],
+  ['＾', '^'],
+  ['ー―‐－', '^'],
+  ['～', '~'],
+  ['✕×✖', '×'],
+  ['“”', '"'],
+  ['＝', '='],
+  ['￥', '¥'],
+  ['＄', '$'],
+  ['％', '%'],
+  ['＃', '#'],
+  ['＆', '&'],
+  ['＊', '*'],
+  ['＠', '@'],
+]
+
+export const halfySigns = (title: string) =>
+  FULL_WIDTH_SIGN_PAIRS.reduce(
+    (s, [full, half]) => s.replace(new RegExp(`[${full}]`), half),
+    title
+  )
+// ・々仝ヽヾゝゞ〃〆
+
+export const halfyParens = (s: string) =>
+  s
+    .replace(/[（〔［｛〈《「『【＜]/g, '(')
+    .replace(/[）〕］｝〉》」』】＞]/g, ')')
+
+export const hardNormalizeText = (s: string) =>
+  halfySigns(halfyParens(halfWidth(s)))
