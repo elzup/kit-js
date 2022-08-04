@@ -15,7 +15,7 @@ export const fullWidth = (s: string) =>
   s.replace(HALF_WIDTH_CHARS, shiftToFullWidth)
 
 const FULL_WIDTH_SIGN_PAIRS = [
-  ['　', ''],
+  ['　', ' '],
   ['！', '!'],
   ['？', '?'],
   ['／', '/'],
