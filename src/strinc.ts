@@ -1,4 +1,4 @@
-import { base90, char123abcABC } from './constants'
+import { base62, base90, char123abcABC } from './constants'
 import { invert } from './invert'
 import { decToRadix, radixToDec } from './radix'
 
@@ -34,3 +34,4 @@ export const incstr = (
 }
 
 export const incstrBase90 = (s: string, add = 1) => incstr(s, add, base90)
+export const incstrBase62 = (s: string, add = 1) => incstr(s, add, base62)

@@ -8,6 +8,7 @@ export { clamp } from './clamp'
 export { clean } from './clean'
 export { comps, comps2 } from './comps'
 export {
+  base62,
   base90,
   char123abcABC,
   charABC,
@@ -66,7 +67,13 @@ export {
 export { shiftChar } from './shiftChar'
 export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
-export { encodeDigits, incstr, incstrBase90, parseDigits } from './strinc'
+export {
+  encodeDigits,
+  incstr,
+  incstrBase62,
+  incstrBase90,
+  parseDigits,
+} from './strinc'
 export { stringify } from './stringify'
 export {
   fullWidth,

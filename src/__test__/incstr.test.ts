@@ -1,4 +1,10 @@
-import { encodeDigits, incstr, incstrBase90, parseDigits } from '../index'
+import {
+  encodeDigits,
+  incstr,
+  incstrBase62,
+  incstrBase90,
+  parseDigits,
+} from '../index'
 
 test('parseDigits', () => {
   const abcLib = { a: 0, b: 1, c: 2, d: 3, e: 4 }
@@ -50,5 +56,9 @@ describe('incstr', () => {
   it('incstr base90', () => {
     expect(incstrBase90('ab')).toStrictEqual('ac')
     expect(incstrBase90('ab*')).toStrictEqual('ab+')
+  })
+
+  it('incstr base62', () => {
+    expect(incstrBase62('ZZ')).toStrictEqual('100')
   })
 })
