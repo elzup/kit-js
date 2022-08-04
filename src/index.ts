@@ -85,5 +85,6 @@ export {
 export { genTerms } from './template/terms'
 export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
 export { transpose } from './transpose'
+export { trimParenOut, trimQuote } from './trim'
 export { uniq } from './uniq'
 export { googleSearchImageUrl, googleSearchUrl } from './url'
