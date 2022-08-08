@@ -27,7 +27,7 @@ const FULL_WIDTH_SIGN_PAIRS = [
   ['´｀¨‘’', "'"],
   ['＿', '_'],
   ['＾', '^'],
-  ['ー―‐－', '^'],
+  ['ー―‐－', '-'],
   ['～', '~'],
   ['✕×✖', '×'],
   ['“”', '"'],
@@ -43,7 +43,7 @@ const FULL_WIDTH_SIGN_PAIRS = [
 
 export const halfySigns = (title: string) =>
   FULL_WIDTH_SIGN_PAIRS.reduce(
-    (s, [full, half]) => s.replace(new RegExp(`[${full}]`), half),
+    (s, [full, half]) => s.replace(new RegExp(`[${full}]`, 'g'), half),
     title
   )
 // ・々仝ヽヾゝゞ〃〆
