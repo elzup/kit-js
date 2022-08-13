@@ -39,11 +39,23 @@ export const shuffle = <T>(seed: Seed, arr: T[]): T[] => {
 export const choise = <T>(seed: string, arr: T[]): T | undefined =>
   sample(seed, arr, 1)[0]
 
-export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
-  shuffle(seed, arr).slice(0, n)
-
 export function* randGen(seed: string): Generator<number, void, number> {
   for (let i = 0; ; i++) {
     yield seedRand(seed + `${i}`)
   }
+}
+
+export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
+  shuffle(seed, arr).slice(0, n)
+
+export function dsample(a: number[], n: number, rand = Math.random): number[] {
+  const b: number[] = []
+
+  a.forEach((v, i) => {
+    const all = a.length - i
+    const least = n - b.length
+
+    if (rand() < least / all) b.push(v)
+  })
+  return b
 }
