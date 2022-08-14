@@ -1,5 +1,6 @@
 import {
   choise,
+  makeRand,
   randGen,
   randRange,
   range,
@@ -93,8 +94,22 @@ test('choise', () => {
 })
 test('randGen', () => {
   const r = randGen('a')
-  const res = [r.next().value, r.next().value, r.next().value]
+  const res = [r.next(), r.next(), r.next()].map((v) => v.value)
 
+  expect(res).toMatchInlineSnapshot(`
+    Array [
+      0.873368340806717,
+      0.4372768375470124,
+      0.28616679732544187,
+    ]
+  `)
+})
+
+test('makeRand', () => {
+  const { fn: random, seed } = makeRand('a')
+  const res = [random(), random(), random()]
+
+  expect(seed).toBe('a')
   expect(res).toMatchInlineSnapshot(`
     Array [
       0.873368340806717,

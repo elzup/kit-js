@@ -56,6 +56,7 @@ export {
 } from './scheduling'
 export {
   choise,
+  makeRand,
   randGen,
   randRange,
   sample,

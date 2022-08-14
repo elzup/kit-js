@@ -39,10 +39,16 @@ export const shuffle = <T>(seed: Seed, arr: T[]): T[] => {
 export const choise = <T>(seed: string, arr: T[]): T | undefined =>
   sample(seed, arr, 1)[0]
 
-export function* randGen(seed: string): Generator<number, void, number> {
+export function* randGen(seed: string): Generator<number, number, number> {
   for (let i = 0; ; i++) {
     yield seedRand(seed + `${i}`)
   }
+}
+
+export function makeRand(seed = String(Date.now())) {
+  const rand = randGen(seed)
+
+  return { fn: () => rand.next().value, seed }
 }
 
 export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
