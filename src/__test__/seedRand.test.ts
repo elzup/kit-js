@@ -105,16 +105,38 @@ test('randGen', () => {
   `)
 })
 
-test('makeRand', () => {
-  const { fn: random, seed } = makeRand('a')
-  const res = [random(), random(), random()]
+describe('makeRand', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Date, 'now').mockReturnValue(123456)
+  })
 
-  expect(seed).toBe('a')
-  expect(res).toMatchInlineSnapshot(`
-    Array [
-      0.873368340806717,
-      0.4372768375470124,
-      0.28616679732544187,
-    ]
-  `)
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore()
+  })
+  it('basic', () => {
+    const { fn: random, seed } = makeRand('a')
+    const res = [random(), random(), random()]
+
+    expect(seed).toBe('a')
+    expect(res).toMatchInlineSnapshot(`
+          Array [
+            0.873368340806717,
+            0.4372768375470124,
+            0.28616679732544187,
+          ]
+      `)
+  })
+  it('seed by Date', () => {
+    const { fn: random, seed } = makeRand()
+    const res = [random(), random(), random()]
+
+    expect(seed).toBe('123456')
+    expect(res).toMatchInlineSnapshot(`
+      Array [
+        0.41013306719015047,
+        0.11510874444732705,
+        0.8396802631114423,
+      ]
+    `)
+  })
 })

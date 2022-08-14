@@ -53,15 +53,3 @@ export function makeRand(seed = String(Date.now())) {
 
 export const sample = <T>(seed: string, arr: T[], n = 1): T[] =>
   shuffle(seed, arr).slice(0, n)
-
-export function dsample(a: number[], n: number, rand = Math.random): number[] {
-  const b: number[] = []
-
-  a.forEach((v, i) => {
-    const all = a.length - i
-    const least = n - b.length
-
-    if (rand() < least / all) b.push(v)
-  })
-  return b
-}
