@@ -1,11 +1,11 @@
-import crypto from 'crypto'
+import { createHash } from 'crypto'
 
 const MAX = 2 ** 32
 const ALGORITHM = 'sha256'
 
 type Seed = number | string
 export const seedRandBuf = (seed: Seed) =>
-  crypto.createHash(ALGORITHM).update(String(seed)).digest()
+  createHash(ALGORITHM).update(String(seed)).digest()
 
 export const seedRandAdvance = (seed: Seed) => {
   const buf = seedRandBuf(seed)
