@@ -1,10 +1,6 @@
 const randRangeHit = (low: number, high: number, v: number) => {
   const d = high - low
 
-  console.log(d)
-  console.log(v * d)
-  console.log(Math.floor(v * d))
-
   return low + Math.floor(v * d)
 }
 
