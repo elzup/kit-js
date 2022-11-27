@@ -4,7 +4,7 @@ export { binstr, hex2bin, hexCharToBin } from './binary'
 export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
-export { clamp } from './clamp'
+export { clamp, negaposi } from './clamp'
 export { clean } from './clean'
 export { comps, comps2 } from './comps'
 export {

@@ -1,4 +1,4 @@
-import { clamp } from '../index'
+import { clamp, negaposi } from '../index'
 
 describe('clamp', () => {
   it('under', () => {
@@ -17,5 +17,13 @@ describe('clamp', () => {
     expect(clamp(3, 7, 5)).toMatchInlineSnapshot(`7`)
     expect(clamp(9, 7, 5)).toMatchInlineSnapshot(`7`)
     expect(clamp(6, 7, 5)).toMatchInlineSnapshot(`7`)
+  })
+})
+
+describe('negaposi', () => {
+  it('negaposi', () => {
+    expect(negaposi(10)).toBe(1)
+    expect(negaposi(-500)).toBe(-1)
+    expect(negaposi(0)).toBe(0)
   })
 })
