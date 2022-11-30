@@ -44,7 +44,7 @@
     "@swc/core": "1.3.21",
     "@swc/jest": "0.2.23",
     "@types/jest": "28.1.8",
-    "@types/node": "18.11.8",
+    "@types/node": "18.11.10",
     "babel-jest": "28.1.3",
     "eslint": "8.24.0",
     "eslint-config-nzap": "6.1.0",
