@@ -1,4 +1,4 @@
-import { maxBy, minBy } from '../index'
+import { farBy, maxBy, minBy, nearBy } from '../index'
 
 describe('minBy', () => {
   it('order', () => {
@@ -35,5 +35,18 @@ describe('maxBy', () => {
     expect(
       maxBy([{ v: 3 }, { v: 4 }, { v: 1 }, { v: 2 }], (item) => item.v)
     ).toStrictEqual({ v: 4 })
+  })
+})
+
+describe('nearBy', () => {
+  it('by', () => {
+    expect(nearBy([3, 8, 11, 15], (v) => v, 10)).toBe(11)
+  })
+})
+
+describe('farBy', () => {
+  it('by', () => {
+    expect(farBy([3, 8, 11, 19], (v) => v, 10)).toBe(19)
+    expect(farBy([0, 8, 11, 15], (v) => v, 10)).toBe(0)
   })
 })

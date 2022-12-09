@@ -5,3 +5,15 @@ export const maxBy = <T>(a: readonly T[], compareFn: (t: T) => number): T =>
 
 export const minBy = <T>(a: readonly T[], compareFn: (t: T) => number): T =>
   maxBy(a, (t) => -compareFn(t))
+
+export const nearBy = <T>(
+  a: readonly T[],
+  compareFn: (t: T) => number,
+  target: number
+): T => maxBy(a, (t) => -Math.abs(target - compareFn(t)))
+
+export const farBy = <T>(
+  a: readonly T[],
+  compareFn: (t: T) => number,
+  target: number
+): T => maxBy(a, (t) => Math.abs(target - compareFn(t)))
