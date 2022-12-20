@@ -17,6 +17,9 @@ describe('minBy', () => {
       minBy([{ v: 3 }, { v: 4 }, { v: 1 }, { v: 2 }], (item) => item.v)
     ).toStrictEqual({ v: 1 })
   })
+  it('empty', () => {
+    expect(minBy([], (v) => v)).toBe(undefined)
+  })
 })
 
 describe('maxBy', () => {
