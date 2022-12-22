@@ -14,4 +14,9 @@ test('defrag', () => {
     { start: 1, end: 2 },
     { start: 5, end: 7 },
   ])
+
+  expect(defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2)).toStrictEqual([
+    { start: 1, end: 4 },
+    { start: 10, end: 12 },
+  ])
 })
