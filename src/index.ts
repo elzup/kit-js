@@ -24,6 +24,7 @@ export {
   safePrintableAscii,
 } from './constants'
 export { countup } from './countup'
+export { defrag } from './defrag'
 export { pad, pad02, round } from './format'
 export { formatHms, formatTime, formatYmd } from './formatTime'
 export { getEnv } from './getEnv'
