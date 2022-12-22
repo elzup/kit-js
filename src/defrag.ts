@@ -10,5 +10,12 @@ const reduce = (
   return { range: { start: c, end: c }, ranges: [...ranges, range] }
 }
 
-export const defrag = (a: number[]) =>
-  a.reduce(reduce, { range: { start: NaN, end: NaN }, ranges: [] })
+export const defrag = (a: number[]) => {
+  if (a.length === 0) return []
+  const { range, ranges } = a.reduce(reduce, {
+    range: { start: NaN, end: NaN },
+    ranges: [],
+  })
+
+  return [...ranges, range]
+}
