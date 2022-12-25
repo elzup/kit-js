@@ -40,7 +40,11 @@ export { makeObj } from './makeObj'
 export { makeCycle, makeToggle, toggle } from './makeToggle'
 export { mapId } from './mapId'
 export { farBy, maxBy, minBy, nearBy } from './maxBy'
-export { repartitionBits, unRepartitionBits } from './niche/buffer'
+export {
+  repartitionBits,
+  shiftCodePoint,
+  unRepartitionBits,
+} from './niche/buffer'
 export { noop, tagNoop } from './noop'
 export { permutation, permutationBase } from './permutation'
 export { pickUrl, pickUrlMb } from './pickUrl'
