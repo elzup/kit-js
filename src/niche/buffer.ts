@@ -1,25 +1,23 @@
-const encodeCodePointShift = (n: number, shift = 0) =>
-  String.fromCodePoint(shift + n)
-const decodeCodePointShift = (s: string, shift = 0) =>
-  (s.codePointAt(0) ?? 0) - shift
+const fromCodePoint = (n: number) => String.fromCodePoint(n)
+const toCodePoint = (s: string) => s.codePointAt(0) ?? 0
 
-export const repartitionBits = (buf: Uint8Array, shift = 0): string => {
+export const repartitionBits = (buf: Uint8Array, bn: number): string => {
   const bits = Array.from(buf)
     .map((b) => b.toString(2).padStart(8, '0'))
     .join('')
-  const b6s = bits.match(/.{6}/g) || []
+  const bps = bits.match(new RegExp(`.{${bn}}`, 'g')) || []
 
-  return Array.from(b6s)
-    .map((b) => b.padEnd(6, '0'))
-    .map((b) => encodeCodePointShift(parseInt(b, 2)), shift)
+  return Array.from(bps)
+    .map((b) => b.padEnd(bn, '0'))
+    .map((b) => fromCodePoint(parseInt(b, 2)))
     .join('')
 }
 
-export const unRepartitionBits = (str: string): Uint8Array => {
+export const unRepartitionBits = (str: string, bits: number): Uint8Array => {
   const u8s = (
     [...str]
-      .map(decodeCodePointShift)
-      .map((b) => b.toString(2).padStart(6, '0'))
+      .map((v) => toCodePoint(v))
+      .map((b) => b.toString(2).padStart(bits, '0'))
       .join('')
       .match(/.{8}/g) || []
   ).map((b) => parseInt(b, 2))
