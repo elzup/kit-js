@@ -26,9 +26,3 @@ export const unRepartitionBits = (str: string): Uint8Array => {
 
   return new Uint8Array(Array.from(u8s))
 }
-
-'⡀'.codePointAt(0) // 8bit 1~256
-
-new TextDecoder().decode(
-  Uint8Array.from([0b11101111, 0b10111111, 0b10111111, 0b10111111])
-)
