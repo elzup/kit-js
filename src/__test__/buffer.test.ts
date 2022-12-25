@@ -1,4 +1,4 @@
-import { repartitionBits, unRepartitionBits } from '../index'
+import { repartitionBits, unRepartitionBits, shiftCodePoint } from '../index'
 
 describe('repartitionBits', () => {
   it('basic', () => {
@@ -11,10 +11,22 @@ describe('repartitionBits', () => {
   })
 })
 
-describe('unRRepartitionBits', () => {
+describe('unRepartitionBits', () => {
   it('basic', () => {
     expect(
       Buffer.from(unRepartitionBits('abcdefg', 6)).toString('hex')
     ).toMatchInlineSnapshot(`"c38b1e4cb9b3"`)
+  })
+})
+
+describe('shiftCodePoint', () => {
+  it('basic', () => {
+    expect(shiftCodePoint('abcdefg', 3)).toMatchInlineSnapshot(`"defghij"`)
+    expect(shiftCodePoint('あいうえお', 10)).toMatchInlineSnapshot(
+      `"がぎぐげご"`
+    )
+    expect(shiftCodePoint('たちつてと', -10)).toMatchInlineSnapshot(
+      `"さしずぜぞ"`
+    )
   })
 })

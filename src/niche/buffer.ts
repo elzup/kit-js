@@ -24,3 +24,6 @@ export const unRepartitionBits = (str: string, bits: number): Uint8Array => {
 
   return new Uint8Array(Array.from(u8s))
 }
+
+export const shiftCodePoint = (str: string, shift: number): string =>
+  [...str].map((v) => fromCodePoint(toCodePoint(v) + shift)).join('')
