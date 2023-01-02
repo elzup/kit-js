@@ -46,6 +46,7 @@ export {
   unRepartitionBits,
 } from './niche/buffer'
 export { noop, tagNoop } from './noop'
+export { performanceTimeUtil } from './performance'
 export { permutation, permutationBase } from './permutation'
 export { pickUrl, pickUrlMb } from './pickUrl'
 export { mergeSortArr, queueMerge } from './queueMerge'
