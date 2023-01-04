@@ -5,7 +5,7 @@ export { BOM, hasBom, trimBom } from './bom'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
 export { clamp, negaposi } from './clamp'
-export { clean } from './clean'
+export { clean, clone } from './clean'
 export { comps, comps2 } from './comps'
 export {
   base62,

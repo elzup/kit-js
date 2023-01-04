@@ -1,4 +1,4 @@
-import { clean } from '../index'
+import { clean, clone } from '../index'
 
 test('clean', () => {
   expect(clean({})).toMatchInlineSnapshot(`Object {}`)
@@ -8,4 +8,8 @@ test('clean', () => {
       "c": "c",
     }
   `)
+})
+
+test('clone', () => {
+  expect(clone).toBeDefined()
 })
