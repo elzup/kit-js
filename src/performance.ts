@@ -5,7 +5,7 @@ type Callback<CustomArgs extends any[] = []> = (
 ) => void
 
 const defaultCallback: Callback<[string]> = ({ ms }, label: string) => {
-  console.log(`${label}:${ms}ms`)
+  console.log(`${label}:${Math.floor(ms)}ms`)
 }
 
 type CustomArgs<T extends unknown> = T extends Callback<infer Args>
