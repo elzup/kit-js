@@ -1,4 +1,4 @@
-import { comps, comps2 } from '../index'
+import { comps, comps2, slideWindow } from '../index'
 
 test('comps', () => {
   expect(comps([1, 2])).toStrictEqual([[1, 2]])
@@ -22,4 +22,8 @@ test('comps more 2', () => {
 test('comps2', () => {
   expect(comps2([])).toStrictEqual([])
   expect(comps2([1])).toStrictEqual([])
+})
+
+test('slideWindow', () => {
+  expect(slideWindow).toBeDefined()
 })

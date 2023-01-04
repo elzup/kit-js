@@ -6,7 +6,7 @@ export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
 export { clamp, negaposi } from './clamp'
 export { clean, clone } from './clean'
-export { comps, comps2 } from './comps'
+export { comps, comps2, slideWindow } from './comps'
 export {
   base62,
   base90,
