@@ -31,6 +31,35 @@ const { hoge } = require('@elzup/kit')
 hoge()
 ```
 
+## v3 -> v4 migration
+
+```
+rename src/{ => algo}/defrag.ts
+rename src/{ => algo}/permutation.ts
+rename src/{ => algo}/queueMerge.ts
+rename src/{ => algo}/scheduling.ts
+rename src/{ => char}/ascii.ts
+rename src/{ => char}/bom.ts
+rename src/{ => char}/constants.ts
+rename src/{ => char}/romanization.ts
+rename src/{ => niche}/anyHashMatch.ts
+rename src/{ => obj}/countup.ts
+rename src/{ => obj}/groupBy.ts
+rename src/{ => obj}/invert.ts
+rename src/{ => obj}/keyBy.ts
+rename src/{ => obj}/makeMap.ts
+rename src/{ => obj}/makeObj.ts
+rename src/{ => obj}/mapId.ts
+rename src/{ => template}/slack.ts
+rename src/{ => template}/url.ts
+
+rename src/{comps.ts => windowed.ts}
+rename src/{src/times.ts => time/format.ts}
+rename src/{formatTime.ts => time/utils.ts}
+rename src/{shiftChar.ts => char/shift.ts}
+rename src/{strinc.ts => incstr.ts}
+```
+
 ## License
 
 MIT © [anozon](https://anozon.me)
