@@ -1,12 +1,17 @@
-export { anyHashMatch } from './anyHashMatch'
-export { asciify, controlCharLib, isAscii, trimNonAscii } from './ascii'
+export { defrag } from './algo/defrag'
+export { permutation, permutationBase } from './algo/permutation'
+export { mergeSortArr, queueMerge } from './algo/queueMerge'
+export {
+  scheduling,
+  schedulingBy,
+  schedulingEase,
+  schedulingEaseBy,
+  schedulingEaseTry,
+  schedulingPick,
+} from './algo/scheduling'
 export { binstr, hex2bin, hexCharToBin } from './binary'
-export { BOM, hasBom, trimBom } from './bom'
-export { chunk } from './chunk'
-export { chunkStr } from './chunkStr'
-export { clamp, negaposi } from './clamp'
-export { clean, clone } from './clean'
-export { comps, comps2, slideWindow } from './comps'
+export { asciify, controlCharLib, isAscii, trimNonAscii } from './char/ascii'
+export { BOM, hasBom, trimBom } from './char/bom'
 export {
   base62,
   base90,
@@ -22,34 +27,45 @@ export {
   isDev,
   printableAscii,
   safePrintableAscii,
-} from './constants'
-export { countup } from './countup'
-export { defrag } from './defrag'
+} from './char/constants'
+export { romanization } from './char/romanization'
+export { shift as shiftChar } from './char/shift'
+export { chunk } from './chunk'
+export { chunkStr } from './chunkStr'
+export { clamp, negaposi } from './clamp'
+export { clean, clone } from './clean'
 export { pad, pad02, round } from './format'
 export { formatHms, formatTime, formatYmd } from './formatTime'
 export { getEnv } from './getEnv'
 export { getOne, unarray } from './getOne'
-export { groupByFunc } from './groupBy'
 export { hash, makeHash, sha512Hex } from './hash'
 export { identity, pass } from './identity'
-export { invert, swap, swapKeyValue } from './invert'
-export { keyBy } from './keyBy'
+export {
+  encodeDigits,
+  incstr,
+  incstrBase62,
+  incstrBase90,
+  parseDigits,
+} from './incstr'
 export { last } from './last'
-export { makeMap } from './makeMap'
-export { makeObj } from './makeObj'
 export { makeCycle, makeToggle, toggle } from './makeToggle'
-export { mapId } from './mapId'
 export { farBy, maxBy, minBy, nearBy } from './maxBy'
+export { anyHashMatch } from './niche/anyHashMatch'
 export {
   repartitionBits,
   shiftCodePoint,
   unRepartitionBits,
 } from './niche/buffer'
 export { noop, tagNoop } from './noop'
+export { countup } from './obj/countup'
+export { groupByFunc } from './obj/groupBy'
+export { invert, swap, swapKeyValue } from './obj/invert'
+export { keyBy } from './obj/keyBy'
+export { makeMap } from './obj/makeMap'
+export { makeObj } from './obj/makeObj'
+export { mapId } from './obj/mapId'
 export { performanceTimeUtil } from './performance'
-export { permutation, permutationBase } from './permutation'
 export { pickUrl, pickUrlMb } from './pickUrl'
-export { mergeSortArr, queueMerge } from './queueMerge'
 export { decToRadix, radixToDec } from './radix'
 export { choise as choiseV4 } from './rand/choise'
 export { randRange as randRangeV4 } from './rand/randRange'
@@ -58,15 +74,6 @@ export { choiseSeed, randRangeSeed, sampleSeed, shuffleSeed } from './rand/seed'
 export { shuffle as shuffleV4 } from './rand/shuffle'
 export { range } from './range'
 export { rangeAdv } from './rangeAdv'
-export { romanization } from './romanization'
-export {
-  scheduling,
-  schedulingBy,
-  schedulingEase,
-  schedulingEaseBy,
-  schedulingEaseTry,
-  schedulingPick,
-} from './scheduling'
 export {
   choise,
   makeRand,
@@ -78,16 +85,7 @@ export {
   seedRandBuf,
   shuffle,
 } from './seedRand'
-export { shiftChar } from './shiftChar'
-export { makeSlackParams } from './slack'
 export { sortBy, sortByHo } from './sortBy'
-export {
-  encodeDigits,
-  incstr,
-  incstrBase62,
-  incstrBase90,
-  parseDigits,
-} from './strinc'
 export { stringify } from './stringify'
 export {
   fullWidth,
@@ -96,10 +94,19 @@ export {
   halfySigns,
   hardNormalizeText,
 } from './strWidth'
+export { makeSlackParams } from './template/slack'
 export { genTerms } from './template/terms'
-export { jpDate, shiftDate, times, timesNow, ymd, ymdNum } from './times'
+export { googleSearchImageUrl, googleSearchUrl } from './template/url'
+export {
+  jpDate,
+  shiftDate,
+  timeParts as times,
+  timesNow,
+  ymd,
+  ymdNum,
+} from './times'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'
 export { uniq } from './uniq'
 export { upsert, upsertMap } from './upsert'
-export { googleSearchImageUrl, googleSearchUrl } from './url'
+export { comps, slideWindow, windowed, windowed2 } from './windowed'

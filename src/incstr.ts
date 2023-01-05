@@ -1,5 +1,5 @@
-import { base62, base90, char123abcABC } from './constants'
-import { invert } from './invert'
+import { base62, base90, char123abcABC } from './char/constants'
+import { invert } from './obj/invert'
 import { decToRadix, radixToDec } from './radix'
 
 type TableMap = { [key: string]: number }

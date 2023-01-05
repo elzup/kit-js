@@ -1,14 +1,14 @@
 import { pad02 } from './format'
-import { times } from './times'
+import { timeParts } from './times'
 
 export const formatYmd = (date: Date) => {
-  const { year, month, day } = times(date)
+  const { year, month, day } = timeParts(date)
 
   return `${year}-${pad02(month)}-${pad02(day)}`
 }
 
 export const formatHms = (date: Date) => {
-  const { hour, minute, second } = times(date)
+  const { hour, minute, second } = timeParts(date)
 
   return `${pad02(hour)}:${pad02(minute)}:${pad02(second)}`
 }

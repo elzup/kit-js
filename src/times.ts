@@ -1,4 +1,4 @@
-export const times = (date: Date) => {
+export const timeParts = (date: Date) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -9,7 +9,18 @@ export const times = (date: Date) => {
   return { year, month, day, hour, minute, second }
 }
 
-export const timesNow = () => times(new Date())
+export const timePartsStr = (date: Date) => {
+  const yyyy = String(date.getFullYear())
+  const mo = String(date.getMonth() + 1).padStart(2, '0')
+  const dd = String(date.getDate()).padStart(2, '0')
+  const hh = String(date.getHours()).padStart(2, '0')
+  const mm = String(date.getMinutes()).padStart(2, '0')
+  const ss = String(date.getSeconds()).padStart(2, '0')
+
+  return { yyyy, mo, dd, hh, mm, ss }
+}
+
+export const timesNow = () => timeParts(new Date())
 
 const SEC = 1000
 const MIN = 60 * SEC

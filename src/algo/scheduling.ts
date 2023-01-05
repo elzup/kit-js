@@ -1,6 +1,6 @@
-import { keyBy } from './keyBy'
-import { last } from './last'
-import { range } from './range'
+import { keyBy } from '../obj/keyBy'
+import { last } from '../last'
+import { range } from '../range'
 
 type ScheduleItem<T, K extends string | number = number> = {
   id: T
