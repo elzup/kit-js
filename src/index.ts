@@ -30,12 +30,18 @@ export {
 } from './char/constants'
 export { romanization } from './char/romanization'
 export { shift as shiftChar } from './char/shift'
+export {
+  fullWidth,
+  halfWidth,
+  halfyParens,
+  halfySigns,
+  hardNormalizeText,
+} from './char/width'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
 export { clamp, negaposi } from './clamp'
 export { clean, clone } from './clean'
 export { pad, pad02, round } from './format'
-export { formatHms, formatTime, formatYmd } from './formatTime'
 export { getEnv } from './getEnv'
 export { getOne, unarray } from './getOne'
 export { hash, makeHash, sha512Hex } from './hash'
@@ -87,24 +93,11 @@ export {
 } from './seedRand'
 export { sortBy, sortByHo } from './sortBy'
 export { stringify } from './stringify'
-export {
-  fullWidth,
-  halfWidth,
-  halfyParens,
-  halfySigns,
-  hardNormalizeText,
-} from './strWidth'
 export { makeSlackParams } from './template/slack'
 export { genTerms } from './template/terms'
 export { googleSearchImageUrl, googleSearchUrl } from './template/url'
-export {
-  jpDate,
-  shiftDate,
-  timeParts as times,
-  timesNow,
-  ymd,
-  ymdNum,
-} from './times'
+export { formatHms, formatTime, formatYmd, ymd, ymdNum } from './time/format'
+export { jpDate, shiftDate, timeParts as times, timesNow } from './time/utils'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'
 export { uniq } from './uniq'

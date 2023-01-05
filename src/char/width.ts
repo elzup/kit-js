@@ -1,4 +1,4 @@
-import { shift } from './char/shift'
+import { shift } from './shift'
 
 const SHIFT = 0xfee0 // 65248, 'Ａ'.charCodeAt(0) - 'A'.charCodeAt(0)
 const FULL_WIDTH_CHARS = /[Ａ-Ｚａ-ｚ０-９]/g

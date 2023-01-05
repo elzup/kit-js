@@ -10,7 +10,7 @@ import {
   ymdNum,
 } from '../index'
 
-beforeAll(() => jest.useFakeTimers('modern'))
+beforeAll(() => jest.useFakeTimers())
 afterAll(jest.useRealTimers)
 
 const date = new Date(4836380828000)
