@@ -4,11 +4,11 @@ const MAX = 2 ** 32
 const ALGORITHM = 'sha256'
 
 type Seed = number | string
-export const seedRandBuf = (seed: Seed) =>
+export const randSeedBuf = (seed: Seed) =>
   createHash(ALGORITHM).update(String(seed)).digest()
 
-export const seedRandAdvance = (seed: Seed) => {
-  const buf = seedRandBuf(seed)
+export const randSeedAdvance = (seed: Seed) => {
+  const buf = randSeedBuf(seed)
 
   return {
     seed,
@@ -17,7 +17,7 @@ export const seedRandAdvance = (seed: Seed) => {
   }
 }
 
-export const seedRand = (seed: Seed) => seedRandAdvance(seed).num
+export const randSeed = (seed: Seed) => randSeedAdvance(seed).num
 
 const randRangeHit = (v: number, min: number, max?: number) => {
   const [low, high] = max === undefined ? [0, min] : [min, max]
@@ -27,10 +27,10 @@ const randRangeHit = (v: number, min: number, max?: number) => {
 }
 
 export const randRange = (seed: Seed, min: number, max?: number) =>
-  randRangeHit(seedRand(seed), min, max)
+  randRangeHit(randSeed(seed), min, max)
 
 export const shuffle = <T>(seed: Seed, arr: T[]): T[] => {
-  const a = arr.map((v, i) => ({ v, r: seedRand(`${seed}${i}`) }))
+  const a = arr.map((v, i) => ({ v, r: randSeed(`${seed}${i}`) }))
 
   a.sort((a, b) => a.r - b.r)
   return a.map(({ v }) => v)
@@ -41,7 +41,7 @@ export const choise = <T>(seed: string, arr: T[]): T | undefined =>
 
 export function* randGen(seed: string): Generator<number, number, number> {
   for (let i = 0; ; i++) {
-    yield seedRand(seed + `${i}`)
+    yield randSeed(seed + `${i}`)
   }
 }
 

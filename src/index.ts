@@ -74,24 +74,20 @@ export { upsert, upsertMap } from './obj/upsert'
 export { performanceTimeUtil } from './performance'
 export { pickUrl, pickUrlMb } from './pickUrl'
 export { decToRadix, radixToDec } from './radix'
-export { choise as choiseV4 } from './rand/choise'
-export { randRange as randRangeV4 } from './rand/randRange'
-export { sample as sampleV4 } from './rand/sample'
-export { choiseSeed, randRangeSeed, sampleSeed, shuffleSeed } from './rand/seed'
-export { shuffle as shuffleV4 } from './rand/shuffle'
-export { range } from './range'
-export { rangeAdv } from './rangeAdv'
+export { choise } from './rand/choise'
 export {
-  choise,
   makeRand,
   randGen,
-  randRange,
-  sample,
-  seedRand,
-  seedRandAdvance,
-  seedRandBuf,
-  shuffle,
-} from './seedRand'
+  randSeed,
+  randSeedBuf,
+  randSeedAdvance,
+} from './rand/make'
+export { randRange } from './rand/range'
+export { sample } from './rand/sample'
+export { choiseSeed, randRangeSeed, sampleSeed, shuffleSeed } from './rand/seed'
+export { shuffle } from './rand/shuffle'
+export { range } from './range'
+export { rangeAdv } from './rangeAdv'
 export { sortBy, sortByHo } from './sortBy'
 export { stringify } from './stringify'
 export { makeSlackParams } from './template/slack'

@@ -1,11 +1,11 @@
 import {
-  randRangeV4 as randRange,
-  choiseV4 as choise,
-  sampleV4 as sample,
-  shuffleV4 as shuffle,
+  choise,
   choiseSeed,
+  randRange,
   randRangeSeed,
+  sample,
   sampleSeed,
+  shuffle,
   shuffleSeed,
 } from '../index'
 

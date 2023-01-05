@@ -1,8 +1,8 @@
-import { makeRand } from '../seedRand'
+import { makeRand } from './make'
 import { choise } from './choise'
 import { shuffle } from './shuffle'
 import { sample } from './sample'
-import { randRange } from './randRange'
+import { randRange } from './range'
 
 export const shuffleSeed = <T>(a: T[], seed: string) =>
   shuffle(a, makeRand(seed).fn)
