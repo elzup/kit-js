@@ -79,8 +79,8 @@ export {
   makeRand,
   randGen,
   randSeed,
-  randSeedBuf,
   randSeedAdvance,
+  randSeedBuf,
 } from './rand/make'
 export { randRange } from './rand/range'
 export { sample } from './rand/sample'
@@ -93,7 +93,15 @@ export { stringify } from './stringify'
 export { makeSlackParams } from './template/slack'
 export { genTerms } from './template/terms'
 export { googleSearchImageUrl, googleSearchUrl } from './template/url'
-export { formatHms, formatTime, formatYmd, ymd, ymdNum } from './time/format'
+export {
+  formatHms,
+  formatTime,
+  formatYmd,
+  hm,
+  timePartsStr,
+  ymd,
+  ymdNum,
+} from './time/format'
 export { jpDate, shiftDate, timeParts as times, timesNow } from './time/utils'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'

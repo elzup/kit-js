@@ -8,6 +8,8 @@ import {
   timesNow,
   ymd,
   ymdNum,
+  timePartsStr,
+  hm,
 } from '../index'
 
 beforeAll(() => jest.useFakeTimers())
@@ -42,6 +44,21 @@ test('timesNow', () => {
       "year": 2123,
     }
   `)
+})
+test('timePartsStr', () => {
+  expect(timePartsStr(lDate)).toMatchInlineSnapshot(`
+    Object {
+      "dd": "05",
+      "hh": "06",
+      "mn": "07",
+      "mo": "04",
+      "ss": "08",
+      "yyyy": "2123",
+    }
+  `)
+})
+test('hm', () => {
+  expect(hm(lDate)).toMatchInlineSnapshot(`"0607"`)
 })
 
 test('formatTime', () => {
