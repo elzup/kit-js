@@ -1,12 +1,12 @@
-export const timeParts = (date: Date) => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+export const timeParts = (d: Date) => {
+  const year = d.getFullYear()
+  const month = d.getMonth() + 1
+  const date = d.getDate()
+  const hour = d.getHours()
+  const minute = d.getMinutes()
+  const second = d.getSeconds()
 
-  return { year, month, day, hour, minute, second }
+  return { year, month, date, hour, minute, second }
 }
 
 export const timesNow = () => timeParts(new Date())

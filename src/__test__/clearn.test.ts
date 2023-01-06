@@ -8,6 +8,14 @@ test('clean', () => {
       "c": "c",
     }
   `)
+  expect(clean({ a: new Date(0), b: null, c: new RegExp('^a$') }))
+    .toMatchInlineSnapshot(`
+    Object {
+      "a": "1970-01-01T00:00:00.000Z",
+      "b": null,
+      "c": Object {},
+    }
+  `)
 })
 
 test('clone', () => {

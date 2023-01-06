@@ -23,7 +23,7 @@ $ npm install @elzup/kit
 calc row grouping of Gantt chart
 
 ```js
-import scheduling from '@elzup/kit/algo/scheduling'
+import scheduling from '@elzup/kit/lib/algo/scheduling'
 const items = [
   { id: 'a', start: 1, end: 10 },
   { id: 'b', start: 5, end: 15 },
@@ -38,19 +38,19 @@ scheduling(items)
 ```
 
 ```
-                   111111111122
-         0123456789012345678901
- a        +--------<
- b            +---------<
- c                 +---------<
- d                   +-------<
- e                       +<
- ↓
-                   111111111122
-         0123456789012345678901
- [a,c]   +--------+----------<
- [b,e]        +---------<+<
- [d]                 +-------<
+   |          111111111122
+   |0123456789012345678901
+  a| +--------<
+  b|     +---------<
+  c|          +---------<
+  d|            +-------<
+  e|                +<
+↓scheduling↓
+   |          111111111122
+   |0123456789012345678901
+a,c|+---------+---------<
+b,e|     +---------<+<
+  d|            +-------<
 ```
 
 if need gaps (add margin to end)
@@ -61,17 +61,17 @@ scheduling(items.map((v) => ({ ...v, end: v.end + 1 })))
 ```
 
 ```
-                   111111111122
-         0123456789012345678901
- [a,d]   +--------<. +-------<.
- [b,e]        +---------<+<.
- [c]              +----------<.
+   |          111111111122
+   |0123456789012345678901
+a,d|+--------.< +-------.<
+b,e|     +---------.+.<
+  c|          +---------.<
 ```
 
 ### windowed
 
 ```js
-import { windowed } from '@elzup/kit/algo/windowed'
+import { windowed } from '@elzup/kit/lib/algo/windowed'
 windowed([1, 2, 3, 4], 2)
 // [[1, 2], [2, 3], [3, 4]]
 
@@ -86,7 +86,7 @@ windowed([1, 2, 3, 4, 5, 6], 3)
 ### defrag
 
 ```js
-import { defrag } from '@elzup/kit/algo/defrag'
+import { defrag } from '@elzup/kit/lib/algo/defrag'
 
 defrag([2, 3, 4, 5, 6, 10, 21, 22, 23])
 // [ { start: 2, end: 6 },
@@ -99,16 +99,56 @@ defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
 //   { start: 10, end: 12 } ]
 ```
 
+## chunk
+
+```js
+import { chunk } from '@elzup/kit/lib/chunk'
+chunk([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
+// [ [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+//   [10], ]
+```
+
 ### invert
 
 ### makeCycle
 
 ### clean
 
+remove undefined
+primitive clone
+
+```js
+import { clean } from '@elzup/kit/lib/clean'
+
+clean({
+  a: 1,
+  b: undefined,
+  c: 'c',
+})
+// {
+//   a: 1,
+//   c: "c",
+// }
+
+// !!
+clean({ a: new Date(0), b: null, c: new RegExp('^a$') })
+// {
+//    a: "1970-01-01T00:00:00.000Z",
+//    b: null,
+//    c: Object {},
+//  }
+```
+
+> **Warning:**
+> clean, (and aliased clone) is using JSON.stringify
+> can not serialize Date, RegExp, Function, undefined, Symbol, Map, Set, WeakMap, WeakSet
+
 ### makeObj
 
 ```js
-import { makeObj } from '@elzup/kit/obj/makeObj'
+import { makeObj } from '@elzup/kit/lib/obj/makeObj'
 makeObj(['a', 'b'], 0)
 
 // {
@@ -119,35 +159,124 @@ makeObj(['a', 'b'], 0)
 
 ### countup
 
-### sortBy
+```js
+import { countup } from '@elzup/kit/lib/obj/countup'
+
+countup(['a', 'b', 'a', 1, 0, 0, 0])
+// Map {
+//   "a" => 2,
+//   "b" => 1,
+//   1 => 1,
+//   0 => 3,
+// }
+```
 
 ### times
 
-### rand
+```js
+import { timeParts } from '@elzup/kit/lib/time/utils'
+
+timeParts()
+// { year: 2123, month: 4, date: 5, hour: 6, minute: 7, second: 8 }
+
+import { timePartsStr } from '@elzup/kit/lib/time/format'
+
+timePartsStr()
+// { yyyy: "2123", mo: "04", dd: "05", hh: "06", mn: "07", ss: "08" }
+```
 
 ### width
 
-fullWidth
-hardNormalizeText
+```js
+import {
+  fullWidth,
+  halfWith,
+  hardNormalizeText,
+  softNormalizeText,
+} from '@elzup/kit/lib/char/width'
+
+fullWidth('AbcＡｂ')
+// 'ＡｂｃＡｂ'
+halfWidth('abcＡｂ')
+// 'abcAb'
+
+hardNormalizeText('Ａｂｃ「￥＄％＃＆＊＠」１２３')
+// "Abc(¥$%#&*@)123"
+
+hardNormalizeText('Ａｂc｛￥$%#&*@＞１２３') ===
+  hardNormalizeText('Abｃ（¥＄％＃＆＊＠］123')
+// true
+
+softNormalizeText('Ａｂｃ「￥＄％＃＆＊＠」１２３')
+// "Abc(¥$%#&*@)123"
+softNormalizeText('ＡｂC｛【￥$%#&*@＞>１２３')
+// "AbC{(¥$%#&*@>>123"
+softNormalizeText('aBｃ（<¥＄％＃＆＊＠)］123')
+// "aBc(<¥$%#&*@)]123"
+```
 
 ### googleSearchUrl
 
 ```js
-const { hoge } = require('@elzup/kit')
-
-/* tree shaking */
-// const { hoge } = require('@elzup/kit/lib/hoge')
-
-hoge()
+import { googleSearchUrl } from '@elzup/kit/lib/template/url'
+googleSearchUrl('abc')
+// "https://www.google.co.jp/search?q=abc"
 ```
-
-## trim
 
 ## clamp
 
-## chunk
+```js
+import { clamp, negaposi } from '@elzup/kit/lib/clamp'
+// val, min, max
+
+clamp(1, 20, 30) // 20
+clamp(12, 0, 10) // 10
+
+negaposi(10) // 1
+negaposi(-500) // -1
+negaposi(0) // 0
+```
 
 ## transpose
+
+```js
+import { transpose } from '@elzup/kit/lib/transpose'
+transpose([
+  ['a', 'b'],
+  ['c', 'd'],
+  ['d', 'e'],
+])
+// [ ['a', 'c', 'd'],
+//   ['b', 'd', 'e'], ]
+```
+
+## performance
+
+```js
+import { performanceTimeUtil } = from '@elzup/kit/lib/performance'
+const timer = performanceTimeUtil()
+timer.mark('step1')
+> step1:1234ms
+timer.mark('step2')
+> step2:1ms
+
+const custom = performanceTimeUtil(({ ms }, name, ...params) =>{
+  console.log(`${name}: [${Math.floor(ms)}ms]`)
+  console.log(`- ${JSON.stringify(params)} ${ms}`)
+})
+
+custom.mark('step1')
+> step1: [4731ms]
+> - [] 4731.639425039291
+
+custom.mark('step2', 'hello')
+> step2: [9ms]
+> - ["hello"] 9.945472955703735
+
+custom.mark('step3', 1, 2, 3)
+> step3: [850ms]
+> - [1,2,3] 850.8986039161682
+```
 
 ### Other specs (more than 50 funcs)
 

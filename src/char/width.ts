@@ -14,7 +14,20 @@ const shiftToFullWidth = (c: string) => shift(c, SHIFT)
 export const fullWidth = (s: string) =>
   s.replace(HALF_WIDTH_CHARS, shiftToFullWidth)
 
-const FULL_WIDTH_SIGN_PAIRS = [
+type ReplacePair = [string, string][]
+
+const FULL_WIDTH_PAREN_PAIRS: ReplacePair = [
+  ['（「『〔【', '('],
+  ['［', '['],
+  ['｛', '{'],
+  ['〈《＜', '<'],
+  ['）」』〕】', ')'],
+  ['］', ']'],
+  ['｝', '}'],
+  ['〉》＞', '>'],
+]
+
+const FULL_WIDTH_SIGN_PAIRS: ReplacePair = [
   ['　', ' '],
   ['！', '!'],
   ['？', '?'],
@@ -39,19 +52,28 @@ const FULL_WIDTH_SIGN_PAIRS = [
   ['＆', '&'],
   ['＊', '*'],
   ['＠', '@'],
+  ...FULL_WIDTH_PAREN_PAIRS,
 ]
 
-export const halfySigns = (title: string) =>
-  FULL_WIDTH_SIGN_PAIRS.reduce(
-    (s, [full, half]) => s.replace(new RegExp(`[${full}]`, 'g'), half),
+export const pairReplace = (title: string, pairs: ReplacePair) =>
+  pairs.reduce(
+    (s, [full, half]) =>
+      s.replace(new RegExp(`[${escapeRegExp(full)}]`, 'g'), half),
     title
   )
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+export const halfySigns = (title: string) =>
+  pairReplace(title, FULL_WIDTH_SIGN_PAIRS)
 // ・々仝ヽヾゝゞ〃〆
 
-export const halfyParens = (s: string) =>
-  s
-    .replace(/[（〔［｛〈《「『【＜]/g, '(')
-    .replace(/[）〕］｝〉》」』】＞]/g, ')')
+export const halfyParens = (s: string) => pairReplace(s, FULL_WIDTH_PAREN_PAIRS)
+export const normalizeParens = (s: string) =>
+  pairReplace(halfyParens(s), [
+    ['[{<', '('],
+    [']}>', ')'],
+  ])
 
+export const softNormalizeText = (s: string) => halfySigns(halfWidth(s))
 export const hardNormalizeText = (s: string) =>
-  halfySigns(halfyParens(halfWidth(s)))
+  halfySigns(normalizeParens(halfWidth(s))).toLocaleLowerCase()

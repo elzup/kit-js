@@ -2,14 +2,14 @@ import {
   formatHms,
   formatTime,
   formatYmd,
+  hm,
   jpDate,
   shiftDate,
-  times,
+  timeParts,
+  timePartsStr,
   timesNow,
   ymd,
   ymdNum,
-  timePartsStr,
-  hm,
 } from '../index'
 
 beforeAll(() => jest.useFakeTimers())
@@ -19,12 +19,12 @@ const date = new Date(4836380828000)
 // "2123-04-05 06:07:08"
 const lDate = new Date('2123-04-05 06:07:08')
 
-test('times', () => {
+test('timeParts', () => {
   jest.setSystemTime(lDate)
 
-  expect(times(lDate)).toMatchInlineSnapshot(`
+  expect(timeParts(lDate)).toMatchInlineSnapshot(`
     Object {
-      "day": 5,
+      "date": 5,
       "hour": 6,
       "minute": 7,
       "month": 4,
@@ -36,7 +36,7 @@ test('times', () => {
 test('timesNow', () => {
   expect(timesNow()).toMatchInlineSnapshot(`
     Object {
-      "day": 5,
+      "date": 5,
       "hour": 6,
       "minute": 7,
       "month": 4,

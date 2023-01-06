@@ -36,6 +36,8 @@ export {
   halfyParens,
   halfySigns,
   hardNormalizeText,
+  normalizeParens,
+  softNormalizeText,
 } from './char/width'
 export { chunk } from './chunk'
 export { chunkStr } from './chunkStr'
@@ -102,7 +104,7 @@ export {
   ymd,
   ymdNum,
 } from './time/format'
-export { jpDate, shiftDate, timeParts as times, timesNow } from './time/utils'
+export { jpDate, shiftDate, timeParts, timesNow } from './time/utils'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'
 export { uniq } from './uniq'

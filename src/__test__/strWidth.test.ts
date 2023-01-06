@@ -2,8 +2,10 @@ import {
   fullWidth,
   halfWidth,
   halfyParens,
+  normalizeParens,
   halfySigns,
   hardNormalizeText,
+  softNormalizeText,
 } from '../index'
 
 test('fullWidth', () => {
@@ -18,8 +20,16 @@ test('halfWidth', () => {
 
 test('halfyParens', () => {
   expect(
-    halfyParens('[（〔［｛〈《「『【＜][）〕］｝〉》」』】＞]')
-  ).toMatchInlineSnapshot(`"[((((((((((][))))))))))]"`)
+    halfyParens('（〔｛「『【）〕｝」』】〈《＜〉》＞［］')
+  ).toMatchInlineSnapshot(`"(({((())})))<<<>>>[]"`)
+  expect(halfyParens('<>[]{}()')).toBe('<>[]{}()')
+})
+
+test('normalizeParens', () => {
+  expect(
+    normalizeParens('（〔［｛〈《「『【＜）〕］｝〉》」』】＞')
+  ).toMatchInlineSnapshot(`"(((((((((())))))))))"`)
+  expect(normalizeParens('<>[]{}()')).toBe(`()()()()`)
 })
 
 test('halfySigns', () => {
@@ -32,5 +42,20 @@ test('halfySigns', () => {
 test('hardNormalizeText', () => {
   expect(
     hardNormalizeText('Ａｂｃ「￥＄％＃＆＊＠」１２３')
+  ).toMatchInlineSnapshot(`"abc(¥$%#&*@)123"`)
+  const a = hardNormalizeText('ＡｂC｛【￥$%#&*@＞>１２３')
+  const b = hardNormalizeText('aBｃ（<¥＄％＃＆＊＠)］123')
+
+  expect(a).toBe(b)
+})
+
+test('softNormalizeText', () => {
+  expect(
+    softNormalizeText('Ａｂｃ「￥＄％＃＆＊＠」１２３')
   ).toMatchInlineSnapshot(`"Abc(¥$%#&*@)123"`)
+  const a = softNormalizeText('ＡｂC｛【￥$%#&*@＞>１２３')
+  const b = softNormalizeText('aBｃ（<¥＄％＃＆＊＠)］123')
+
+  expect(a).toMatchInlineSnapshot(`"AbC{(¥$%#&*@>>123"`)
+  expect(b).toMatchInlineSnapshot(`"aBc(<¥$%#&*@)]123"`)
 })
