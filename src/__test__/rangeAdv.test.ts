@@ -6,6 +6,7 @@ test('rangeAdv', () => {
   expect(rangeAdv(0, 8, 2)).toStrictEqual([0, 2, 4, 6])
   expect(rangeAdv(8, 0, -2)).toStrictEqual([8, 6, 4, 2])
   expect(rangeAdv(3, -3, -1)).toStrictEqual([3, 2, 1, 0, -1, -2])
+  expect(rangeAdv(1, 1)).toStrictEqual([])
 })
 
 test('rangeAdv arg error', () => {

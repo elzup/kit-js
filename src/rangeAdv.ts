@@ -1,12 +1,12 @@
-const calcStep = (start: number, end: number, step0?: number) => {
-  if (step0 !== undefined) return step0
-  if (start <= end) return 1
-  return -1
+import { negaposi } from './clamp'
+
+const calcStep = (start: number, end: number, step?: number) => {
+  if (step !== undefined) return step
+  return negaposi(end - start)
 }
 
-export const rangeAdv = (start: number, end: number, step0?: number) => {
-  const step = calcStep(start, end, step0)
-
+const rangeAdvCore = (start: number, end: number, step: number) => {
+  if (start === end) return []
   if (step === 0) throw new Error('step cannot be zero')
   if (start < end && step < 0) throw new Error('step cannot be negative')
   if (start > end && step > 0) throw new Error('step cannot be positive')
@@ -18,4 +18,8 @@ export const rangeAdv = (start: number, end: number, step0?: number) => {
     nums.push(i)
   }
   return nums
+}
+
+export const rangeAdv = (start: number, end: number, step?: number) => {
+  return rangeAdvCore(start, end, calcStep(start, end, step))
 }
