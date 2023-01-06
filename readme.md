@@ -322,10 +322,6 @@ rename src/{shiftChar.ts => char/shift.ts}
 rename src/{strinc.ts => incstr.ts}
 ```
 
-## Dependency graph
-
-![dependencygraph.svg](dependencygraph.svg)
-
 ## License
 
 MIT © [anozon](https://anozon.me)
