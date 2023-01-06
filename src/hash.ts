@@ -1,7 +1,8 @@
-import { createHash } from 'crypto'
+import { hashDigest } from './crypto'
 
 export const hash = (s: string, algorithm: string, enc: BufferEncoding) =>
-  createHash(algorithm).update(String(s)).digest().toString(enc)
+  hashDigest(s, algorithm).toString(enc)
+
 export const makeHash =
   (algorithm: string, enc: BufferEncoding) => (s: string) =>
     hash(s, algorithm, enc)

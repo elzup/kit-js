@@ -5,6 +5,7 @@ test('trimQuote', () => {
   expect(trimQuote('"')).toBe('')
   expect(trimQuote('a')).toBe('a')
   expect(trimQuote('"a')).toBe('a')
+  expect(trimQuote('""a"b"c"""')).toBe(`"a"b"c""`)
 })
 
 test('trim', () => {

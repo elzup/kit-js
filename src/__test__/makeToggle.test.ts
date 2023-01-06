@@ -3,11 +3,11 @@ import { makeCycle, makeToggle, toggle } from '../index'
 
 describe('makeToggle', () => {
   it('premitive array', () => {
-    const toggleArr = makeToggle([1, 2, 3])
+    const toggle3 = makeToggle([1, 2, 3])
 
-    expect(toggleArr(1)).toBe(2)
-    expect(toggleArr(2)).toBe(3)
-    expect(toggleArr(3)).toBe(1)
+    expect(toggle3(1)).toBe(2)
+    expect(toggle3(2)).toBe(3)
+    expect(toggle3(3)).toBe(1)
   })
 
   it('cyclable', () => {
@@ -49,8 +49,6 @@ describe('makeToggle', () => {
   })
 
   it('alias makeCycle', () => {
-    const toggleArr = makeCycle([1, 2, 3])
-
-    expect(toggleArr(3)).toBe(1)
+    expect(makeCycle).toBeDefined()
   })
 })

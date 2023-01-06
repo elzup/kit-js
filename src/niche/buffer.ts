@@ -1,5 +1,6 @@
 const fromCodePoint = (n: number) => String.fromCodePoint(n)
-const toCodePoint = (s: string) => s.codePointAt(0) ?? 0
+/* istanbul ignore next */
+const toCodePoint = (s: string) => s.codePointAt(0) ?? NaN
 
 export const repartitionBits = (buf: Uint8Array, bn: number): string => {
   const bits = Array.from(buf)

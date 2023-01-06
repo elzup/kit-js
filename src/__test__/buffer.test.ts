@@ -9,6 +9,9 @@ describe('repartitionBits', () => {
       )
     ).toMatchInlineSnapshot(`"?0<3"`)
   })
+  it('empty', () => {
+    expect(repartitionBits(new Uint8Array([]), 6)).toMatchInlineSnapshot(`""`)
+  })
 })
 
 describe('unRepartitionBits', () => {
@@ -16,6 +19,12 @@ describe('unRepartitionBits', () => {
     expect(
       Buffer.from(unRepartitionBits('abcdefg', 6)).toString('hex')
     ).toMatchInlineSnapshot(`"c38b1e4cb9b3"`)
+  })
+
+  it('empty', () => {
+    expect(
+      Buffer.from(unRepartitionBits('', 6)).toString('hex')
+    ).toMatchInlineSnapshot(`""`)
   })
 })
 

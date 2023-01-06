@@ -1,8 +1,8 @@
-import { performanceTimeUtil } from '../performance'
+import { performanceTimeUtil } from '../index'
 
 describe('performanceTimeUtil', () => {
   it('default callback', () => {
-    const consoleSpy = jest.spyOn(console, 'log')
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation()
 
     jest.useFakeTimers({ now: 1_000_000 })
 

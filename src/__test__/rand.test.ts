@@ -1,11 +1,11 @@
 import {
-  randRangeV4 as randRange,
-  choiseV4 as choise,
-  sampleV4 as sample,
-  shuffleV4 as shuffle,
+  choise,
   choiseSeed,
+  randRange,
   randRangeSeed,
+  sample,
   sampleSeed,
+  shuffle,
   shuffleSeed,
 } from '../index'
 
@@ -90,14 +90,14 @@ describe('rand seed', () => {
     const res = shuffleSeed([1, 2, 3, 4, 5], 'b')
 
     expect(res).toMatchInlineSnapshot(`
-    Array [
-      3,
-      4,
-      2,
-      1,
-      5,
-    ]
-  `)
+      [
+        3,
+        4,
+        2,
+        1,
+        5,
+      ]
+    `)
   })
 
   it('sampleSeed', () => {
@@ -105,17 +105,17 @@ describe('rand seed', () => {
     const res3 = sampleSeed([1, 2, 3, 4, 5], 3, 'a')
 
     expect(res1).toMatchInlineSnapshot(`
-    Array [
-      3,
-    ]
-  `)
+      [
+        3,
+      ]
+    `)
     expect(res3).toMatchInlineSnapshot(`
-    Array [
-      2,
-      3,
-      5,
-    ]
-  `)
+      [
+        2,
+        3,
+        5,
+      ]
+    `)
   })
   it('choiseSeed', () => {
     const res = choiseSeed([1, 2, 3, 4, 5], 'a')

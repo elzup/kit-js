@@ -6,17 +6,17 @@ describe('groupBy', () => {
     const groups = groupByFunc([1, 2, 3, 4], (v) => String(v % 2))
 
     expect(groups).toMatchInlineSnapshot(`
-          Object {
-            "0": Array [
-              2,
-              4,
-            ],
-            "1": Array [
-              1,
-              3,
-            ],
-          }
-      `)
+      {
+        "0": [
+          2,
+          4,
+        ],
+        "1": [
+          1,
+          3,
+        ],
+      }
+    `)
     expectType<Record<number, number[]>>(groups)
   })
 
@@ -36,22 +36,22 @@ describe('groupBy', () => {
     expectType<Record<Category, Item[]>>(groups)
 
     expect(groups).toMatchInlineSnapshot(`
-      Object {
-        "a": Array [
-          Object {
+      {
+        "a": [
+          {
             "category": "a",
           },
-          Object {
+          {
             "category": "a",
           },
         ],
-        "b": Array [
-          Object {
+        "b": [
+          {
             "category": "b",
           },
         ],
-        "c": Array [
-          Object {
+        "c": [
+          {
             "category": "c",
           },
         ],

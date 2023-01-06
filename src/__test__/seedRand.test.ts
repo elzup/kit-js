@@ -1,23 +1,23 @@
 import {
-  choise,
+  choiseSeed,
   makeRand,
   randGen,
-  randRange,
+  randRangeSeed,
+  randSeed,
+  randSeedAdv,
+  randSeedBuf,
   range,
-  sample,
-  seedRand,
-  seedRandAdvance,
-  seedRandBuf,
-  shuffle,
+  sampleSeed,
+  shuffleSeed,
 } from '../index'
 
 test('rand', () => {
-  const paralels = range(10).map((n) => seedRand(String(n)))
+  const paralels = range(10).map((n) => randSeed(String(n)))
 
-  expect(seedRand(1)).toMatchInlineSnapshot(`0.4519428262831776`)
-  expect(seedRand('1')).toMatchInlineSnapshot(`0.4519428262831776`)
+  expect(randSeed(1)).toMatchInlineSnapshot(`0.4519428262831776`)
+  expect(randSeed('1')).toMatchInlineSnapshot(`0.4519428262831776`)
   expect(paralels).toMatchInlineSnapshot(`
-    Array [
+    [
       0.402037404151159,
       0.4519428262831776,
       0.22800373001303437,
@@ -32,14 +32,14 @@ test('rand', () => {
   `)
 })
 test('seedRandBuf', () => {
-  const resBuf = seedRandBuf('abc')
+  const resBuf = randSeedBuf('abc')
 
   expect(resBuf.toString('base64')).toMatchInlineSnapshot(
     `"ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0="`
   )
 })
 test('seedRandAdvance', () => {
-  const res = seedRandAdvance('abc')
+  const res = randSeedAdv('abc')
 
   expect(res.num).toMatchInlineSnapshot(`0.7464366390494545`)
   expect(res.seed).toMatchInlineSnapshot(`"abc"`)
@@ -49,18 +49,14 @@ test('seedRandAdvance', () => {
 })
 
 test('randRange', () => {
-  const v1 = randRange('a1', 10)
-  const v2 = randRange('a1', 20, 30)
-
-  expect(v1).toMatchInlineSnapshot(`4`)
-  expect(v2).toMatchInlineSnapshot(`24`)
+  expect(randRangeSeed(20, 30, 'a1')).toMatchInlineSnapshot(`23`)
 })
 
 test('shuffle', () => {
-  const res = shuffle('b', [1, 2, 3, 4, 5])
+  const res = shuffleSeed([1, 2, 3, 4, 5], 'b')
 
   expect(res).toMatchInlineSnapshot(`
-    Array [
+    [
       3,
       4,
       2,
@@ -71,33 +67,27 @@ test('shuffle', () => {
 })
 
 test('sample', () => {
-  const res1 = sample('a', [1, 2, 3, 4, 5])
-  const res3 = sample('a', [1, 2, 3, 4, 5], 3)
+  const res3 = sampleSeed([1, 2, 3, 4, 5], 3, 'a')
 
-  expect(res1).toMatchInlineSnapshot(`
-    Array [
-      3,
-    ]
-  `)
   expect(res3).toMatchInlineSnapshot(`
-    Array [
-      3,
+    [
       2,
-      4,
+      3,
+      5,
     ]
   `)
 })
 test('choise', () => {
-  const res = choise('a', [1, 2, 3, 4, 5])
+  const res = choiseSeed([1, 2, 3, 4, 5], 'a')
 
-  expect(res).toMatchInlineSnapshot(`3`)
+  expect(res).toMatchInlineSnapshot(`5`)
 })
 test('randGen', () => {
   const r = randGen('a')
   const res = [r.next(), r.next(), r.next()].map((v) => v.value)
 
   expect(res).toMatchInlineSnapshot(`
-    Array [
+    [
       0.873368340806717,
       0.4372768375470124,
       0.28616679732544187,
@@ -119,12 +109,12 @@ describe('makeRand', () => {
 
     expect(seed).toBe('a')
     expect(res).toMatchInlineSnapshot(`
-          Array [
-            0.873368340806717,
-            0.4372768375470124,
-            0.28616679732544187,
-          ]
-      `)
+      [
+        0.873368340806717,
+        0.4372768375470124,
+        0.28616679732544187,
+      ]
+    `)
   })
   it('seed by Date', () => {
     const { fn: random, seed } = makeRand()
@@ -132,7 +122,7 @@ describe('makeRand', () => {
 
     expect(seed).toBe('123456')
     expect(res).toMatchInlineSnapshot(`
-      Array [
+      [
         0.41013306719015047,
         0.11510874444732705,
         0.8396802631114423,

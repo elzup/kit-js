@@ -20,7 +20,7 @@ describe('schedulingPick', () => {
     ])
 
     expect(ids).toStrictEqual(['a', 'b', 'c'])
-    expect(after).toMatchInlineSnapshot(`Array []`)
+    expect(after).toMatchInlineSnapshot(`[]`)
   })
 
   it('string range', () => {
@@ -95,6 +95,19 @@ describe('scheduling', () => {
     ])
 
     expect(ids).toStrictEqual([['a', 'c'], ['b', 'e'], ['d']])
+  })
+
+  it('order margin case', () => {
+    const items = [
+      { id: 'a', start: 1, end: 10 },
+      { id: 'b', start: 5, end: 15 },
+      { id: 'c', start: 10, end: 20 },
+      { id: 'd', start: 12, end: 20 },
+      { id: 'e', start: 16, end: 17 },
+    ]
+    const ids = scheduling(items.map((v) => ({ ...v, end: v.end + 1 })))
+
+    expect(ids).toStrictEqual([['a', 'd'], ['b', 'e'], ['c']])
   })
 })
 

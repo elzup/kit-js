@@ -11,24 +11,24 @@ test('pickUrl', () => {
     'https://a.com/piyo/b (https://b.com/hoge)\na\nhttp://c.net'
   )
 
-  expect(nonMatch).toMatchInlineSnapshot(`Array []`)
+  expect(nonMatch).toMatchInlineSnapshot(`[]`)
   expect(match).toMatchInlineSnapshot(`
-    Array [
+    [
       "https://a.com/piyo",
     ]
   `)
   expect(queryParamAndEncode).toMatchInlineSnapshot(`
-    Array [
+    [
       "https://a.com/piyo/b?q=%7Ba%3A1%7D",
     ]
   `)
   expect(ignoreMb).toMatchInlineSnapshot(`
-    Array [
+    [
       "https://a.com/piyo/b",
     ]
   `)
   expect(multiUrl).toMatchInlineSnapshot(`
-    Array [
+    [
       "https://a.com/piyo/b",
       "https://b.com/hoge)",
       "http://c.net",
@@ -42,10 +42,10 @@ test('pickUrlMb', () => {
   const nonMatch = pickUrlMb('\nhoge\n')
 
   expect(multiByteUrls).toMatchInlineSnapshot(`
-    Array [
+    [
       "https://a.com/piyo/あいう?q=%7Ba%3A1%7D",
       "https://あ.jp",
     ]
   `)
-  expect(nonMatch).toMatchInlineSnapshot(`Array []`)
+  expect(nonMatch).toMatchInlineSnapshot(`[]`)
 })

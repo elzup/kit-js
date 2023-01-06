@@ -2,27 +2,29 @@ import {
   formatHms,
   formatTime,
   formatYmd,
+  hm,
   jpDate,
   shiftDate,
-  times,
+  timeParts,
+  timePartsStr,
   timesNow,
   ymd,
   ymdNum,
 } from '../index'
 
-beforeAll(() => jest.useFakeTimers('modern'))
+beforeAll(() => jest.useFakeTimers())
 afterAll(jest.useRealTimers)
 
 const date = new Date(4836380828000)
 // "2123-04-05 06:07:08"
 const lDate = new Date('2123-04-05 06:07:08')
 
-test('times', () => {
+test('timeParts', () => {
   jest.setSystemTime(lDate)
 
-  expect(times(lDate)).toMatchInlineSnapshot(`
-    Object {
-      "day": 5,
+  expect(timeParts(lDate)).toMatchInlineSnapshot(`
+    {
+      "date": 5,
       "hour": 6,
       "minute": 7,
       "month": 4,
@@ -33,8 +35,8 @@ test('times', () => {
 })
 test('timesNow', () => {
   expect(timesNow()).toMatchInlineSnapshot(`
-    Object {
-      "day": 5,
+    {
+      "date": 5,
       "hour": 6,
       "minute": 7,
       "month": 4,
@@ -42,6 +44,21 @@ test('timesNow', () => {
       "year": 2123,
     }
   `)
+})
+test('timePartsStr', () => {
+  expect(timePartsStr(lDate)).toMatchInlineSnapshot(`
+    {
+      "dd": "05",
+      "hh": "06",
+      "mn": "07",
+      "mo": "04",
+      "ss": "08",
+      "yyyy": "2123",
+    }
+  `)
+})
+test('hm', () => {
+  expect(hm(lDate)).toMatchInlineSnapshot(`"0607"`)
 })
 
 test('formatTime', () => {

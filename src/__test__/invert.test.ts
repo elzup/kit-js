@@ -27,7 +27,7 @@ describe('invert', () => {
 
     expectType<Record<string, number>>(res)
     expect(res).toMatchInlineSnapshot(`
-      Object {
+      {
         "a": 0,
         "b": 1,
       }

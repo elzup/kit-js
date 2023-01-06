@@ -12,7 +12,7 @@ test('queueMerge', () => {
     )
   ).toStrictEqual([1, 2, 3, 4, 5, 6])
 
-  expect(queueMerge([[], []], () => 0)).toMatchInlineSnapshot(`Array []`)
+  expect(queueMerge([[], []], () => 0)).toMatchInlineSnapshot(`[]`)
 
   expect(
     queueMerge(
