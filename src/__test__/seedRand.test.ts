@@ -17,7 +17,7 @@ test('rand', () => {
   expect(randSeed(1)).toMatchInlineSnapshot(`0.4519428262831776`)
   expect(randSeed('1')).toMatchInlineSnapshot(`0.4519428262831776`)
   expect(paralels).toMatchInlineSnapshot(`
-    Array [
+    [
       0.402037404151159,
       0.4519428262831776,
       0.22800373001303437,
@@ -56,7 +56,7 @@ test('shuffle', () => {
   const res = shuffleSeed([1, 2, 3, 4, 5], 'b')
 
   expect(res).toMatchInlineSnapshot(`
-    Array [
+    [
       3,
       4,
       2,
@@ -70,7 +70,7 @@ test('sample', () => {
   const res3 = sampleSeed([1, 2, 3, 4, 5], 3, 'a')
 
   expect(res3).toMatchInlineSnapshot(`
-    Array [
+    [
       2,
       3,
       5,
@@ -87,7 +87,7 @@ test('randGen', () => {
   const res = [r.next(), r.next(), r.next()].map((v) => v.value)
 
   expect(res).toMatchInlineSnapshot(`
-    Array [
+    [
       0.873368340806717,
       0.4372768375470124,
       0.28616679732544187,
@@ -109,12 +109,12 @@ describe('makeRand', () => {
 
     expect(seed).toBe('a')
     expect(res).toMatchInlineSnapshot(`
-          Array [
-            0.873368340806717,
-            0.4372768375470124,
-            0.28616679732544187,
-          ]
-      `)
+      [
+        0.873368340806717,
+        0.4372768375470124,
+        0.28616679732544187,
+      ]
+    `)
   })
   it('seed by Date', () => {
     const { fn: random, seed } = makeRand()
@@ -122,7 +122,7 @@ describe('makeRand', () => {
 
     expect(seed).toBe('123456')
     expect(res).toMatchInlineSnapshot(`
-      Array [
+      [
         0.41013306719015047,
         0.11510874444732705,
         0.8396802631114423,

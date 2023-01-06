@@ -20,7 +20,7 @@ describe('schedulingPick', () => {
     ])
 
     expect(ids).toStrictEqual(['a', 'b', 'c'])
-    expect(after).toMatchInlineSnapshot(`Array []`)
+    expect(after).toMatchInlineSnapshot(`[]`)
   })
 
   it('string range', () => {

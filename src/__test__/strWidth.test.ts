@@ -46,7 +46,7 @@ test('normalizeParens', () => {
 test('halfySigns', () => {
   expect(
     halfySigns('　！？／＼、，。．：；´｀¨‘’＿＾ー―‐－～✕×✖“”＝￥＄％＃＆＊＠')
-  ).toMatchInlineSnapshot(`" !?/\\\\,,..:;'''''_^----~×××\\"\\"=¥$%#&*@"`)
+  ).toMatchInlineSnapshot(`" !?/\\,,..:;'''''_^----~×××""=¥$%#&*@"`)
   expect(halfySigns('ーー')).toBe('--')
 })
 

@@ -10,7 +10,7 @@ test('parseDigits', () => {
   const abcLib = { a: 0, b: 1, c: 2, d: 3, e: 4 }
 
   expect(parseDigits('abcee', abcLib)).toStrictEqual([0, 1, 2, 4, 4])
-  expect(parseDigits('', abcLib)).toMatchInlineSnapshot(`Array []`)
+  expect(parseDigits('', abcLib)).toMatchInlineSnapshot(`[]`)
 })
 
 test('encodeDigits', () => {

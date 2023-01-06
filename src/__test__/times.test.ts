@@ -23,7 +23,7 @@ test('timeParts', () => {
   jest.setSystemTime(lDate)
 
   expect(timeParts(lDate)).toMatchInlineSnapshot(`
-    Object {
+    {
       "date": 5,
       "hour": 6,
       "minute": 7,
@@ -35,7 +35,7 @@ test('timeParts', () => {
 })
 test('timesNow', () => {
   expect(timesNow()).toMatchInlineSnapshot(`
-    Object {
+    {
       "date": 5,
       "hour": 6,
       "minute": 7,
@@ -47,7 +47,7 @@ test('timesNow', () => {
 })
 test('timePartsStr', () => {
   expect(timePartsStr(lDate)).toMatchInlineSnapshot(`
-    Object {
+    {
       "dd": "05",
       "hh": "06",
       "mn": "07",

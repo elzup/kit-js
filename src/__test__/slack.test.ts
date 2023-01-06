@@ -9,14 +9,14 @@ test('makeSlackParams', () => {
       icon_emoji: ':ghost:',
     })
   ).toMatchInlineSnapshot(`
-    Object {
-      "data": Object {
+    {
+      "data": {
         "channel": "#general",
         "icon_emoji": ":ghost:",
         "text": "hello",
         "username": "my bot",
       },
-      "headers": Object {
+      "headers": {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       "method": "POST",
@@ -28,11 +28,11 @@ test('makeSlackParams', () => {
       text: 'hello',
     })
   ).toMatchInlineSnapshot(`
-    Object {
-      "data": Object {
+    {
+      "data": {
         "text": "hello",
       },
-      "headers": Object {
+      "headers": {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       "method": "POST",

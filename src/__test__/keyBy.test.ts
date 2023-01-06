@@ -6,7 +6,7 @@ describe('keyBy', () => {
     const bys = keyBy([2, 3], (v) => String(v % 2))
 
     expect(bys).toMatchInlineSnapshot(`
-      Object {
+      {
         "0": 2,
         "1": 3,
       }
@@ -16,7 +16,7 @@ describe('keyBy', () => {
     const bys = keyBy([1, 2, 3, 4], (v) => String(v % 2))
 
     expect(bys).toMatchInlineSnapshot(`
-      Object {
+      {
         "0": 4,
         "1": 3,
       }
@@ -39,14 +39,14 @@ describe('keyBy', () => {
     expectType<Record<Category, Item>>(bys)
 
     expect(bys).toMatchInlineSnapshot(`
-      Object {
-        "a": Object {
+      {
+        "a": {
           "category": "a",
         },
-        "b": Object {
+        "b": {
           "category": "b",
         },
-        "c": Object {
+        "c": {
           "category": "c",
         },
       }
