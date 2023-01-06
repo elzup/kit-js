@@ -110,9 +110,17 @@ chunk([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
 //   [10], ]
 ```
 
-### invert
+### makeToggle
 
-### makeCycle
+```js
+import { makeToggle } from '@elzup/kit/lib/makeToggle'
+
+const toggle3 = makeToggle([1, 2, 3])
+
+expect(toggle3(1)).toBe(2)
+expect(toggle3(2)).toBe(3)
+expect(toggle3(3)).toBe(1)
+```
 
 ### clean
 
@@ -313,6 +321,10 @@ rename src/{formatTime.ts => time/utils.ts}
 rename src/{shiftChar.ts => char/shift.ts}
 rename src/{strinc.ts => incstr.ts}
 ```
+
+## Dependency graph
+
+![dependencygraph.svg](dependencygraph.svg)
 
 ## License
 
