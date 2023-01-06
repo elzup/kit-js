@@ -1,25 +1,27 @@
+import { performance } from 'perf_hooks'
 import { performanceTimeUtil } from '../index'
+
+jest.mock('perf_hooks', () => ({
+  performance: { now: () => 0 },
+}))
 
 describe('performanceTimeUtil', () => {
   it('default callback', () => {
+    const perfNow = jest.spyOn(performance, 'now').mockImplementation()
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation()
 
-    jest.useFakeTimers({ now: 1_000_000 })
-
-    // const timer = performanceTimeUtil(({ ms }, name) =>
-    //   console.log(`${name} ${ms}`)
-    // )
+    perfNow.mockReturnValueOnce(1_000_000)
 
     const timer = performanceTimeUtil()
 
-    jest.advanceTimersByTime(1234)
+    perfNow.mockReturnValueOnce(1_000_000 + 1234)
+
     timer.mark('step1')
 
-    jest.advanceTimersByTime(1.567)
+    perfNow.mockReturnValueOnce(1_000_000 + 1234 + 1.567)
 
     timer.mark('step2')
 
-    // expect(consoleSpy.mock.calls).toStrictEqual([[`step1:0ms`], [`step2:0ms`]])
     expect(consoleSpy.mock.calls.map(([v]) => v).join('\n'))
       .toMatchInlineSnapshot(`
       "step1:1234ms
@@ -29,19 +31,20 @@ describe('performanceTimeUtil', () => {
 
   it('custom callback', () => {
     const mockFn = jest.fn()
+    const perfNow = jest.spyOn(performance, 'now').mockImplementation()
 
-    jest.useFakeTimers({ now: 0 })
+    perfNow.mockReturnValueOnce(0)
 
     const timer = performanceTimeUtil(
       ({ ms }, n1: number, n2: number, names: string[]) =>
         mockFn({ ms, n1, n2, names })
     )
 
-    jest.advanceTimersByTime(1111)
+    perfNow.mockReturnValueOnce(1111)
 
     timer.mark(1, 10, ['a'])
 
-    jest.advanceTimersByTime(2222.33)
+    perfNow.mockReturnValueOnce(1111 + 2222.33)
     timer.mark(2, 20, ['b', 'c'])
 
     expect(mockFn.mock.calls[0][0]).toStrictEqual({

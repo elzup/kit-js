@@ -1,3 +1,5 @@
+import { performance } from 'perf_hooks'
+
 type PeformanceProperty = { ms: number }
 type Callback<CustomArgs extends any[] = []> = (
   p: PeformanceProperty,
