@@ -37,6 +37,7 @@ export {
   halfySigns,
   hardNormalizeText,
   normalizeParens,
+  pairReplace,
   softNormalizeText,
 } from './char/width'
 export { chunk } from './chunk'

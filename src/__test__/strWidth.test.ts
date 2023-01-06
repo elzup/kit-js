@@ -6,7 +6,18 @@ import {
   halfySigns,
   hardNormalizeText,
   softNormalizeText,
+  pairReplace,
 } from '../index'
+
+test('pairReplace', () => {
+  expect(
+    pairReplace('abcAbcde', [
+      ['a', '+'],
+      ['bB', '-'],
+      ['cC', '.'],
+    ])
+  ).toMatchInlineSnapshot(`"+-.A-.de"`)
+})
 
 test('fullWidth', () => {
   expect(fullWidth('AbcＡｂ')).toBe('ＡｂｃＡｂ')
