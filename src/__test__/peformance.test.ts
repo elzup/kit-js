@@ -1,4 +1,4 @@
-import { performanceTimeUtil } from '../performance'
+import { performanceTimeUtil } from '../index'
 
 describe('performanceTimeUtil', () => {
   it('default callback', () => {
