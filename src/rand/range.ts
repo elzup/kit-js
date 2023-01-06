@@ -7,7 +7,7 @@ const randRangeHit = (low: number, high: number, v: number) => {
 export const randRange = (
   min: number,
   max: number | (() => number) = Math.random,
-  rand = Math.random
+  rand: () => number = Math.random
 ): number => {
   if (typeof max === 'function') {
     return randRange(0, min, max)

@@ -81,7 +81,7 @@ export {
   makeRand,
   randGen,
   randSeed,
-  randSeedAdvance,
+  randSeedAdv,
   randSeedBuf,
 } from './rand/make'
 export { randRange } from './rand/range'

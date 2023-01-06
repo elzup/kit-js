@@ -4,7 +4,7 @@ import {
   randGen,
   randRangeSeed,
   randSeed,
-  randSeedAdvance,
+  randSeedAdv,
   randSeedBuf,
   range,
   sampleSeed,
@@ -39,7 +39,7 @@ test('seedRandBuf', () => {
   )
 })
 test('seedRandAdvance', () => {
-  const res = randSeedAdvance('abc')
+  const res = randSeedAdv('abc')
 
   expect(res.num).toMatchInlineSnapshot(`0.7464366390494545`)
   expect(res.seed).toMatchInlineSnapshot(`"abc"`)
