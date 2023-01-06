@@ -99,7 +99,7 @@ defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
 //   { start: 10, end: 12 } ]
 ```
 
-## chunk
+### chunk
 
 ```js
 import { chunk } from '@elzup/kit/lib/chunk'
@@ -231,7 +231,7 @@ googleSearchUrl('abc')
 // "https://www.google.co.jp/search?q=abc"
 ```
 
-## clamp
+### clamp
 
 ```js
 import { clamp, negaposi } from '@elzup/kit/lib/clamp'
@@ -245,7 +245,7 @@ negaposi(-500) // -1
 negaposi(0) // 0
 ```
 
-## transpose
+### transpose
 
 ```js
 import { transpose } from '@elzup/kit/lib/transpose'
@@ -258,7 +258,7 @@ transpose([
 //   ['b', 'd', 'e'], ]
 ```
 
-## performance
+### performance
 
 ```js
 import { performanceTimeUtil } = from '@elzup/kit/lib/performance'
