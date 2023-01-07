@@ -33,6 +33,11 @@ describe('regpick', () => {
       prints: [false, true, true, true, true, true, false],
     })
   })
+  it('non match', () => {
+    const { HEAD_0 } = regpickMatcher
+
+    expect(binstr(regpick([1, 1], Boolean, HEAD_0).prints)).toStrictEqual('00')
+  })
 
   it('matches', () => {
     const b00101010 = [0, 0, 1, 0, 1, 0, 1, 0]
