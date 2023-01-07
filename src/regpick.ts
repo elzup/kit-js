@@ -24,6 +24,18 @@ const regpickCore = <U>(
   return { matches: arr.filter((_v, i) => prints[i]), prints }
 }
 
-const planToPrint = (plans: Plan[], match: RegExp): Print[] => {
-  return []
+const planToPrint = (plans: Plan[], r: RegExp): Print[] => {
+  const blue = plans.map((v) => (v ? '1' : '0')).join('')
+
+  console.log({ blue })
+  const m = blue.match(r)
+
+  console.log(m)
+
+  if (m === null || m.index === undefined) return plans.map(() => false)
+
+  const { index: fi } = m
+  const li = fi + m[0].length
+
+  return plans.map((_v, i) => fi <= i && i < li)
 }
