@@ -99,6 +99,22 @@ defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
 //   { start: 10, end: 12 } ]
 ```
 
+### outscape
+
+```js
+import { outscape } from '@elzup/kit/lib/algo/outscape'
+
+const min = 60
+const hour = 60 * min
+
+outscape([min, 5 * min, 10 * min, 30 * min, hour], 8 * hour, 500, 10)
+// { visibles: [false, false, true, true, true] }
+/*             [ 1.04166, 5.20833, 10.4166, 31.25, 62.5 ] canvas gaps
+
+
+ruler sizes, coordinate width, canvas size, minimum gap canvas size */
+```
+
 ### chunk
 
 ```js
