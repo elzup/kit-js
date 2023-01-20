@@ -1,6 +1,8 @@
 export { defrag } from './algo/defrag'
+export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
 export { mergeSortArr, queueMerge } from './algo/queueMerge'
+export { rowspan } from './algo/rowspan'
 export {
   scheduling,
   schedulingBy,
@@ -74,7 +76,6 @@ export { keyBy } from './obj/keyBy'
 export { makeMap } from './obj/makeMap'
 export { makeObj } from './obj/makeObj'
 export { upsert, upsertMap } from './obj/upsert'
-export { outscape } from './algo/outscape'
 export { performanceTimeUtil } from './performance'
 export { pickUrl, pickUrlMb } from './pickUrl'
 export { decToRadix, radixToDec } from './radix'
