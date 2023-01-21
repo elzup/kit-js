@@ -20,13 +20,13 @@ export const schedulingPick = <T, K extends string | number = number>([
   ans.push(cur.id)
 
   for (let i = 0; i < a.length; i++) {
-    if (cur.end <= a[i].start) {
-      cur = a[i]
+    if (cur.end > a[i].start) continue
 
-      ans.push(cur.id)
-      a.splice(i, 1)
-      i--
-    }
+    cur = a[i]
+
+    ans.push(cur.id)
+    a.splice(i, 1)
+    i--
   }
 
   return [ans, a]
@@ -44,7 +44,6 @@ export const scheduling = <T>(a: ScheduleItem<T>[]): T[][] => {
     const [ids, after] = schedulingPick(arr)
 
     arr = after
-
     ans.push(ids)
   }
   return ans
@@ -71,7 +70,6 @@ const withSchedulingBy = <T>(
     return { v, s, id: s.id }
   })
   const res = scheduleFunc(k.map((v) => v.s))
-
   const byId = keyBy(k, (k) => k.s.id)
 
   return res.map((row) => row.map((id) => byId[id].v))
@@ -82,9 +80,7 @@ export const schedulingEaseTry = <T, K extends string | number = number>(
   n: number
 ): T[][] | false => {
   if (n <= 0) throw new Error('n must be greater than 0')
-  const ans: ScheduleItem<T, K>[][] = []
-
-  for (let j = 0; j < n; j++) ans[j] = []
+  const ans: ScheduleItem<T, K>[][] = Array.from({ length: n }, () => [])
 
   let p = 0
 
