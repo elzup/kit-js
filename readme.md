@@ -115,6 +115,36 @@ outscape([min, 5 * min, 10 * min, 30 * min, hour], 8 * hour, 500, 10)
 ruler sizes, coordinate width, canvas size, minimum gap canvas size */
 ```
 
+### alog/rowspan
+
+```js
+import { rowspan } from '@elzup/kit/lib/algo/rowspan'
+
+const rows = [
+  ['a', 1, true],
+  ['a', 2, false],
+  ['a', 2, true],
+  ['a', 2, true],
+  ['b', 1, false],
+]
+rowspan(rows)
+// [ [true, true, true],
+//   [false, true, true],
+//   [false, false, true],
+//   [false, false, false],
+//   [true, true, true], ]
+```
+
+<table>
+  <tbody>
+    <tr> <td rowspan=4>a</td> <td>1</td>           <td>true</td>           </tr>
+    <tr>                      <td rowspan=3>2</td> <td>false</td>          </tr>
+    <tr>                                           <td rowspan=2>true</td> </tr>
+    <tr>                                                                   </tr>
+    <tr> <td>b</td>           <td>1</td>           <td>false</td>          </tr>
+  </tbody>
+</table>
+
 ### chunk
 
 ```js
