@@ -15,7 +15,7 @@ describe('rowspan', () => {
       [true, true, true],
     ]
 
-    expect(rowspan(rows)).toBe(expected)
+    expect(rowspan(rows)).toStrictEqual(expected)
   })
   it('straddle', () => {
     const rows = [
@@ -29,13 +29,13 @@ describe('rowspan', () => {
       [true, true],
     ]
 
-    expect(rowspan(rows)).toBe(expected)
+    expect(rowspan(rows)).toStrictEqual(expected)
   })
 
   it('oneline', () => {
     const rows = [['a'], ['a'], ['b'], ['c'], ['a']]
     const expected = [[true], [false], [true], [true], [true]]
 
-    expect(rowspan(rows)).toBe(expected)
+    expect(rowspan(rows)).toStrictEqual(expected)
   })
 })
