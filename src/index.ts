@@ -99,6 +99,7 @@ export { stringify } from './stringify'
 export { makeSlackParams } from './template/slack'
 export { genTerms } from './template/terms'
 export { googleSearchImageUrl, googleSearchUrl } from './template/url'
+export { day, hour, min, sec, week } from './time/constants'
 export {
   formatHms,
   formatTime,

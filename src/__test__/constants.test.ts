@@ -13,6 +13,11 @@ import {
   isDev,
   printableAscii,
   safePrintableAscii,
+  sec,
+  min,
+  hour,
+  day,
+  week,
 } from '../index'
 
 const constants = {
@@ -30,6 +35,11 @@ const constants = {
   safePrintableAscii,
   base62,
   base90,
+  sec,
+  min,
+  hour,
+  day,
+  week,
 }
 
 test('constants', () => {
@@ -46,9 +56,14 @@ test('constants', () => {
       "charNonMisidentify": "ACDEFHJKMNPRTUVWXYZ2347",
       "charNums": "0123456789",
       "charStrongNonMisidentify": "ACHJKMNTXY34",
+      "day": 86400000,
+      "hour": 3600000,
       "isDev": false,
+      "min": 60000,
       "printableAscii": " !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~",
       "safePrintableAscii": "!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~",
+      "sec": 1000,
+      "week": 604800000,
     }
   `)
 })
