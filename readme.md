@@ -18,7 +18,7 @@ $ npm install @elzup/kit
 
 ## Usage
 
-### scheduling
+### alog/scheduling
 
 calc row grouping of Gantt chart
 
@@ -68,7 +68,7 @@ b,e|     +---------.+.<
   c|          +---------.<
 ```
 
-### windowed
+### alog/windowed
 
 ```js
 import { windowed } from '@elzup/kit/lib/algo/windowed'
@@ -83,7 +83,7 @@ windowed([1, 2, 3, 4, 5, 6], 3)
 //   [4, 5, 6] ]
 ```
 
-### defrag
+### alog/defrag
 
 ```js
 import { defrag } from '@elzup/kit/lib/algo/defrag'
@@ -99,7 +99,7 @@ defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
 //   { start: 10, end: 12 } ]
 ```
 
-### outscape
+### alog/outscape
 
 ```js
 import { outscape } from '@elzup/kit/lib/algo/outscape'
@@ -169,7 +169,7 @@ clean({ a: new Date(0), b: null, c: new RegExp('^a$') })
 > clean, (and aliased clone) is using JSON.stringify
 > can not serialize Date, RegExp, Function, undefined, Symbol, Map, Set, WeakMap, WeakSet
 
-### makeObj
+### obj/makeObj
 
 ```js
 import { makeObj } from '@elzup/kit/lib/obj/makeObj'
@@ -181,7 +181,7 @@ makeObj(['a', 'b'], 0)
 // }
 ```
 
-### countup
+### obj/countup
 
 ```js
 import { countup } from '@elzup/kit/lib/obj/countup'
@@ -195,7 +195,7 @@ countup(['a', 'b', 'a', 1, 0, 0, 0])
 // }
 ```
 
-### times
+### time
 
 ```js
 import { timeParts } from '@elzup/kit/lib/time/utils'
@@ -209,7 +209,7 @@ timePartsStr()
 // { yyyy: "2123", mo: "04", dd: "05", hh: "06", mn: "07", ss: "08" }
 ```
 
-### width
+### char/width
 
 ```js
 import {
@@ -239,7 +239,7 @@ softNormalizeText('aBｃ（<¥＄％＃＆＊＠)］123')
 // "aBc(<¥$%#&*@)]123"
 ```
 
-### googleSearchUrl
+### template/url googleSearchUrl
 
 ```js
 import { googleSearchUrl } from '@elzup/kit/lib/template/url'
