@@ -38,4 +38,8 @@ describe('rowspan', () => {
 
     expect(rowspan(rows)).toStrictEqual(expected)
   })
+  it('empty', () => {
+    expect(rowspan([])).toStrictEqual([])
+    expect(rowspan([[1]])).toStrictEqual([[true]])
+  })
 })
