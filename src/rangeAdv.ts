@@ -11,13 +11,9 @@ const rangeAdvCore = (start: number, end: number, step: number) => {
   if (start < end && step < 0) throw new Error('step cannot be negative')
   if (start > end && step > 0) throw new Error('step cannot be positive')
 
-  const nums = []
-  const check = start < end ? (n: number) => n < end : (n: number) => n > end
+  const length = Math.ceil(Math.abs(end - start) / Math.abs(step))
 
-  for (let i = start; check(i); i += step) {
-    nums.push(i)
-  }
-  return nums
+  return Array.from({ length }, (_, i) => start + i * step)
 }
 
 export const rangeAdv = (start: number, end: number, step?: number) => {
