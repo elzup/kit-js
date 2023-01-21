@@ -2,7 +2,7 @@ export { defrag } from './algo/defrag'
 export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
 export { mergeSortArr, queueMerge } from './algo/queueMerge'
-export { rowspan } from './algo/rowspan'
+export { rowspan, rowspanPos } from './algo/rowspan'
 export {
   scheduling,
   schedulingBy,
