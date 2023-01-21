@@ -1,10 +1,8 @@
-import { outscape } from '../index'
+import { hour, min, outscape } from '../index'
 
-const min = 60
 const min5 = 5 * min
 const min10 = 10 * min
 const min30 = 30 * min
-const hour = 60 * min
 
 describe('outscape', () => {
   it('full enough', () => {
