@@ -7,17 +7,22 @@ describe('binSearch', () => {
 
     expect(
       range(11).map((t) =>
-        binSearch((i) => a[i] > t, 0, a.length, intMiddle, 1)
+        binSearch({ dw: 0, up: a.length }, ({ dw, up }) => {
+          const mid = intMiddle(dw, up)
+
+          return { isOver: a[mid] > t, mid, isFinish: 1 >= up - dw }
+        })
       )
     ).toStrictEqual(a)
   })
 
   it('float', () => {
-    const middle = (min: number, max: number) => (min + max) / 2
-    const powOver = (n: number) => n * n > 2
+    expect(
+      binSearch({ dw: 0, up: 2 }, ({ dw, up }) => {
+        const mid = (dw + up) / 2
 
-    expect(binSearch(powOver, 0, 2, middle, 0.000001)).toMatchInlineSnapshot(
-      `1.4142131805419922`
-    )
+        return { mid, isOver: mid ** 2 > 2, isFinish: 0.000001 >= up - dw }
+      })
+    ).toMatchInlineSnapshot(`1.4142131805419922`)
   })
 })

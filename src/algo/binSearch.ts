@@ -1,21 +1,21 @@
+type Range = { dw: number; up: number }
 export const binSearch = (
-  isOver: (v: number) => boolean,
-  min: number,
-  max: number,
-  nextMiddle: (min: number, max: number) => number,
-  resolution: number
-) => {
-  let left = min
-  let right = max
-
-  while (resolution < right - left) {
-    const mid = nextMiddle(left, right)
-
-    if (isOver(mid)) {
-      right = mid
-    } else {
-      left = mid
-    }
+  range: Range,
+  nextMiddle: (range: Range) => {
+    isOver: boolean
+    mid: number
+    isFinish: boolean
   }
-  return left
+) => {
+  let up = range.up,
+    dw = range.dw
+
+  while (true) {
+    const { isOver, mid, isFinish } = nextMiddle({ dw, up })
+
+    if (isFinish) break
+    if (isOver) up = mid
+    else dw = mid
+  }
+  return dw
 }
