@@ -1,4 +1,4 @@
-import { binSearch, range } from '../index'
+import { binSearch, binSearchArr, range } from '../index'
 
 describe('binSearch', () => {
   it('int arr', () => {
@@ -25,4 +25,10 @@ describe('binSearch', () => {
       })
     ).toMatchInlineSnapshot(`1.4142131805419922`)
   })
+})
+
+test('binSearchArr', () => {
+  const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  expect(range(11).map((t) => binSearchArr(a, t))).toStrictEqual(a)
 })

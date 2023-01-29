@@ -19,3 +19,13 @@ export const binSearch = (
   }
   return dw
 }
+
+export const binSearchArr = (a: readonly number[], target: number) => {
+  const intMiddle = (min: number, max: number) => Math.floor((min + max) / 2)
+
+  return binSearch({ dw: 0, up: a.length }, ({ dw, up }) => {
+    const mid = intMiddle(dw, up)
+
+    return { isOver: a[mid] > target, mid, isFinish: 1 >= up - dw }
+  })
+}
