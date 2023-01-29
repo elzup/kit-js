@@ -1,4 +1,4 @@
-import { binSearch, binSearchArr, range } from '../index'
+import { binSearch, binSearchArr, binSearchFloat, range } from '../index'
 
 describe('binSearch', () => {
   it('int arr', () => {
@@ -31,4 +31,10 @@ test('binSearchArr', () => {
   const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   expect(range(11).map((t) => binSearchArr(a, t))).toStrictEqual(a)
+})
+
+test('v', () => {
+  expect(
+    binSearchFloat({ dw: 0, up: 10 }, (v) => v ** 2 > 3, 0.000001)
+  ).toMatchInlineSnapshot(`1.7320507764816284`)
 })
