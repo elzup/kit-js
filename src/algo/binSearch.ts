@@ -12,9 +12,9 @@ export const binSearch = (
     const mid = nextMiddle(left, right)
 
     if (isOver(mid)) {
-      left = mid
-    } else {
       right = mid
+    } else {
+      left = mid
     }
   }
   return left
