@@ -1,3 +1,4 @@
+export { binSearch } from './algo/binSearch'
 export { defrag } from './algo/defrag'
 export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
