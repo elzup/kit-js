@@ -8,22 +8,21 @@ describe('timeout', () => {
     spy.mockClear()
   })
 
-  //   it('no timeout', async () => {
-  //     async function heavyWork() {
-  //       await sleep(500)
-  //       return 'end'
-  //     }
+  it('no timeout', async () => {
+    async function heavyWork() {
+      await sleep(500)
+      return 'end'
+    }
 
-  //     const res = timeout(heavyWork(), 1_000).catch((e) => {
-  //       console.log('invalid timeout', e)
-  //     })
+    const res = timeout(heavyWork(), 1_000).catch((e) => {
+      console.log('invalid timeout', e)
+    })
 
-  //     jest.advanceTimersByTime(500)
-  //     await Promise.resolve()
+    jest.advanceTimersByTime(500)
+    await Promise.resolve()
 
-  //     // expect(await res).not.toThrow()
-  //     expect(await res).toBe('end')
-  //   })
+    expect(await res).toBe('end')
+  })
 
   it('throw timeout', async () => {
     async function heavyWork() {
