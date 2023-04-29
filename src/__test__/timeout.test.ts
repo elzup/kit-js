@@ -32,4 +32,15 @@ describe('timeout', () => {
 
     expect(await res).toMatchInlineSnapshot(`"Timeout"`)
   })
+
+  it('timeoutCover', async () => {
+    const safeTask = timeoutCover(heavyWork(100), 200, false)
+    const overTask = timeoutCover(heavyWork(200), 100, false)
+
+    jest.advanceTimersByTime(100)
+    await Promise.resolve()
+
+    expect(await safeTask).toMatchInlineSnapshot(`"end"`)
+    expect(await overTask).toMatchInlineSnapshot(`false`)
+  })
 })
