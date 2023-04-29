@@ -112,6 +112,7 @@ export {
   ymdNum,
 } from './time/format'
 export { sleep } from './time/sleep'
+export { timeout, timeoutCover } from './time/timeout'
 export { jpDate, shiftDate, timeParts, timesNow } from './time/utils'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'
