@@ -20,8 +20,8 @@ export {
   base90,
   char123abcABC,
   charABC,
-  charAbc123,
   charABCabc123,
+  charAbc123,
   charAlphabets,
   charMisidentify,
   charNonMisidentify,
@@ -111,6 +111,7 @@ export {
   ymd,
   ymdNum,
 } from './time/format'
+export { sleep } from './time/sleep'
 export { jpDate, shiftDate, timeParts, timesNow } from './time/utils'
 export { transpose } from './transpose'
 export { trimParenOut, trimQuote } from './trim'
