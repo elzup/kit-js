@@ -43,4 +43,20 @@ describe('timeout', () => {
     expect(await safeTask).toMatchInlineSnapshot(`"end"`)
     expect(await overTask).toMatchInlineSnapshot(`false`)
   })
+
+  it('timeoutCover throw task error', async () => {
+    const res = timeoutCover(
+      (async () => {
+        throw new Error('Other')
+        return 'end'
+      })(),
+      200,
+      false
+    ).catch((e) => e.message)
+
+    jest.advanceTimersByTime(100)
+    await Promise.resolve()
+
+    expect(await res).toMatchInlineSnapshot(`"Other"`)
+  })
 })
