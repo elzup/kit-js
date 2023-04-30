@@ -19,7 +19,7 @@ describe('makeToggle', () => {
   it('enum type', () => {
     const ids = ['a', 'b', 'c'] as const
 
-    type Id = typeof ids[number]
+    type Id = (typeof ids)[number]
 
     const toggleArr = makeToggle(ids)
 
