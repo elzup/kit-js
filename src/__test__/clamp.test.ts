@@ -25,5 +25,6 @@ describe('negaposi', () => {
     expect(negaposi(10)).toBe(1)
     expect(negaposi(-500)).toBe(-1)
     expect(negaposi(0)).toBe(0)
+    expect(negaposi(0.1)).toBe(1)
   })
 })

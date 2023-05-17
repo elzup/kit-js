@@ -1,8 +1,6 @@
-import { negaposi } from './clamp'
-
 const calcStep = (start: number, end: number, step?: number) => {
   if (step !== undefined) return step
-  return negaposi(end - start)
+  return Math.sign(end - start)
 }
 
 const rangeAdvCore = (start: number, end: number, step: number) => {
