@@ -3,5 +3,10 @@ export const googleSearchUrl = (q: string) =>
 export const googleSearchImageUrl = (q: string) =>
   `${googleSearchUrl(q)}&tbm=isch`
 
-export const googleMapsPinUrl = (lat: number, lon: number, zoom = 15) =>
-  `https://www.google.co.jp/maps/place/${lat},${lon}/@${lat},${lon},${zoom}z/data`
+export const googleMapsPinUrl0 = (lls: string, zoom: number) =>
+  `https://maps.google.co.jp/maps?ll=${lls}&q=loc:${lls}&z=${zoom}`
+export const googleMapsPinUrl = (
+  lat: string | number,
+  lon: string | number,
+  zoom = 15
+) => googleMapsPinUrl0(`${lat},${lon}`, zoom)
