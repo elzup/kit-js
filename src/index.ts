@@ -106,6 +106,7 @@ export {
   googleSearchUrl,
 } from './template/url'
 export { day, hour, min, sec, week } from './time/constants'
+export { dulationFormat } from './time/durationFormat'
 export {
   formatHms,
   formatTime,
