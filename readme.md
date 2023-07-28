@@ -18,7 +18,7 @@ $ npm install @elzup/kit
 
 ## Usage
 
-### alog/scheduling
+### algo/scheduling
 
 calc row grouping of Gantt chart
 
@@ -68,7 +68,7 @@ b,e|     +---------.+.<
   c|          +---------.<
 ```
 
-### alog/windowed
+### algo/windowed
 
 ```js
 import { windowed } from '@elzup/kit/lib/algo/windowed'
@@ -83,7 +83,7 @@ windowed([1, 2, 3, 4, 5, 6], 3)
 //   [4, 5, 6] ]
 ```
 
-### alog/defrag
+### algo/defrag
 
 ```js
 import { defrag } from '@elzup/kit/lib/algo/defrag'
@@ -99,7 +99,7 @@ defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
 //   { start: 10, end: 12 } ]
 ```
 
-### alog/outscape
+### algo/outscape
 
 ```js
 import { outscape } from '@elzup/kit/lib/algo/outscape'
@@ -115,7 +115,7 @@ outscape([min, 5 * min, 10 * min, 30 * min, hour], 8 * hour, 500, 10)
 ruler sizes, coordinate width, canvas size, minimum gap canvas size */
 ```
 
-### alog/rowspan
+### algo/rowspan
 
 ```js
 import { rowspan } from '@elzup/kit/lib/algo/rowspan'
