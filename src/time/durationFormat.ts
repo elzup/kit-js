@@ -3,7 +3,7 @@ type UnitQuery = {
   query: string
   t: number
 }
-const unitOrderQuery = [
+const unitOrderQuery: UnitQuery[] = [
   { unit: 'year', query: 'y', t: 365 * 24 * 60 * 60 * 1000 },
   { unit: 'day', query: 'd', t: 24 * 60 * 60 * 1000 },
   { unit: 'hour', query: 'h', t: 60 * 60 * 1000 },
@@ -26,7 +26,10 @@ const reducer = (
   return { items, msec: msec - v * unit.t }
 }
 
-export const dulationFormatBase = (msec: number) => {
+export const dulationFormatBase = (
+  msec: number,
+  unitOrderQuery: UnitQuery[]
+) => {
   const { items, msec: remains } = unitOrderQuery.reduce(reducer, {
     items: [],
     msec,
@@ -36,7 +39,7 @@ export const dulationFormatBase = (msec: number) => {
 }
 
 export const dulationFormat = (msec: number) => {
-  const items = dulationFormatBase(msec)
+  const items = dulationFormatBase(msec, unitOrderQuery)
 
   return items
     .filter((v) => v.num > 0)
