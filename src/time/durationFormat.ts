@@ -17,15 +17,19 @@ export const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
     msec,
     units.map((v) => v.val)
   )
+  let pad = true
 
-  return units.map((v, i) => ({ num: vs[i], unit: v }))
+  return units.map((v, i) => {
+    pad = pad && vs[i] === 0
+    return { pad, num: vs[i], unit: v }
+  })
 }
 
-export const dulationFormat = (msec: number) => {
+export const dulationFormat = (msec: number, skip = true) => {
   const items = dulationFormatBase(msec, unitOrderQuery)
 
   return items
-    .filter((v) => v.num > 0)
+    .filter((v) => !v.pad && (!skip || v.num > 0))
     .map((v) => `${v.num}${v.unit.suffix}`)
     .join('')
 }

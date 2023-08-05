@@ -9,4 +9,7 @@ test('dulationFormat', () => {
   expect(dulationFormat(24 * 60 * 60 * 1000 + 1 * 1000)).toMatchInlineSnapshot(
     `"1d1s"`
   )
+  expect(
+    dulationFormat(24 * 60 * 60 * 1000 + 1 * 1000, false)
+  ).toMatchInlineSnapshot(`"1d0h0m1s"`)
 })
