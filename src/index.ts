@@ -1,6 +1,6 @@
 export { binSearch, binSearchArr, binSearchFloat } from './algo/binSearch'
 export { defrag } from './algo/defrag'
-export { greedy } from './algo/greedy'
+export { greedy, greedyStrict } from './algo/greedy'
 export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
 export { mergeSortArr, queueMerge } from './algo/queueMerge'
