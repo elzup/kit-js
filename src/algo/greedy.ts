@@ -1,10 +1,5 @@
-const lastWrap = (a: number[]) => [a, a.pop()]
-
-const greedyBase = (n: number, units: readonly number[]) =>
-  [...units, 1].map((u, i) => Math.floor((n % (units[i - 1] ?? Infinity)) / u))
-
-export const greedy = (n: number, units: readonly number[]) =>
-  lastWrap(greedyBase(n, units))
+export const greedy = (n: number, a: readonly number[]) =>
+  [...a, 1].map((u, i) => Math.floor((n % (a[i - 1] ?? Infinity)) / u))
 
 export const greedyStrict = (n: number, units: readonly number[]) => {
   let k = n
@@ -16,5 +11,5 @@ export const greedyStrict = (n: number, units: readonly number[]) => {
     return v
   })
 
-  return [a, k]
+  return [...a, k]
 }

@@ -1,41 +1,24 @@
+import { greedy } from '../algo/greedy'
+
 type UnitQuery = {
-  unit: string
-  query: string
-  t: number
+  suffix: string
+  val: number
 }
 const unitOrderQuery: UnitQuery[] = [
-  { unit: 'year', query: 'y', t: 365 * 24 * 60 * 60 * 1000 },
-  { unit: 'day', query: 'd', t: 24 * 60 * 60 * 1000 },
-  { unit: 'hour', query: 'h', t: 60 * 60 * 1000 },
-  { unit: 'minute', query: 'm', t: 60 * 1000 },
-  { unit: 'second', query: 's', t: 1000 },
+  { suffix: 'y', val: 365 * 24 * 60 * 60 * 1000 },
+  { suffix: 'd', val: 24 * 60 * 60 * 1000 },
+  { suffix: 'h', val: 60 * 60 * 1000 },
+  { suffix: 'm', val: 60 * 1000 },
+  { suffix: 's', val: 1000 },
 ]
 
-type UnitItem = {
-  num: number
-  unit: UnitQuery
-}
-
-const reducer = (
-  { msec, items }: { msec: number; items: UnitItem[] },
-  unit: UnitQuery
-) => {
-  const v = Math.floor(msec / unit.t)
-
-  items.push({ num: v, unit })
-  return { items, msec: msec - v * unit.t }
-}
-
-export const dulationFormatBase = (
-  msec: number,
-  unitOrderQuery: UnitQuery[]
-) => {
-  const { items } = unitOrderQuery.reduce(reducer, {
-    items: [],
+export const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
+  const vs = greedy(
     msec,
-  })
+    units.map((v) => v.val)
+  )
 
-  return items
+  return units.map((v, i) => ({ num: vs[i], unit: v }))
 }
 
 export const dulationFormat = (msec: number) => {
@@ -43,6 +26,6 @@ export const dulationFormat = (msec: number) => {
 
   return items
     .filter((v) => v.num > 0)
-    .map((v) => `${v.num}${v.unit.query}`)
+    .map((v) => `${v.num}${v.unit.suffix}`)
     .join('')
 }
