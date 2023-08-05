@@ -30,7 +30,7 @@ export const dulationFormatBase = (
   msec: number,
   unitOrderQuery: UnitQuery[]
 ) => {
-  const { items, msec: remains } = unitOrderQuery.reduce(reducer, {
+  const { items } = unitOrderQuery.reduce(reducer, {
     items: [],
     msec,
   })
