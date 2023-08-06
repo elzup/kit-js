@@ -4,15 +4,8 @@ type UnitQuery = {
   suffix: string
   val: number
 }
-const unitOrderQuery: UnitQuery[] = [
-  { suffix: 'y', val: 365 * 24 * 60 * 60 * 1000 },
-  { suffix: 'd', val: 24 * 60 * 60 * 1000 },
-  { suffix: 'h', val: 60 * 60 * 1000 },
-  { suffix: 'm', val: 60 * 1000 },
-  { suffix: 's', val: 1000 },
-]
 
-export const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
+const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
   const vs = greedy(
     msec,
     units.map((v) => v.val)
@@ -24,6 +17,14 @@ export const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
     return { pad, num: vs[i], unit: v }
   })
 }
+
+const unitOrderQuery: UnitQuery[] = [
+  { suffix: 'y', val: 365 * 24 * 60 * 60 * 1000 },
+  { suffix: 'd', val: 24 * 60 * 60 * 1000 },
+  { suffix: 'h', val: 60 * 60 * 1000 },
+  { suffix: 'm', val: 60 * 1000 },
+  { suffix: 's', val: 999 },
+]
 
 export const dulationFormat = (msec: number, skip = true) => {
   const items = dulationFormatBase(msec, unitOrderQuery)
