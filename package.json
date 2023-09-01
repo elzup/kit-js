@@ -11,7 +11,9 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "deploy": "npm run build && yarn publish",
     "lint": "eslint --ext .ts,.tsx",
     "test": "yarn test:jest && yarn test:unimported",
