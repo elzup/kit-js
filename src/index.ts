@@ -113,6 +113,7 @@ export {
   formatTime,
   formatYmd,
   hm,
+  isoJp,
   timePartsStr,
   ymd,
   ymdNum,

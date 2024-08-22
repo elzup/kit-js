@@ -3,6 +3,7 @@ import {
   formatTime,
   formatYmd,
   hm,
+  isoJp,
   jpDate,
   shiftDate,
   timeParts,
@@ -59,6 +60,13 @@ test('timePartsStr', () => {
 })
 test('hm', () => {
   expect(hm(lDate)).toMatchInlineSnapshot(`"0607"`)
+})
+test('isoJp', () => {
+  const gmt = lDate.toISOString()
+  const jst = isoJp(lDate)
+
+  expect(gmt).toMatchInlineSnapshot(`"2123-04-04T21:07:08.000Z"`)
+  expect(jst).toMatchInlineSnapshot(`"2123-04-05T06:07:08.000+09:00"`)
 })
 
 test('formatTime', () => {

@@ -27,3 +27,8 @@ export const hm = (date: Date) =>
 
 export const formatTime = (date: Date) =>
   `${formatYmd(date)} ${formatHms(date)}`
+
+export const isoJp = (date: Date) =>
+  new Date(date.getTime() + 9 * 60 * 60 * 1000)
+    .toISOString()
+    .replace('Z', '+09:00')
