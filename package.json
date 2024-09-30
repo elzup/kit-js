@@ -42,7 +42,7 @@
   ],
   "devDependencies": {
     "@elzup/tsconfig": "1.1.0",
-    "@swc/core": "1.7.22",
+    "@swc/core": "1.7.26",
     "@swc/jest": "0.2.36",
     "@types/jest": "29.5.13",
     "@types/node": "20.16.10",
