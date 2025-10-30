@@ -21,8 +21,8 @@ export {
   base90,
   char123abcABC,
   charABC,
-  charABCabc123,
   charAbc123,
+  charABCabc123,
   charAlphabets,
   charMisidentify,
   charNonMisidentify,
@@ -49,6 +49,7 @@ export { chunkStr } from './chunkStr'
 export { clamp, negaposi } from './clamp'
 export { clean, clone } from './clean'
 export { cycleRangeIn } from './cycleRange'
+export { diffwrap } from './diffwrap'
 export { pad, pad02, round } from './format'
 export { getEnv } from './getEnv'
 export { getOne, unarray } from './getOne'
