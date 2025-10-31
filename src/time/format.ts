@@ -1,4 +1,4 @@
-import { pad02 } from '../format'
+import { pad02 } from '../str/format'
 
 export const timePartsStr = (date: Date) => {
   const yyyy = String(date.getFullYear())

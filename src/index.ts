@@ -5,7 +5,15 @@ export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
 export { mergeSortArr, queueMerge } from './algo/queueMerge'
 export { rowspan, rowspanPos } from './algo/rowspan'
-export { binstr, hex2bin, hexCharToBin } from './binary'
+export { chunk } from './arr/chunk'
+export { last } from './arr/last'
+export { farBy, maxBy, minBy, nearBy } from './arr/maxBy'
+export { range } from './arr/range'
+export { rangeAdv } from './arr/rangeAdv'
+export { sortBy, sortByHo } from './arr/sortBy'
+export { transpose } from './arr/transpose'
+export { uniq } from './arr/uniq'
+export { comps, slideWindow, windowed, windowed2 } from './arr/windowed'
 export { asciify, controlCharLib, isAscii, trimNonAscii } from './char/ascii'
 export { BOM, hasBom, trimBom } from './char/bom'
 export {
@@ -36,34 +44,26 @@ export {
   pairReplace,
   softNormalizeText,
 } from './char/width'
-export { chunk } from './chunk'
-export { chunkStr } from './chunkStr'
-export { clamp, negaposi } from './clamp'
-export { clean, clone } from './clean'
-export { cycleRangeIn } from './cycleRange'
-export { diffwrap } from './diffwrap'
-export { pad, pad02, round } from './format'
-export { getEnv } from './getEnv'
+export { binstr, hex2bin, hexCharToBin } from './convert/binary'
+export { identity, pass } from './fp/identity'
+export { noop, tagNoop } from './fp/noop'
 export { getOne, unarray } from './getOne'
-export { hash, makeHash, sha512Hex } from './hash'
-export { identity, pass } from './identity'
-export {
-  encodeDigits,
-  incstr,
-  incstrBase62,
-  incstrBase90,
-  parseDigits,
-} from './incstr'
-export { last } from './last'
 export { makeCycle, makeToggle, toggle } from './makeToggle'
-export { farBy, maxBy, minBy, nearBy } from './maxBy'
+export { clamp, negaposi } from './math/clamp'
+export { cycleRangeIn } from './math/cycleRange'
+export { diffwrap } from './math/diffwrap'
+export { decToRadix, radixToDec } from './math/radix'
 export { anyHashMatch } from './niche/anyHashMatch'
 export {
   repartitionBits,
   shiftCodePoint,
   unRepartitionBits,
 } from './niche/buffer'
-export { noop, tagNoop } from './noop'
+export { hashDigest } from './node/crypto'
+export { getEnv } from './node/getEnv'
+export { hash, makeHash, sha512Hex } from './node/hash'
+export { performanceTimeUtil } from './node/performance'
+export { clean, clone } from './obj/clean'
 export { countup } from './obj/countup'
 export { groupByFunc } from './obj/groupBy'
 export { idfy, mapId } from './obj/idfy'
@@ -72,9 +72,6 @@ export { keyBy } from './obj/keyBy'
 export { makeMap } from './obj/makeMap'
 export { makeObj } from './obj/makeObj'
 export { upsert, upsertMap } from './obj/upsert'
-export { performanceTimeUtil } from './performance'
-export { pickUrl, pickUrlMb } from './pickUrl'
-export { decToRadix, radixToDec } from './radix'
 export { choise } from './rand/choise'
 export {
   makeRand,
@@ -87,11 +84,19 @@ export { randRange } from './rand/range'
 export { sample } from './rand/sample'
 export { choiseSeed, randRangeSeed, sampleSeed, shuffleSeed } from './rand/seed'
 export { shuffle } from './rand/shuffle'
-export { range } from './range'
-export { rangeAdv } from './rangeAdv'
-export { regpick, regpickMatcher } from './regpick'
-export { sortBy, sortByHo } from './sortBy'
-export { stringify } from './stringify'
+export { chunkStr } from './str/chunkStr'
+export { pad, pad02, round } from './str/format'
+export {
+  encodeDigits,
+  incstr,
+  incstrBase62,
+  incstrBase90,
+  parseDigits,
+} from './str/incstr'
+export { pickUrl, pickUrlMb } from './str/pickUrl'
+export { regpick, regpickMatcher } from './str/regpick'
+export { stringify } from './str/stringify'
+export { trimParenOut, trimQuote } from './str/trim'
 export { makeSlackParams } from './template/slack'
 export { genTerms } from './template/terms'
 export {
@@ -114,7 +119,3 @@ export {
 export { sleep } from './time/sleep'
 export { timeout, timeoutCover } from './time/timeout'
 export { jpDate, shiftDate, timeParts, timesNow } from './time/utils'
-export { transpose } from './transpose'
-export { trimParenOut, trimQuote } from './trim'
-export { uniq } from './uniq'
-export { comps, slideWindow, windowed, windowed2 } from './windowed'

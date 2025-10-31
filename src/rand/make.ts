@@ -1,4 +1,4 @@
-import { hashDigest } from '../crypto'
+import { hashDigest } from '../node/crypto'
 
 const MAX = 2 ** 32
 const ALGORITHM = 'sha256'

@@ -1,4 +1,4 @@
-import { diffwrap } from '../diffwrap'
+import { diffwrap } from '../math/diffwrap'
 
 describe('diffwrap', () => {
   describe('angles (0-360)', () => {

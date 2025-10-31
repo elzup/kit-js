@@ -1,4 +1,4 @@
-import { windowed2 } from '../windowed'
+import { windowed2 } from '../arr/windowed'
 
 const unOtherwise = (v: number) => (v === -1 ? Infinity : v)
 const columnLength = (rows: readonly any[][]) => rows[0]?.length ?? 0
