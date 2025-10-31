@@ -18,56 +18,6 @@ $ npm install @elzup/kit
 
 ## Usage
 
-### algo/scheduling
-
-calc row grouping of Gantt chart
-
-```js
-import scheduling from '@elzup/kit/lib/algo/scheduling'
-const items = [
-  { id: 'a', start: 1, end: 10 },
-  { id: 'b', start: 5, end: 15 },
-  { id: 'c', start: 10, end: 20 },
-  { id: 'd', start: 12, end: 20 },
-  { id: 'e', start: 16, end: 17 },
-]
-
-scheduling(items)
-
-// [['a', 'c'], ['b', 'e'], ['d']]
-```
-
-```
-   |          111111111122
-   |0123456789012345678901
-  a| +--------<
-  b|     +---------<
-  c|          +---------<
-  d|            +-------<
-  e|                +<
-↓scheduling↓
-   |          111111111122
-   |0123456789012345678901
-a,c|+---------+---------<
-b,e|     +---------<+<
-  d|            +-------<
-```
-
-if need gaps (add margin to end)
-
-```js
-scheduling(items.map((v) => ({ ...v, end: v.end + 1 })))
-// [['a', 'd'], ['b', 'e'], ['c']]
-```
-
-```
-   |          111111111122
-   |0123456789012345678901
-a,d|+--------.< +-------.<
-b,e|     +---------.+.<
-  c|          +---------.<
-```
-
 ### algo/windowed
 
 ```js
@@ -367,6 +317,12 @@ rename src/{formatTime.ts => time/utils.ts}
 rename src/{shiftChar.ts => char/shift.ts}
 rename src/{strinc.ts => incstr.ts}
 ```
+
+### moved
+
+**algo/scheduling**
+
+> **Note:** The scheduling algorithm has been moved to [elzup/interval-scheduling](https://github.com/elzup/interval-scheduling).
 
 ## License
 

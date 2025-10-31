@@ -5,14 +5,6 @@ export { outscape } from './algo/outscape'
 export { permutation, permutationBase } from './algo/permutation'
 export { mergeSortArr, queueMerge } from './algo/queueMerge'
 export { rowspan, rowspanPos } from './algo/rowspan'
-export {
-  scheduling,
-  schedulingBy,
-  schedulingEase,
-  schedulingEaseBy,
-  schedulingEaseTry,
-  schedulingPick,
-} from './algo/scheduling'
 export { binstr, hex2bin, hexCharToBin } from './binary'
 export { asciify, controlCharLib, isAscii, trimNonAscii } from './char/ascii'
 export { BOM, hasBom, trimBom } from './char/bom'
