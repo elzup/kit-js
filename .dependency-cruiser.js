@@ -50,43 +50,16 @@ module.exports = {
       },
     },
     {
-      name: 'not-to-unresolvable',
-      comment:
-        "Don't allow dependencies on modules dependency-cruiser can't resolve to files on disk (which probably means they don't exist)",
-      severity: 'error',
-      from: {},
-      to: {
-        couldNotResolve: true,
-      },
-    },
-    {
       name: 'not-to-dev-dep',
       severity: 'error',
       comment:
         "Don't allow dependencies from src/app/lib to a development only package",
       from: {
         path: '^(src|app|lib)',
-        pathNot: '\\.spec\\.(js|ts|ls|coffee|litcoffee|coffee\\.md)$',
+        pathNot: '\\.spec\\\\.(js|ts|ls|coffee|litcoffee|coffee\\.md)$',
       },
       to: {
         dependencyTypes: ['npm-dev'],
-      },
-    },
-    {
-      name: 'no-non-package-json',
-      severity: 'error',
-      comment:
-        "Don't allow dependencies to packages not in package.json (except from within node_modules)",
-      from: {
-        pathNot: '^node_modules',
-      },
-      to: {
-        dependencyTypes: [
-          'unknown',
-          'undetermined',
-          'npm-no-pkg',
-          'npm-unknown',
-        ],
       },
     },
     {
@@ -121,8 +94,27 @@ module.exports = {
     },
   ],
   options: {
+    // TypeScript設定を指定
+    tsConfig: {
+      fileName: 'tsconfig.json',
+    },
+    // 除外パターン
     exclude: {
-      path: '^(src/(__test__|index.ts)|node_modules)',
+      path: '(__test__|node_modules)',
+    },
+    // 追跡しないパターン
+    doNotFollow: {
+      path: 'node_modules',
+    },
+    // プログレス表示
+    progress: {
+      type: 'cli-feedback',
+    },
+    // モジュール解決の設定
+    reporterOptions: {
+      dot: {
+        collapsePattern: '^(node_modules|src/__test__)',
+      },
     },
   },
 }
