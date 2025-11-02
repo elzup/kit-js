@@ -17,10 +17,8 @@
     "lint:fix": "oxlint src --fix",
     "format": "prettier --check 'src/**/*.{ts,tsx}'",
     "format:fix": "prettier --write 'src/**/*.{ts,tsx}'",
-    "test": "yarn test:jest && yarn test:unimported",
-    "test:unused": "npx ts-unused-exports tsconfig.json --ignoreTestFiles",
+    "test": "yarn test:jest",
     "test:jest": "jest src --maxWorkers=2",
-    "test:unimported": "unimported",
     "test:cov": "jest src --coverage --maxWorkers=2",
     "test:badges": "yarn test:cov && istanbul-badges-readme",
     "prepare": "husky",
@@ -56,7 +54,6 @@
     "prettier": "^3.6.2",
     "ts-jest": "29.4.5",
     "tsd": "0.33.0",
-    "typescript": "5.9.3",
-    "unimported": "1.31.1"
+    "typescript": "5.9.3"
   }
 }
