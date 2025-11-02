@@ -10,9 +10,8 @@ const defaultCallback: Callback<[string]> = ({ ms }, label: string) => {
   console.log(`${label}:${Math.floor(ms)}ms`)
 }
 
-type CustomArgs<T extends unknown> = T extends Callback<infer Args>
-  ? Args
-  : never
+type CustomArgs<T extends unknown> =
+  T extends Callback<infer Args> ? Args : never
 
 export const performanceTimeUtil = <Args extends any[] = []>(
   callback?: Callback<Args>
