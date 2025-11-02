@@ -4,8 +4,6 @@
   "description": "elzup&#39;s utils",
   "access": "public",
   "license": "MIT",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "repository": "elzup/kit-js",
   "engines": {
     "node": ">=14"
@@ -32,6 +30,9 @@
     "*.{ts,json,md}": [
       "git add"
     ]
+  },
+  "exports": {
+    "./*": "./lib/*.js"
   },
   "files": [
     "lib"
