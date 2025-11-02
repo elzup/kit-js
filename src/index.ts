@@ -98,7 +98,6 @@ export { regpick, regpickMatcher } from './niche/regpick'
 export { stringify } from './str/stringify'
 export { trimParenOut, trimQuote } from './str/trim'
 export { makeSlackParams } from './template/slack'
-export { genTerms } from './template/terms'
 export {
   googleMapsPinUrl,
   googleSearchImageUrl,
