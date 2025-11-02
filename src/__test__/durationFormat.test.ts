@@ -1,4 +1,4 @@
-import { durationFormat } from '../index'
+import { durationFormat } from '../time/durationFormat'
 
 test('durationFormat', () => {
   expect(durationFormat(1000)).toBe('1s')

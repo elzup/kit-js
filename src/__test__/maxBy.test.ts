@@ -1,4 +1,4 @@
-import { farBy, maxBy, minBy, nearBy } from '../index'
+import { farBy, maxBy, minBy, nearBy } from '../arr/maxBy'
 
 describe('minBy', () => {
   it('order', () => {

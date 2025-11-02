@@ -1,4 +1,4 @@
-import { shiftChar } from '../index'
+import { shift as shiftChar } from '../char/shift'
 
 test('shiftChar', () => {
   expect(shiftChar('b', 1)).toBe('c')

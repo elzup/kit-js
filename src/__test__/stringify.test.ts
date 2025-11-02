@@ -1,4 +1,4 @@
-import { stringify } from '../index'
+import { stringify } from '../str/stringify'
 
 describe('stringify', () => {
   it('non hit', () => {

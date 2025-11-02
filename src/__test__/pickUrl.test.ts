@@ -1,4 +1,4 @@
-import { pickUrl, pickUrlMb } from '../index'
+import { pickUrl, pickUrlMb } from '../str/pickUrl'
 
 test('pickUrl', () => {
   const nonMatch = pickUrl('\nhoge\n')

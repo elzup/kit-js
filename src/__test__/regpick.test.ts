@@ -1,4 +1,4 @@
-import { regpick, regpickMatcher } from '../index'
+import { regpick, regpickMatcher } from '../niche/regpick'
 
 const binstr = (bs: boolean[]) => bs.map((v) => (v ? '1' : '0')).join('')
 

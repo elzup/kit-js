@@ -4,14 +4,11 @@ import {
   formatYmd,
   hm,
   isoJp,
-  jpDate,
-  shiftDate,
-  timeParts,
   timePartsStr,
-  timesNow,
   ymd,
   ymdNum,
-} from '../index'
+} from '../time/format'
+import { jpDate, shiftDate, timeParts, timesNow } from '../time/utils'
 
 beforeAll(() => jest.useFakeTimers())
 afterAll(jest.useRealTimers)

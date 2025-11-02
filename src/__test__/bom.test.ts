@@ -1,4 +1,4 @@
-import { BOM, trimBom, hasBom } from '../index'
+import { BOM, hasBom, trimBom } from '../char/bom'
 
 test('trimBom', () => {
   expect(trimBom(BOM + 'abc ')).toBe('abc ')

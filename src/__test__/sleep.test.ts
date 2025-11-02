@@ -1,4 +1,4 @@
-import { sleep } from '..'
+import { sleep } from '../time/sleep'
 
 jest.useFakeTimers()
 

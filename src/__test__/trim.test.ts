@@ -1,4 +1,4 @@
-import { trimQuote, trimParenOut } from '../index'
+import { trimQuote, trimParenOut } from '../str/trim'
 
 test('trimQuote', () => {
   expect(trimQuote('"abc"')).toBe('abc')

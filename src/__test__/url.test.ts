@@ -1,8 +1,8 @@
 import {
-  googleSearchUrl,
-  googleSearchImageUrl,
   googleMapsPinUrl,
-} from '../index'
+  googleSearchImageUrl,
+  googleSearchUrl,
+} from '../template/url'
 
 test('url', () => {
   expect(googleSearchUrl('abc')).toMatchInlineSnapshot(

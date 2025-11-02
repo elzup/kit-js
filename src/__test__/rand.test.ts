@@ -1,13 +1,13 @@
+import { choice } from '../rand/choice'
+import { randRange } from '../rand/range'
+import { sample } from '../rand/sample'
+import { shuffle } from '../rand/shuffle'
 import {
-  chioce,
-  chioceSeed,
-  randRange,
+  choiceSeed,
   randRangeSeed,
-  sample,
   sampleSeed,
-  shuffle,
   shuffleSeed,
-} from '../index'
+} from '../rand/seed'
 
 describe('randnext', () => {
   describe('use Math.random', () => {
@@ -44,8 +44,8 @@ describe('randnext', () => {
 
       expect(res3).toStrictEqual([1, 2, 5])
     })
-    it('chioce', () => {
-      const res = chioce([1, 2, 3, 4, 5])
+    it('choice', () => {
+      const res = choice([1, 2, 3, 4, 5])
 
       expect(res).toMatchInlineSnapshot(`2`)
     })
@@ -70,8 +70,8 @@ describe('randnext', () => {
 
     expect(res3).toStrictEqual([1, 3, 5])
   })
-  it('chioce', () => {
-    const res = chioce([1, 2, 3, 4, 5], () => 0.3)
+  it('choice', () => {
+    const res = choice([1, 2, 3, 4, 5], () => 0.3)
 
     expect(res).toMatchInlineSnapshot(`2`)
   })
@@ -117,8 +117,8 @@ describe('rand seed', () => {
       ]
     `)
   })
-  it('chioceSeed', () => {
-    const res = chioceSeed([1, 2, 3, 4, 5], 'a')
+  it('choiceSeed', () => {
+    const res = choiceSeed([1, 2, 3, 4, 5], 'a')
 
     expect(res).toMatchInlineSnapshot(`5`)
   })

@@ -1,4 +1,4 @@
-import { comps, slideWindow, windowed, windowed2 } from '../index'
+import { comps, slideWindow, windowed, windowed2 } from '../arr/windowed'
 
 test('windowed', () => {
   expect(windowed([1, 2])).toStrictEqual([[1, 2]])

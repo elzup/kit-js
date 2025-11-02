@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { makeCycle, makeToggle, toggle } from '../index'
+import { makeCycle, makeToggle, toggle } from '../fp/makeToggle'
 
 describe('makeToggle', () => {
   it('premitive array', () => {

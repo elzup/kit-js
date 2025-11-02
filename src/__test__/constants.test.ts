@@ -13,12 +13,8 @@ import {
   isDev,
   printableAscii,
   safePrintableAscii,
-  sec,
-  min,
-  hour,
-  day,
-  week,
-} from '../index'
+} from '../char/constants'
+import { day, hour, min, sec, week } from '../time/constants'
 
 const constants = {
   charABC,

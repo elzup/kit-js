@@ -1,5 +1,5 @@
 import { performance } from 'perf_hooks'
-import { performanceTimeUtil } from '../index'
+import { performanceTimeUtil } from '../node/performance'
 
 jest.mock('perf_hooks', () => ({
   performance: { now: () => 0 },

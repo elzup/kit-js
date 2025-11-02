@@ -1,4 +1,4 @@
-import { defrag } from '../index'
+import { defrag } from '../algo/defrag'
 
 test('defrag', () => {
   expect(defrag([])).toStrictEqual([])

@@ -1,4 +1,4 @@
-import { queueMerge, mergeSortArr } from '../index'
+import { mergeSortArr, queueMerge } from '../algo/queueMerge'
 
 test('queueMerge', () => {
   expect(

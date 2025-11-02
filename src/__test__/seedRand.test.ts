@@ -1,15 +1,17 @@
+import { range } from '../arr/range'
 import {
-  chioceSeed,
   makeRand,
   randGen,
-  randRangeSeed,
   randSeed,
   randSeedAdv,
   randSeedBuf,
-  range,
+} from '../rand/make'
+import {
+  choiceSeed,
+  randRangeSeed,
   sampleSeed,
   shuffleSeed,
-} from '../index'
+} from '../rand/seed'
 
 test('rand', () => {
   const paralels = range(10).map((n) => randSeed(String(n)))
@@ -77,8 +79,8 @@ test('sample', () => {
     ]
   `)
 })
-test('chioce', () => {
-  const res = chioceSeed([1, 2, 3, 4, 5], 'a')
+test('choice', () => {
+  const res = choiceSeed([1, 2, 3, 4, 5], 'a')
 
   expect(res).toMatchInlineSnapshot(`5`)
 })

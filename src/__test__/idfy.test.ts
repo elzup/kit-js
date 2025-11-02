@@ -1,4 +1,4 @@
-import { idfy, mapId } from '../index'
+import { idfy, mapId } from '../obj/idfy'
 
 test('idfy', () => {
   expect(idfy([{ name: 'a' }, { name: 'b' }])).toMatchInlineSnapshot(`

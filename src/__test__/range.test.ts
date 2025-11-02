@@ -1,4 +1,4 @@
-import { range } from '../index'
+import { range } from '../arr/range'
 
 test('range', () => {
   expect(range(0)).toStrictEqual([])

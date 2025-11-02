@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { invert, swap, swapKeyValue } from '../index'
+import { invert, swap, swapKeyValue } from '../obj/invert'
 
 test('swap', () => {
   expect(swap(['a', 1])).toStrictEqual([1, 'a'])

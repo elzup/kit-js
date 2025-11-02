@@ -1,4 +1,4 @@
-import { makeObj } from '../index'
+import { makeObj } from '../obj/makeObj'
 
 test('makeObj', () => {
   expect(makeObj(['a', 'b'])).toMatchInlineSnapshot(`

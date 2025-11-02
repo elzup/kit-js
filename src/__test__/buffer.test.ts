@@ -1,4 +1,8 @@
-import { repartitionBits, unRepartitionBits, shiftCodePoint } from '../index'
+import {
+  repartitionBits,
+  shiftCodePoint,
+  unRepartitionBits,
+} from '../niche/buffer'
 
 describe('repartitionBits', () => {
   it('basic', () => {

@@ -1,4 +1,4 @@
-import { chunkStr } from '../index'
+import { chunkStr } from '../str/chunkStr'
 
 test('chunkStr', () => {
   expect(chunkStr('abc', 2)).toStrictEqual(['ab', 'bc'])

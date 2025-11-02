@@ -1,4 +1,5 @@
-import { binSearch, binSearchArr, binSearchFloat, range } from '../index'
+import { binSearch, binSearchArr, binSearchFloat } from '../algo/binSearch'
+import { range } from '../arr/range'
 
 describe('binSearch', () => {
   it('int arr', () => {

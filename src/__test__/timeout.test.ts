@@ -1,4 +1,5 @@
-import { sleep, timeout, timeoutCover } from '..'
+import { sleep } from '../time/sleep'
+import { timeout, timeoutCover } from '../time/timeout'
 
 async function heavyWork(msec: number) {
   await sleep(msec)

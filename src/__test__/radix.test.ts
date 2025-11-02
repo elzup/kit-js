@@ -1,4 +1,4 @@
-import { decToRadix, radixToDec } from '../index'
+import { decToRadix, radixToDec } from '../math/radix'
 
 test('decToRadix', () => {
   expect(decToRadix(100, 2)).toStrictEqual([1, 1, 0, 0, 1, 0, 0])

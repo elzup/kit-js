@@ -1,4 +1,4 @@
-import { sortBy, sortByHo } from '../index'
+import { sortBy, sortByHo } from '../arr/sortBy'
 
 test('sortBy', () => {
   const a = [3, 1, 2, 4]
