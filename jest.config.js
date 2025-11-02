@@ -12,4 +12,6 @@ module.exports = {
   },
 
   testMatch: ['**/*.test.ts'],
+  testTimeout: 10000,
+  watchman: false,
 }

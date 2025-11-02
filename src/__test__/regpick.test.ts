@@ -45,8 +45,6 @@ describe('regpick', () => {
     const { HEAD_0, HEAD_01, HEAD_1, HEAD_10 } = regpickMatcher
     const { TAIL_0, TAIL_01, TAIL_1, TAIL_10, IN_010, IN_101 } = regpickMatcher
 
-    const {} = regpickMatcher
-
     expect(binstr(regpick(b00101010, Boolean, HEAD_0).prints)).toStrictEqual(
       '11000000'
     )
