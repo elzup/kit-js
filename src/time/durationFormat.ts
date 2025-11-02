@@ -5,7 +5,7 @@ type UnitQuery = {
   val: number
 }
 
-const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
+const durationFormatBase = (msec: number, units: UnitQuery[]) => {
   const vs = greedy(
     msec,
     units.map((v) => v.val)
@@ -26,8 +26,8 @@ const unitOrderQuery: UnitQuery[] = [
   { suffix: 's', val: 999 },
 ]
 
-export const dulationFormat = (msec: number, skip = true) => {
-  const items = dulationFormatBase(msec, unitOrderQuery)
+export const durationFormat = (msec: number, skip = true) => {
+  const items = durationFormatBase(msec, unitOrderQuery)
 
   return items
     .filter((v) => !v.pad && (!skip || v.num > 0))

@@ -1,5 +1,5 @@
 import {
-  choiseSeed,
+  chioceSeed,
   makeRand,
   randGen,
   randRangeSeed,
@@ -77,8 +77,8 @@ test('sample', () => {
     ]
   `)
 })
-test('choise', () => {
-  const res = choiseSeed([1, 2, 3, 4, 5], 'a')
+test('chioce', () => {
+  const res = chioceSeed([1, 2, 3, 4, 5], 'a')
 
   expect(res).toMatchInlineSnapshot(`5`)
 })

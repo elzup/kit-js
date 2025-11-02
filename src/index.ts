@@ -46,9 +46,8 @@ export {
 } from './char/width'
 export { binstr, hex2bin, hexCharToBin } from './convert/binary'
 export { identity, pass } from './fp/identity'
-export { noop, tagNoop } from './fp/noop'
-export { getOne, unarray } from './niche/getOne'
 export { makeCycle, makeToggle, toggle } from './fp/makeToggle'
+export { noop, tagNoop } from './fp/noop'
 export { clamp, negaposi } from './math/clamp'
 export { cycleRangeIn } from './math/cycleRange'
 export { diffwrap } from './math/diffwrap'
@@ -59,6 +58,8 @@ export {
   shiftCodePoint,
   unRepartitionBits,
 } from './niche/buffer'
+export { getOne, unarray } from './niche/getOne'
+export { regpick, regpickMatcher } from './niche/regpick'
 export { hashDigest } from './node/crypto'
 export { getEnv } from './node/getEnv'
 export { hash, makeHash, sha512Hex } from './node/hash'
@@ -72,7 +73,7 @@ export { keyBy } from './obj/keyBy'
 export { makeMap } from './obj/makeMap'
 export { makeObj } from './obj/makeObj'
 export { upsert, upsertMap } from './obj/upsert'
-export { choise } from './rand/choise'
+export { choice } from './rand/choice'
 export {
   makeRand,
   randGen,
@@ -82,7 +83,13 @@ export {
 } from './rand/make'
 export { randRange } from './rand/range'
 export { sample } from './rand/sample'
-export { choiseSeed, randRangeSeed, sampleSeed, shuffleSeed } from './rand/seed'
+export {
+  chioceSeed,
+  choiceSeed,
+  randRangeSeed,
+  sampleSeed,
+  shuffleSeed,
+} from './rand/seed'
 export { shuffle } from './rand/shuffle'
 export { chunkStr } from './str/chunkStr'
 export { pad, pad02, round } from './str/format'
@@ -94,7 +101,6 @@ export {
   parseDigits,
 } from './str/incstr'
 export { pickUrl, pickUrlMb } from './str/pickUrl'
-export { regpick, regpickMatcher } from './niche/regpick'
 export { stringify } from './str/stringify'
 export { trimParenOut, trimQuote } from './str/trim'
 export { makeSlackParams } from './template/slack'
@@ -104,7 +110,7 @@ export {
   googleSearchUrl,
 } from './template/url'
 export { day, hour, min, sec, week } from './time/constants'
-export { dulationFormat } from './time/durationFormat'
+export { durationFormat } from './time/durationFormat'
 export {
   formatHms,
   formatTime,
