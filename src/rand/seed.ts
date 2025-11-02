@@ -10,9 +10,6 @@ export const shuffleSeed = <T>(a: T[], seed: string) =>
 export const choiceSeed = <T>(a: T[], seed: string) =>
   choice(a, makeRand(seed).fn)
 
-// Deprecated: use choiceSeed instead
-export const chioceSeed = choiceSeed
-
 export const sampleSeed = <T>(a: T[], n: number, seed: string) =>
   sample(a, n, makeRand(seed).fn)
 
