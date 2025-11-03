@@ -6,6 +6,28 @@ const stringifyTrans = (v: unknown, funcs: StringifyFunc[]): string => {
   return typeof res === 'string' ? res : String(v)
 }
 
+/**
+ * Convert value to string with custom converters.
+ *
+ * Provides customizable string conversion for different types.
+ * Falls back to String(v) if no converter matches.
+ *
+ * @param v - Value to stringify
+ * @param converter - Object with optional converters for each type
+ * @returns String representation
+ *
+ * @example
+ * stringify(null, { nul: () => 'NULL' })
+ * // => 'NULL'
+ *
+ * @example
+ * stringify(42, { num: (n) => `Number: ${n}` })
+ * // => 'Number: 42'
+ *
+ * @example
+ * stringify([1, 2], { arr: (a) => a.join('-') })
+ * // => '1-2'
+ */
 export const stringify = (
   v: unknown,
   converter: {

@@ -5,11 +5,44 @@ type IsAsciiFn = {
   (s: string): boolean
 }
 
+/**
+ * Check if a string or character code is printable ASCII.
+ *
+ * Tests whether input contains only printable ASCII characters (0x20-0x7E).
+ * Accepts either a string or a character code number.
+ *
+ * @param v - String or character code to check
+ * @returns true if all characters are printable ASCII
+ *
+ * @example
+ * isAscii('hello')     // => true
+ * isAscii('hello世界')  // => false
+ * isAscii(65)          // => true (character 'A')
+ * isAscii(0x7F)        // => false (DEL control char)
+ */
 export const isAscii: IsAsciiFn = (v) =>
   typeof v === 'string'
     ? Boolean(v.match(/^[\x20-\x7e]*$/))
     : v >= 0x20 && v <= 0x7e
+
+/**
+ * Remove all non-ASCII characters from a string.
+ *
+ * Strips out any characters outside the printable ASCII range (0x20-0x7E).
+ *
+ * @param s - String to process
+ * @returns String with only ASCII characters
+ *
+ * @example
+ * trimNonAscii('hello世界123')  // => 'hello123'
+ * trimNonAscii('café')          // => 'caf'
+ */
 export const trimNonAscii = (s: string) => s.replace(/[^\x20-\x7e]*/g, '')
+
+/**
+ * Alias for trimNonAscii.
+ * @see trimNonAscii
+ */
 export const asciify = trimNonAscii
 
 // references https://www.w3schools.com/charsets/ref_utf_basic_latin.asp

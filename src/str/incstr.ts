@@ -12,6 +12,27 @@ export const parseDigits = (str: string, table: TableMap): number[] =>
 export const encodeDigits = (digits: number[], tableStr: string): string =>
   digits.map((n) => tableStr[n] ?? '').join('')
 
+/**
+ * Increment string-encoded number by specified amount.
+ *
+ * Treats string as a number in custom base (defined by tableStr) and
+ * increments it. Useful for alphanumeric counters and ID generation.
+ *
+ * @param s - String-encoded number
+ * @param add - Amount to add (default: 1)
+ * @param tableStr - Character table defining the base (default: char123abcABC)
+ * @returns Incremented string
+ *
+ * @example
+ * incstr('1')    // => '2'
+ * incstr('9')    // => 'a'
+ * incstr('z')    // => 'A'
+ * incstr('Z')    // => '21'
+ *
+ * @example
+ * incstr('abc', 2)  // => 'abe'
+ * incstr('zz', 1)   // => 'zA'
+ */
 export const incstr = (
   s: string,
   add = 1,
@@ -33,5 +54,26 @@ export const incstr = (
   return encodeDigits(decToRadix(nextD, radix), tableStr)
 }
 
+/**
+ * Increment string in base90 encoding.
+ *
+ * @param s - Base90 string
+ * @param add - Amount to add (default: 1)
+ * @returns Incremented base90 string
+ *
+ * @example
+ * incstrBase90('abc')  // => 'abd'
+ */
 export const incstrBase90 = (s: string, add = 1) => incstr(s, add, base90)
+
+/**
+ * Increment string in base62 encoding.
+ *
+ * @param s - Base62 string
+ * @param add - Amount to add (default: 1)
+ * @returns Incremented base62 string
+ *
+ * @example
+ * incstrBase62('abc')  // => 'abd'
+ */
 export const incstrBase62 = (s: string, add = 1) => incstr(s, add, base62)

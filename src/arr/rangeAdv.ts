@@ -3,10 +3,17 @@ const calcStep = (start: number, end: number, step?: number) => {
   return Math.sign(end - start)
 }
 
+/**
+ * Generates a sequence of numbers from start to end (exclusive) with a specified step.
+ * @param start - The starting value of the sequence
+ * @param end - The ending value of the sequence (exclusive)
+ * @param step - The step size for each iteration (defaults to 1)
+ * @returns An array containing the generated sequence
+ */
 export const rangeAdvGen = function* (
   start: number,
   end: number,
-  step: number
+  step: number = calcStep(start, end)
 ) {
   if (start === end) return
   if (step === 0) throw new Error('step cannot be zero')
@@ -20,10 +27,17 @@ export const rangeAdvGen = function* (
   }
 }
 
-const rangeAdvList = (start: number, end: number, step: number) => {
+/**
+ * Generate an array of numbers from start to end (exclusive) with a specified step.
+ * @param start - The starting value of the sequence
+ * @param end - The ending value of the sequence (exclusive)
+ * @param step - The step size for each iteration (defaults to 1 or -1 based on start and end)
+ * @returns An array containing the generated sequence
+ */
+export const rangeAdv = (
+  start: number,
+  end: number,
+  step: number = calcStep(start, end)
+) => {
   return [...rangeAdvGen(start, end, step)]
-}
-
-export const rangeAdv = (start: number, end: number, step?: number) => {
-  return rangeAdvList(start, end, calcStep(start, end, step))
 }

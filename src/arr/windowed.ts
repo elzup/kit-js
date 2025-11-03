@@ -1,19 +1,55 @@
-export function windowed2<T>(a: readonly T[]): [T, T][] {
-  if (a.length < 2) return []
+type Tuple<
+  T,
+  N extends number,
+  R extends unknown[] = [],
+> = R['length'] extends N ? R : Tuple<T, N, [...R, T]>
 
-  const b = a.slice(1)
-
-  return b.map((_v, i) => [a[i], b[i]])
-}
-
-export function windowed<T>(a: readonly T[], n = 2): T[][] {
+/**
+ * Create sliding windows of specified size over an array.
+ *
+ * Generates all consecutive sub-arrays of length n. Each window slides
+ * one position at a time. Similar to Python's itertools or Kotlin's windowed().
+ *
+ * @param a - Input array
+ * @param n - Window size (default: 2)
+ * @returns Array of windows, each containing n consecutive elements
+ *
+ * @example
+ * // Sliding windows of size 3
+ * windowed([1, 2, 3, 4, 5], 3)
+ * // => [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+ *
+ * @example
+ * // Calculate moving average
+ * windowed([10, 20, 30, 40], 3)
+ *   .map(win => win.reduce((a, b) => a + b) / win.length)
+ * // => [20, 30]
+ *
+ * @example
+ * // Default window size 2
+ * windowed(['a', 'b', 'c', 'd'])
+ * // => [['a', 'b'], ['b', 'c'], ['c', 'd']]
+ */
+export function windowed<T, N extends number = 2>(
+  a: readonly T[],
+  n: N = 2 as N
+): Tuple<T, N>[] {
   if (a.length < n) return []
-  if (n === 2) return windowed2(a)
 
   const b = a.slice(n - 1, a.length)
 
-  return b.map((_v, i) => a.slice(i, i + n))
+  return b.map((_v, i) => a.slice(i, i + n) as Tuple<T, N>)
 }
+export const windowed2 = <T>(a: readonly T[]) => windowed(a, 2)
 
+/**
+ * Alias for windowed function.
+ * @see windowed
+ */
 export const slideWindow = windowed
+
+/**
+ * Alias for windowed function.
+ * @see windowed
+ */
 export const comps = windowed

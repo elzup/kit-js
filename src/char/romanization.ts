@@ -42,6 +42,28 @@ const romanizationChar = (c: string, nc: string, { skip, stretch }: Option) => {
   return skip ? '' : c
 }
 
+/**
+ * Convert Japanese text to romaji (romanization).
+ *
+ * Converts hiragana and katakana to Latin alphabet romanization.
+ * Supports options for skipping unknown chars and stretching vowels.
+ *
+ * @param s - Japanese text to romanize
+ * @param opt - Options: skip (remove unknown chars), stretch (convert ー to -)
+ * @returns Romanized string
+ *
+ * @example
+ * romanization('こんにちは')
+ * // => 'konnichiha'
+ *
+ * @example
+ * romanization('カタカナ')
+ * // => 'katakana'
+ *
+ * @example
+ * romanization('ラーメン', { stretch: true })
+ * // => 'ra-men'
+ */
 export const romanization = (s: string, opt?: Partial<Option>) => {
   const compOpt = { ...defaultOpt, ...opt }
   const chars = [...toHira(s)]
