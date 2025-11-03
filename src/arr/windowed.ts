@@ -4,6 +4,17 @@ type Tuple<
   R extends unknown[] = [],
 > = R['length'] extends N ? R : Tuple<T, N, [...R, T]>
 
+export function* windowedGen<T, N extends number>(
+  a: readonly T[],
+  n: N
+): Generator<Tuple<T, N>> {
+  if (a.length < n) return
+
+  for (let i = 0; i <= a.length - n; i++) {
+    yield a.slice(i, i + n) as Tuple<T, N>
+  }
+}
+
 /**
  * Create sliding windows of specified size over an array.
  *
@@ -30,16 +41,12 @@ type Tuple<
  * windowed(['a', 'b', 'c', 'd'])
  * // => [['a', 'b'], ['b', 'c'], ['c', 'd']]
  */
-export function windowed<T, N extends number = 2>(
+export const windowed = <T, N extends number = 2>(
   a: readonly T[],
   n: N = 2 as N
-): Tuple<T, N>[] {
-  if (a.length < n) return []
+): Tuple<T, N>[] => Array.from(windowedGen(a, n))
 
-  const b = a.slice(n - 1, a.length)
-
-  return b.map((_v, i) => a.slice(i, i + n) as Tuple<T, N>)
-}
+export const windowed2Gen = <T>(a: readonly T[]) => windowedGen(a, 2)
 export const windowed2 = <T>(a: readonly T[]) => windowed(a, 2)
 
 /**
