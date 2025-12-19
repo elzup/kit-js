@@ -42,8 +42,8 @@
   ],
   "devDependencies": {
     "@elzup/tsconfig": "1.1.0",
-    "@swc/core": "1.12.7",
-    "@swc/jest": "0.2.38",
+    "@swc/core": "1.15.7",
+    "@swc/jest": "0.2.39",
     "@types/jest": "29.5.14",
     "@types/node": "22.19.1",
     "babel-jest": "29.7.0",
