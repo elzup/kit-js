@@ -35,6 +35,8 @@ windowed([1, 2, 3, 4, 5, 6], 3)
 
 ### algo/defrag
 
+> **Deprecated:** Use [`rangeize`](https://github.com/elzup/rangeize) instead.
+
 ```js
 import { defrag } from '@elzup/kit/lib/algo/defrag'
 
@@ -318,11 +320,15 @@ rename src/{shiftChar.ts => char/shift.ts}
 rename src/{strinc.ts => incstr.ts}
 ```
 
-### moved
+### Deprecated modules
+
+**algo/defrag**
+
+> **Deprecated:** Use [`rangeize`](https://github.com/elzup/rangeize) instead.
 
 **algo/scheduling**
 
-> **Note:** The scheduling algorithm has been moved to [elzup/interval-scheduling](https://github.com/elzup/interval-scheduling).
+> **Deprecated:** Use [`interval-scheduling`](https://github.com/elzup/interval-scheduling) instead. This module has already been removed from the source package.
 
 ## License
 

@@ -1,6 +1,8 @@
 /**
  * Defragment an array of numbers into continuous ranges.
  *
+ * @deprecated Use `rangeize` from the `rangeize` package instead.
+ *
  * This function groups consecutive numbers in an array into ranges,
  * reducing fragmentation. It's useful for compacting sequential values
  * into start-end pairs.
