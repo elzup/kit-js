@@ -30,7 +30,12 @@
     ]
   },
   "exports": {
-    "./*": "./lib/*.js"
+    "./*": {
+      "types": "./lib/*.d.ts",
+      "import": "./lib/esm/*.js",
+      "require": "./lib/*.js",
+      "default": "./lib/*.js"
+    }
   },
   "files": [
     "lib"

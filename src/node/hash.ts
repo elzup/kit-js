@@ -1,4 +1,4 @@
-import { hashDigest } from './crypto'
+import { Algorithm, hashDigest } from './crypto'
 
 /**
  * Generate hash string with specified encoding.
@@ -15,8 +15,8 @@ import { hashDigest } from './crypto'
  * hash('hello', 'sha256', 'hex')
  * // => '2cf24dba5fb0a...' (SHA256 in hex)
  */
-export const hash = (s: string, algorithm: string, enc: BufferEncoding) =>
-  hashDigest(s, algorithm).toString(enc)
+export const hash = (s: string, algorithm: Algorithm, enc: BufferEncoding) =>
+  Buffer.from(hashDigest(s, algorithm)).toString(enc)
 
 /**
  * Create reusable hash function with fixed algorithm and encoding.
@@ -34,7 +34,7 @@ export const hash = (s: string, algorithm: string, enc: BufferEncoding) =>
  * sha256hex('world')  // => '486ea46224d1bb...'
  */
 export const makeHash =
-  (algorithm: string, enc: BufferEncoding) => (s: string) =>
+  (algorithm: Algorithm, enc: BufferEncoding) => (s: string) =>
     hash(s, algorithm, enc)
 
 /**

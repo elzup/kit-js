@@ -36,7 +36,7 @@ test('rand', () => {
 test('seedRandBuf', () => {
   const resBuf = randSeedBuf('abc')
 
-  expect(resBuf.toString('base64')).toMatchInlineSnapshot(
+  expect(Buffer.from(resBuf).toString('base64')).toMatchInlineSnapshot(
     `"ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0="`
   )
 })
@@ -45,7 +45,7 @@ test('seedRandAdvance', () => {
 
   expect(res.num).toMatchInlineSnapshot(`0.7464366390494545`)
   expect(res.seed).toMatchInlineSnapshot(`"abc"`)
-  expect(res.buf.toString('base64')).toMatchInlineSnapshot(
+  expect(Buffer.from(res.buf).toString('base64')).toMatchInlineSnapshot(
     `"ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0="`
   )
 })

@@ -2,6 +2,7 @@
   "extends": "@elzup/tsconfig",
   "compilerOptions": {
     "module": "commonjs",
+    "lib": ["ES2020", "DOM.Iterable"],
     "noUncheckedIndexedAccess": false,
     "noPropertyAccessFromIndexSignature": false,
     "outDir": "./lib",

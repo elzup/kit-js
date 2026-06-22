@@ -4,6 +4,18 @@ const MAX = 2 ** 32
 const ALGORITHM = 'sha256'
 
 type Seed = number | string
+
+// Helper: Read uint32 from Uint8Array in little-endian format
+function readUInt32LE(buf: Uint8Array, offset = 0): number {
+  return (
+    (buf[offset] |
+      (buf[offset + 1] << 8) |
+      (buf[offset + 2] << 16) |
+      (buf[offset + 3] << 24)) >>>
+    0
+  )
+}
+
 /**
  * Generate a hash buffer from a seed value.
  *
@@ -34,7 +46,7 @@ export const randSeedBuf = (seed: Seed) => hashDigest(String(seed), ALGORITHM)
  */
 export const randSeedAdv = (seed: Seed) => {
   const buf = randSeedBuf(seed)
-  const num = buf.readUInt32LE() / (MAX + 1) // 0 <= num < 1
+  const num = readUInt32LE(buf) / (MAX + 1) // 0 <= num < 1
 
   return { seed, num, buf }
 }
