@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "elzup/kit-js",
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "scripts": {
     "build": "yarn build:cjs && yarn build:esm",
