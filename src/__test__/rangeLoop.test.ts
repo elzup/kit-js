@@ -23,11 +23,8 @@ describe('rangeLoop', () => {
     expect(rangeLoop(0, 5, 8, 7)).toStrictEqual([0, 2, 4, 1, 3, 0, 2, 4])
   })
 
-  it('returns empty array when len is 0', () => {
+  it('returns empty array when len is 0 or negative', () => {
     expect(rangeLoop(0, 10, 0)).toStrictEqual([])
-  })
-
-  it('returns empty array when len is negative', () => {
     expect(rangeLoop(0, 10, -5)).toStrictEqual([])
   })
 
@@ -38,7 +35,7 @@ describe('rangeLoop', () => {
   it('throws error when step is 0', () => {
     expect(() => {
       rangeLoop(0, 10, 5, 0)
-    }).toThrowErrorMatchingInlineSnapshot(`"step cannot be zero"`)
+    }).toThrowErrorMatchingInlineSnapshot(`[Error: step cannot be zero]`)
   })
 
   it('single element range', () => {

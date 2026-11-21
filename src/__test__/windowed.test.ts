@@ -29,6 +29,10 @@ test('comps more 2', () => {
 test('windowed2', () => {
   expect(windowed2([])).toStrictEqual([])
   expect(windowed2([1])).toStrictEqual([])
+  expect(windowed2([1, 2, 3])).toStrictEqual([
+    [1, 2],
+    [2, 3],
+  ])
 })
 
 test('windowedGen', () => {
