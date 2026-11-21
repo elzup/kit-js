@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import { choice } from '../rand/choice'
 import { randRange } from '../rand/range'
 import { sample } from '../rand/sample'
@@ -12,8 +13,7 @@ import {
 describe('randnext', () => {
   describe('use Math.random', () => {
     beforeEach(() => {
-      jest
-        .spyOn(global.Math, 'random')
+      vi.spyOn(global.Math, 'random')
         .mockReturnValueOnce(0.333)
         .mockReturnValueOnce(0.111)
         .mockReturnValueOnce(0.444)
@@ -23,7 +23,7 @@ describe('randnext', () => {
     })
 
     afterEach(() => {
-      jest.spyOn(global.Math, 'random').mockRestore()
+      vi.spyOn(global.Math, 'random').mockRestore()
     })
     it('randRange', () => {
       const v1 = randRange(10)

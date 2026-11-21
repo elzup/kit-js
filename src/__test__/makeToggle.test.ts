@@ -28,7 +28,6 @@ describe('makeToggle', () => {
     expectType<(n: Id) => Id>(toggleArr)
   })
 
-  // eslint-disable-next-line jest/expect-expect
   it('undefined', () => {
     const toggleArr = makeToggle([])
 

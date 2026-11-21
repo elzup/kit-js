@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import { range } from '../arr/range'
 import {
   makeRand,
@@ -99,11 +100,11 @@ test('randGen', () => {
 
 describe('makeRand', () => {
   beforeEach(() => {
-    jest.spyOn(global.Date, 'now').mockReturnValue(123456)
+    vi.spyOn(global.Date, 'now').mockReturnValue(123456)
   })
 
   afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore()
+    vi.spyOn(global.Math, 'random').mockRestore()
   })
   it('basic', () => {
     const { fn: random, seed } = makeRand('a')

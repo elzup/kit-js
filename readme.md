@@ -1,7 +1,7 @@
 # @elzup/kit
 
 ![Node CI](https://github.com/elzup/kit-js/workflows/Node%20CI/badge.svg)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![tested with vitest](https://img.shields.io/badge/tested_with-vitest-6E9F18.svg)](https://vitest.dev)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 | Statements                                                                               | Branches                                                                             | Functions                                                                              | Lines                                                                          |

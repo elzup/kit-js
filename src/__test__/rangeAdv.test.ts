@@ -19,13 +19,13 @@ test('rangeAdv points step', () => {
 test('rangeAdv arg error', () => {
   expect(() => {
     rangeAdv(10, 20, -1)
-  }).toThrowErrorMatchingInlineSnapshot(`"step cannot be negative"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: step cannot be negative]`)
 
   expect(() => {
     rangeAdv(20, 0, 1)
-  }).toThrowErrorMatchingInlineSnapshot(`"step cannot be positive"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: step cannot be positive]`)
 
   expect(() => {
     rangeAdv(1, 10, 0)
-  }).toThrowErrorMatchingInlineSnapshot(`"step cannot be zero"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: step cannot be zero]`)
 })

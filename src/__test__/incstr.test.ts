@@ -43,13 +43,13 @@ describe('incstr', () => {
 
   it('validation', () => {
     expect(() => incstr('00a', 1, '0abc')).toThrowErrorMatchingInlineSnapshot(
-      `"left end is zero padding by '0'"`
+      `[Error: left end is zero padding by '0']`
     )
     expect(() => incstr('0', 1, '')).toThrowErrorMatchingInlineSnapshot(
-      `"tableStr is empty"`
+      `[Error: tableStr is empty]`
     )
     expect(() => incstr('z', 1, '0abc')).toThrowErrorMatchingInlineSnapshot(
-      `"'z' is not a digit char"`
+      `[Error: 'z' is not a digit char]`
     )
   })
 

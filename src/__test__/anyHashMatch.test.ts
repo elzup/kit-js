@@ -35,6 +35,6 @@ describe('anyHashMatch', () => {
   it('arg error', () => {
     expect(() => {
       anyHashMatch('a', 'v', 0)
-    }).toThrowErrorMatchingInlineSnapshot(`"len must be greater than 0"`)
+    }).toThrowErrorMatchingInlineSnapshot(`[Error: len must be greater than 0]`)
   })
 })

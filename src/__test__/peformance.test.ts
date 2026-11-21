@@ -1,14 +1,15 @@
 import { performance } from 'perf_hooks'
+import { vi } from 'vitest'
 import { performanceTimeUtil } from '../node/performance'
 
-jest.mock('perf_hooks', () => ({
+vi.mock('perf_hooks', () => ({
   performance: { now: () => 0 },
 }))
 
 describe('performanceTimeUtil', () => {
   it('default callback', () => {
-    const perfNow = jest.spyOn(performance, 'now').mockImplementation()
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation()
+    const perfNow = vi.spyOn(performance, 'now').mockImplementation(() => 0)
+    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => 0)
 
     perfNow.mockReturnValueOnce(1_000_000)
 
@@ -30,8 +31,8 @@ describe('performanceTimeUtil', () => {
   })
 
   it('custom callback', () => {
-    const mockFn = jest.fn()
-    const perfNow = jest.spyOn(performance, 'now').mockImplementation()
+    const mockFn = vi.fn()
+    const perfNow = vi.spyOn(performance, 'now').mockImplementation(() => 0)
 
     perfNow.mockReturnValueOnce(0)
 

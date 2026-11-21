@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import {
   formatHms,
   formatTime,
@@ -10,15 +11,15 @@ import {
 } from '../time/format'
 import { jpDate, shiftDate, timeParts, timesNow } from '../time/utils'
 
-beforeAll(() => jest.useFakeTimers())
-afterAll(jest.useRealTimers)
+beforeAll(() => vi.useFakeTimers())
+afterAll(() => vi.useRealTimers())
 
 const date = new Date(4836380828000)
 // "2123-04-05 06:07:08"
 const lDate = new Date('2123-04-05 06:07:08')
 
 test('timeParts', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
 
   expect(timeParts(lDate)).toMatchInlineSnapshot(`
     {
@@ -67,7 +68,7 @@ test('isoJp', () => {
 })
 
 test('formatTime', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
   expect(formatTime(lDate)).toMatchInlineSnapshot(`"2123-04-05 06:07:08"`)
   expect(formatYmd(lDate)).toMatchInlineSnapshot(`"2123-04-05"`)
   expect(formatHms(lDate)).toMatchInlineSnapshot(`"06:07:08"`)
@@ -84,7 +85,7 @@ test('jpDate', () => {
 })
 
 test('ymd', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
 
   expect(ymd(lDate)).toMatchInlineSnapshot(`"21230405"`)
   expect(ymdNum(lDate)).toMatchInlineSnapshot(`21230405`)

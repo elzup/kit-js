@@ -6,5 +6,5 @@ test('range', () => {
 
   expect(() => {
     range(-10)
-  }).toThrowErrorMatchingInlineSnapshot(`"Invalid array length"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[RangeError: Invalid array length]`)
 })

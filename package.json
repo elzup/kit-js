@@ -17,10 +17,12 @@
     "lint:fix": "oxlint src --fix",
     "format": "prettier --check 'src/**/*.{ts,tsx}'",
     "format:fix": "prettier --write 'src/**/*.{ts,tsx}'",
-    "test": "yarn test:jest",
-    "test:jest": "jest src --maxWorkers=2",
-    "test:cov": "jest src --coverage --maxWorkers=2",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cov": "vitest run --coverage",
     "test:badges": "yarn test:cov && istanbul-badges-readme",
+    "mutation": "mutator",
+    "mutation:diff": "mutator --since main --fail-on-survived",
     "prepare": "husky",
     "depcruise": "depcruise --config .dependency-cruiser.js --include-only '^src' --output-type dot src | dot -T svg > dependencygraph.svg"
   },
@@ -46,19 +48,17 @@
   ],
   "devDependencies": {
     "@elzup/tsconfig": "1.1.0",
-    "@swc/core": "1.14.0",
-    "@swc/jest": "0.2.39",
-    "@types/jest": "30.0.0",
+    "@mizchi/mutator": "^0.4.5",
     "@types/node": "24.9.2",
-    "babel-jest": "30.2.0",
+    "@vitest/coverage-istanbul": "^5.1.1",
     "dependency-cruiser": "17.2.0",
     "husky": "9.1.7",
-    "jest": "30.2.0",
     "lint-staged": "16.2.6",
     "oxlint": "^1.25.0",
     "prettier": "^3.6.2",
-    "ts-jest": "29.4.5",
     "tsd": "0.33.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
   }
 }
