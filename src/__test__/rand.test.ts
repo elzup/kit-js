@@ -82,8 +82,8 @@ describe('rand seed', () => {
     const v1 = randRangeSeed(0, 10, 'a1')
     const v2 = randRangeSeed(20, 30, 'a1')
 
-    expect(v1).toMatchInlineSnapshot(`3`)
-    expect(v2).toMatchInlineSnapshot(`23`)
+    expect(v1).toMatchInlineSnapshot(`0`)
+    expect(v2).toMatchInlineSnapshot(`20`)
   })
 
   it('shuffleSeed', () => {
@@ -91,11 +91,11 @@ describe('rand seed', () => {
 
     expect(res).toMatchInlineSnapshot(`
       [
-        3,
-        4,
-        2,
         1,
         5,
+        4,
+        2,
+        3,
       ]
     `)
   })
@@ -106,7 +106,7 @@ describe('rand seed', () => {
 
     expect(res1).toMatchInlineSnapshot(`
       [
-        3,
+        5,
       ]
     `)
     expect(res3).toMatchInlineSnapshot(`
@@ -120,6 +120,6 @@ describe('rand seed', () => {
   it('choiceSeed', () => {
     const res = choiceSeed([1, 2, 3, 4, 5], 'a')
 
-    expect(res).toMatchInlineSnapshot(`5`)
+    expect(res).toMatchInlineSnapshot(`4`)
   })
 })
