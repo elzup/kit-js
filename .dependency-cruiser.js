@@ -1,6 +1,14 @@
 module.exports = {
   forbidden: [
     {
+      name: 'universal-not-to-node',
+      comment:
+        'rand/ and crypto/ must run in browsers: no node/ modules or Node built-ins',
+      severity: 'error',
+      from: { path: '^src/(rand|crypto)/' },
+      to: { path: '^src/node/|^node:|^(crypto|fs|path|buffer)$' },
+    },
+    {
       name: 'not-to-test',
       comment: "Don't allow dependencies from outside the test folder to test",
       severity: 'error',
