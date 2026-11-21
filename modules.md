@@ -44,6 +44,8 @@ Benefits:
 | char/bom.ts            | bool   | 0      | -          | char     | Low    |
 | char/constants.ts      | string | 0      | -          | char     | High   |
 | char/romanization.ts   | string | 0      | -          | char     | Low    |
+| crypto/digest.ts       | async  | 0      | -          | crypto   | Low    |
+| crypto/random.ts       | number | 0      | -          | crypto   | Medium |
 | char/shift.ts          | string | 0      | -          | char     | Medium |
 | char/width.ts          | string | 1      | -          | char     | Medium |
 | convert/binary.ts      | string | 0      | buffer     | convert  | Low    |
@@ -72,10 +74,11 @@ Benefits:
 | obj/makeObj.ts         | object | 0      | -          | obj      | Medium |
 | obj/upsert.ts          | void   | 0      | -          | obj      | Medium |
 | rand/choice.ts         | T      | 0      | -          | rand     | High   |
-| rand/make.ts           | object | 1      | crypto     | rand     | Medium |
+| rand/make.ts           | object | 1      | -          | rand     | Medium |
+| rand/prng.ts           | number | 0      | -          | rand     | Low    |
 | rand/range.ts          | number | 0      | -          | rand     | High   |
 | rand/sample.ts         | array  | 0      | -          | rand     | Medium |
-| rand/seed.ts           | array  | 4      | crypto     | rand     | Medium |
+| rand/seed.ts           | array  | 4      | -          | rand     | Medium |
 | rand/shuffle.ts        | array  | 0      | -          | rand     | High   |
 | str/chunkStr.ts        | array  | 1      | -          | str      | Medium |
 | str/format.ts          | string | 0      | -          | str      | High   |
@@ -220,7 +223,7 @@ import { randSeed } from '@elzup/kit/rand/make'
 
 以下のモジュールは Node.js 標準パッケージに依存しており、ブラウザ環境では使用制限があります:
 
-- **crypto**: crypto.ts, hash.ts, rand/make.ts, rand/seed.ts, niche/anyHashMatch.ts
+- **crypto**: node/crypto.ts, node/hash.ts, niche/anyHashMatch.ts (同期 hash。ブラウザでは async の crypto/digest を使う)
 - **buffer**: binary.ts, niche/buffer.ts
 - **perf_hooks**: performance.ts
 

@@ -288,6 +288,14 @@ custom.mark('step3', 1, 2, 3)
 
 [./src/\_\_test\_\_](./src/__test__)
 
+## v4 -> v5 migration
+
+- **`rand/make` and `rand/seed` return different values.** Seeded PRNG switched from SHA-256 to pure JS (cyrb128 + sfc32); now sync and works in browsers. Same seed no longer reproduces v4 values.
+- Removed `randSeedBuf`; `randSeedAdv` no longer returns `buf`.
+- `node/crypto` `hashDigestAsync` moved to `crypto/digest` `digest` (Web Crypto only).
+- Added `crypto/digest` (`digest`, `digestHex`, `toHex`) and `crypto/random` (`randSecure`, a secure `Math.random` replacement usable as `rand` for `shuffle` / `choice`).
+- Layering: `rand/` = reproducible randomness (sync, universal), `crypto/` = cryptographic (async, universal), `node/` = sync hash (Node.js only). `rand/` and `crypto/` must not import `node/` (enforced by dependency-cruiser).
+
 ## v3 -> v4 migration
 
 ```
