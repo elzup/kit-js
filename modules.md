@@ -15,6 +15,7 @@ import { chunk } from '@elzup/kit/arr/chunk'
 ```
 
 Benefits:
+
 - Better tree-shaking
 - Smaller bundle sizes
 - Explicit dependencies
@@ -96,6 +97,7 @@ Benefits:
 | time/utils.ts          | object | 1      | -          | time     | Medium |
 
 **Legend:**
+
 - **Return**: Main return type (array, number, string, object, bool, void, buffer, T, T|undefined)
 - **Docs**: Has JSDoc documentation (Yes/No)
 
@@ -104,42 +106,58 @@ Benefits:
 ### New Categories Created
 
 #### arr/ (配列操作)
+
 9 files:
+
 - chunk.ts, last.ts, maxBy.ts, range.ts, rangeAdv.ts, sortBy.ts, transpose.ts, uniq.ts, windowed.ts
 
 #### str/ (文字列操作)
+
 7 files:
+
 - chunkStr.ts, format.ts, incstr.ts, pickUrl.ts, regpick.ts, stringify.ts, trim.ts
 
 #### math/ (数学・数値計算)
+
 4 files:
+
 - clamp.ts, cycleRange.ts, diffwrap.ts, radix.ts
 
 #### fp/ (関数型プログラミング)
+
 2 files:
+
 - identity.ts, noop.ts
 
 #### convert/ (データ変換)
+
 1 file:
+
 - binary.ts
 
 #### node/ (Node.js依存)
+
 4 files:
+
 - crypto.ts, getEnv.ts, hash.ts, performance.ts
 
 ### Existing Categories Extended
 
 #### obj/ (オブジェクト操作)
+
 Added from root:
+
 - clean.ts
 
 ### Root Level Files (moved to niche/)
+
 - getOne.ts → niche/getOne
 - makeToggle.ts → fp/makeToggle
 
 ## Import Examples by Category
 
 ### arr/ (Array Operations)
+
 ```typescript
 import { chunk } from '@elzup/kit/arr/chunk'
 import { range } from '@elzup/kit/arr/range'
@@ -147,12 +165,14 @@ import { uniq } from '@elzup/kit/arr/uniq'
 ```
 
 ### str/ (String Operations)
+
 ```typescript
 import { pad, pad02, round } from '@elzup/kit/str/format'
 import { trimQuote } from '@elzup/kit/str/trim'
 ```
 
 ### time/ (Time & Date)
+
 ```typescript
 import { sleep } from '@elzup/kit/time/sleep'
 import { formatTime, ymd } from '@elzup/kit/time/format'
@@ -160,12 +180,14 @@ import { sec, min, hour, day } from '@elzup/kit/time/constants'
 ```
 
 ### obj/ (Object Operations)
+
 ```typescript
 import { clean, clone } from '@elzup/kit/obj/clean'
 import { groupByFunc } from '@elzup/kit/obj/groupBy'
 ```
 
 ### rand/ (Random Utilities)
+
 ```typescript
 import { choice } from '@elzup/kit/rand/choice'
 import { shuffle } from '@elzup/kit/rand/shuffle'
@@ -173,6 +195,7 @@ import { randSeed } from '@elzup/kit/rand/make'
 ```
 
 ### Unchanged Categories
+
 - **algo/**: アルゴリズム関連
 - **arr/**: 配列操作
 - **char/**: 文字・文字列処理
@@ -187,7 +210,9 @@ import { randSeed } from '@elzup/kit/rand/make'
 ## Demand Analysis
 
 ### High Demand (19 modules)
+
 汎用性が高く、頻繁に使われる可能性のある関数:
+
 - Array utilities: chunk, last, maxBy, range, sortBy, uniq
 - Object utilities: countup, groupBy, keyBy, clean
 - Character constants: char/constants
@@ -198,7 +223,9 @@ import { randSeed } from '@elzup/kit/rand/make'
 - Environment: getEnv
 
 ### Medium Demand (26 modules)
+
 有用だが限定的な用途:
+
 - Array operations: rangeAdv, transpose, windowed
 - Object helpers: idfy, invert, makeMap, makeObj, upsert
 - Character manipulation: char/ascii, char/shift, char/width
@@ -209,7 +236,9 @@ import { randSeed } from '@elzup/kit/rand/make'
 - General utilities: getOne, makeToggle
 
 ### Low Demand (23 modules)
+
 ニッチまたは特殊な用途:
+
 - Cryptographic: crypto, hash, niche/anyHashMatch
 - Buffer operations: binary, niche/buffer
 - Performance monitoring: performance
