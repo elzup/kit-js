@@ -1,4 +1,4 @@
-import { range } from '../arr/range'
+import { range } from '../arr/range.js'
 
 /**
  * Create sliding windows of characters from a string.

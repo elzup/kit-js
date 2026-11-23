@@ -1,4 +1,4 @@
-import { pad02 } from '../str/format'
+import { pad02 } from '../str/format.js'
 
 /**
  * Extract date/time components as zero-padded strings.

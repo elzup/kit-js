@@ -1,4 +1,4 @@
-import { range } from './range'
+import { range } from './range.js'
 
 /**
  * Split an array into chunks of specified size.

@@ -1,4 +1,4 @@
-import { Algorithm, hashDigest } from './crypto'
+import { Algorithm, hashDigest } from './crypto.js'
 
 /**
  * Generate hash string with specified encoding.

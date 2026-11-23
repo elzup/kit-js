@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import type { Algorithm } from '../crypto/digest'
+import type { Algorithm } from '../crypto/digest.js'
 
 export type { Algorithm }
 

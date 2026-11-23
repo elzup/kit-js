@@ -1,8 +1,8 @@
-import { makeRand } from './make'
-import { choice } from './choice'
-import { shuffle } from './shuffle'
-import { sample } from './sample'
-import { randRange } from './range'
+import { makeRand } from './make.js'
+import { choice } from './choice.js'
+import { shuffle } from './shuffle.js'
+import { sample } from './sample.js'
+import { randRange } from './range.js'
 
 /**
  * Shuffle array with deterministic seed.

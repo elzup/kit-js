@@ -1,5 +1,5 @@
-import { chunkStr } from '../str/chunkStr'
-import { sha512Hex } from '../node/hash'
+import { chunkStr } from '../str/chunkStr.js'
+import { sha512Hex } from '../node/hash.js'
 
 const hashMatch = (
   hash: string,

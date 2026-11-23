@@ -1,4 +1,4 @@
-import { sleep } from './sleep'
+import { sleep } from './sleep.js'
 
 const makeTimeout = async (msec: number) => {
   await sleep(msec)

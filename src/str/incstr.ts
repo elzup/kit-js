@@ -1,6 +1,6 @@
-import { base62, base90, char123abcABC } from '../char/constants'
-import { invert } from '../obj/invert'
-import { decToRadix, radixToDec } from '../math/radix'
+import { base62, base90, char123abcABC } from '../char/constants.js'
+import { invert } from '../obj/invert.js'
+import { decToRadix, radixToDec } from '../math/radix.js'
 
 type TableMap = { [key: string]: number }
 

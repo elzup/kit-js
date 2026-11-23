@@ -1,4 +1,4 @@
-import { min } from './constants'
+import { min } from './constants.js'
 
 /**
  * Extract time components from a Date object.

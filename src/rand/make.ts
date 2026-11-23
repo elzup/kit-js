@@ -1,4 +1,4 @@
-import { cyrb128, sfc32Step } from './prng'
+import { cyrb128, sfc32Step } from './prng.js'
 
 type Seed = number | string
 

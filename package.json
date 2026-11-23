@@ -11,8 +11,8 @@
   "scripts": {
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "deploy": "npm run build && yarn publish",
+    "build:esm": "tsc -p tsconfig.esm.json && node scripts/mark-esm.mts",
+    "deploy": "npx npm@latest publish",
     "lint": "oxlint src",
     "lint:fix": "oxlint src --fix",
     "format": "prettier --check 'src/**/*.{ts,tsx}' '*.md'",
@@ -24,7 +24,9 @@
     "mutation": "mutator",
     "mutation:diff": "mutator --since main --fail-on-survived",
     "prepare": "husky",
-    "depcruise": "depcruise --config .dependency-cruiser.js --include-only '^src' --output-type dot src | dot -T svg > dependencygraph.svg"
+    "depcruise": "depcruise --config .dependency-cruiser.js --include-only '^src' --output-type dot src | dot -T svg > dependencygraph.svg",
+    "check:dist": "node scripts/check-dist.mts",
+    "prepublishOnly": "yarn test && yarn build && yarn check:dist"
   },
   "lint-staged": {
     "*.{ts,json,md}": [

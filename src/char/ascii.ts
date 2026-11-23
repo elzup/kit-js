@@ -1,4 +1,4 @@
-import { keyBy } from '../obj/keyBy'
+import { keyBy } from '../obj/keyBy.js'
 
 type IsAsciiFn = {
   (n: number): boolean

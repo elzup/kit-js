@@ -1,4 +1,4 @@
-import { greedy } from '../algo/greedy'
+import { greedy } from '../algo/greedy.js'
 
 type UnitQuery = {
   suffix: string

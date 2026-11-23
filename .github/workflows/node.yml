@@ -31,5 +31,7 @@ jobs:
         run: |
           yarn install
           yarn test
+          yarn build
+          yarn check:dist
         env:
           CI: true
