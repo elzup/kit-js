@@ -1,4 +1,4 @@
-import { hash, makeHash, sha512Hex } from '../index'
+import { hash, makeHash, sha512Hex } from '../node/hash'
 
 test('hash', () => {
   const res = hash('abc', 'sha512', 'hex').substring(0, 20)

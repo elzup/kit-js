@@ -1,4 +1,4 @@
-import { permutation, permutationBase } from '../index'
+import { permutation, permutationBase } from '../algo/permutation'
 
 describe('permutation', () => {
   it('works', () => {

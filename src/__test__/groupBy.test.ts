@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { groupByFunc } from '../index'
+import { groupByFunc } from '../obj/groupBy'
 
 describe('groupBy', () => {
   it('numbers', () => {

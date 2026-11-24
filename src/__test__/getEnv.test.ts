@@ -1,4 +1,4 @@
-import { getEnv } from '../index'
+import { getEnv } from '../node/getEnv'
 
 test('getEnv', () => {
   process.env.GET_ENV_TEST_KEY = 'GET_ENV_TEST_VALUE'
@@ -16,10 +16,10 @@ test('getEnv', () => {
   expect(getEnv('GET_ENV_TEST_KEY_NON')).toMatchInlineSnapshot(`""`)
   expect(() => {
     getEnv('NONE_ENV', 'development', true)
-  }).toThrowErrorMatchingInlineSnapshot(`"env NONE_ENV is required"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: env NONE_ENV is required]`)
   expect(() => {
     getEnv('NONE_ENV', 'development', true, () => {
       throw new Error('custom exception')
     })
-  }).toThrowErrorMatchingInlineSnapshot(`"custom exception"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: custom exception]`)
 })

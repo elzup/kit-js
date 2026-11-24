@@ -2,12 +2,12 @@ import {
   fullWidth,
   halfWidth,
   halfyParens,
-  normalizeParens,
   halfySigns,
   hardNormalizeText,
-  softNormalizeText,
+  normalizeParens,
   pairReplace,
-} from '../index'
+  softNormalizeText,
+} from '../char/width'
 
 test('pairReplace', () => {
   expect(

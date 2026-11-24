@@ -1,11 +1,11 @@
-import { greedy } from '../algo/greedy'
+import { greedy } from '../algo/greedy.js'
 
 type UnitQuery = {
   suffix: string
   val: number
 }
 
-const dulationFormatBase = (msec: number, units: UnitQuery[]) => {
+const durationFormatBase = (msec: number, units: UnitQuery[]) => {
   const vs = greedy(
     msec,
     units.map((v) => v.val)
@@ -26,8 +26,30 @@ const unitOrderQuery: UnitQuery[] = [
   { suffix: 's', val: 999 },
 ]
 
-export const dulationFormat = (msec: number, skip = true) => {
-  const items = dulationFormatBase(msec, unitOrderQuery)
+/**
+ * Format milliseconds as human-readable duration string.
+ *
+ * Converts milliseconds to a compact format using units: y (years),
+ * d (days), h (hours), m (minutes), s (seconds).
+ *
+ * @param msec - Duration in milliseconds
+ * @param skip - Skip zero values (default: true)
+ * @returns Formatted duration string
+ *
+ * @example
+ * durationFormat(3661000)
+ * // => '1h1m1s'
+ *
+ * @example
+ * durationFormat(90000)
+ * // => '1m30s'
+ *
+ * @example
+ * durationFormat(86400000)
+ * // => '1d'
+ */
+export const durationFormat = (msec: number, skip = true) => {
+  const items = durationFormatBase(msec, unitOrderQuery)
 
   return items
     .filter((v) => !v.pad && (!skip || v.num > 0))

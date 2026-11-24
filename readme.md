@@ -1,12 +1,12 @@
 # @elzup/kit
 
 ![Node CI](https://github.com/elzup/kit-js/workflows/Node%20CI/badge.svg)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![tested with vitest](https://img.shields.io/badge/tested_with-vitest-6E9F18.svg)](https://vitest.dev)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-| Statements                                                                               | Branches                                                                             | Functions                                                                              | Lines                                                                          |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat) |
+| Statements                                                                                | Branches                                                                              | Functions                                                                                | Lines                                                                            |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/statements-99.9%25-brightgreen.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-99.5%25-brightgreen.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-99.76%25-brightgreen.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-99.87%25-brightgreen.svg?style=flat) |
 
 > elzup&#39;s utils
 
@@ -18,60 +18,10 @@ $ npm install @elzup/kit
 
 ## Usage
 
-### algo/scheduling
-
-calc row grouping of Gantt chart
+### arr/windowed
 
 ```js
-import scheduling from '@elzup/kit/lib/algo/scheduling'
-const items = [
-  { id: 'a', start: 1, end: 10 },
-  { id: 'b', start: 5, end: 15 },
-  { id: 'c', start: 10, end: 20 },
-  { id: 'd', start: 12, end: 20 },
-  { id: 'e', start: 16, end: 17 },
-]
-
-scheduling(items)
-
-// [['a', 'c'], ['b', 'e'], ['d']]
-```
-
-```
-   |          111111111122
-   |0123456789012345678901
-  a| +--------<
-  b|     +---------<
-  c|          +---------<
-  d|            +-------<
-  e|                +<
-↓scheduling↓
-   |          111111111122
-   |0123456789012345678901
-a,c|+---------+---------<
-b,e|     +---------<+<
-  d|            +-------<
-```
-
-if need gaps (add margin to end)
-
-```js
-scheduling(items.map((v) => ({ ...v, end: v.end + 1 })))
-// [['a', 'd'], ['b', 'e'], ['c']]
-```
-
-```
-   |          111111111122
-   |0123456789012345678901
-a,d|+--------.< +-------.<
-b,e|     +---------.+.<
-  c|          +---------.<
-```
-
-### algo/windowed
-
-```js
-import { windowed } from '@elzup/kit/lib/algo/windowed'
+import { windowed } from '@elzup/kit/arr/windowed'
 windowed([1, 2, 3, 4], 2)
 // [[1, 2], [2, 3], [3, 4]]
 
@@ -83,26 +33,10 @@ windowed([1, 2, 3, 4, 5, 6], 3)
 //   [4, 5, 6] ]
 ```
 
-### algo/defrag
-
-```js
-import { defrag } from '@elzup/kit/lib/algo/defrag'
-
-defrag([2, 3, 4, 5, 6, 10, 21, 22, 23])
-// [ { start: 2, end: 6 },
-//   { start: 10, end: 10 },
-//   { start: 21, end: 23 } ]
-
-// with rule
-defrag([1, 2, 4, 10, 12], (a, b) => b - a <= 2) // diff <= 2 is chain
-// [ { start: 1, end: 4 },
-//   { start: 10, end: 12 } ]
-```
-
 ### algo/outscape
 
 ```js
-import { outscape } from '@elzup/kit/lib/algo/outscape'
+import { outscape } from '@elzup/kit/algo/outscape'
 
 const min = 60
 const hour = 60 * min
@@ -118,7 +52,7 @@ ruler sizes, coordinate width, canvas size, minimum gap canvas size */
 ### algo/rowspan
 
 ```js
-import { rowspan } from '@elzup/kit/lib/algo/rowspan'
+import { rowspan } from '@elzup/kit/algo/rowspan'
 
 const rows = [
   ['a', 1, true],
@@ -145,10 +79,10 @@ rowspan(rows)
   </tbody>
 </table>
 
-### chunk
+### arr/chunk
 
 ```js
-import { chunk } from '@elzup/kit/lib/chunk'
+import { chunk } from '@elzup/kit/arr/chunk'
 chunk([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
 // [ [1, 2, 3],
 //   [4, 5, 6],
@@ -156,10 +90,10 @@ chunk([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
 //   [10], ]
 ```
 
-### makeToggle
+### fp/makeToggle
 
 ```js
-import { makeToggle } from '@elzup/kit/lib/makeToggle'
+import { makeToggle } from '@elzup/kit/fp/makeToggle'
 
 const toggle3 = makeToggle([1, 2, 3])
 
@@ -168,13 +102,13 @@ expect(toggle3(2)).toBe(3)
 expect(toggle3(3)).toBe(1)
 ```
 
-### clean
+### obj/clean
 
 remove undefined
 primitive clone
 
 ```js
-import { clean } from '@elzup/kit/lib/clean'
+import { clean } from '@elzup/kit/obj/clean'
 
 clean({
   a: 1,
@@ -202,7 +136,7 @@ clean({ a: new Date(0), b: null, c: new RegExp('^a$') })
 ### obj/makeObj
 
 ```js
-import { makeObj } from '@elzup/kit/lib/obj/makeObj'
+import { makeObj } from '@elzup/kit/obj/makeObj'
 makeObj(['a', 'b'], 0)
 
 // {
@@ -214,7 +148,7 @@ makeObj(['a', 'b'], 0)
 ### obj/countup
 
 ```js
-import { countup } from '@elzup/kit/lib/obj/countup'
+import { countup } from '@elzup/kit/obj/countup'
 
 countup(['a', 'b', 'a', 1, 0, 0, 0])
 // Map {
@@ -228,12 +162,12 @@ countup(['a', 'b', 'a', 1, 0, 0, 0])
 ### time
 
 ```js
-import { timeParts } from '@elzup/kit/lib/time/utils'
+import { timeParts } from '@elzup/kit/time/utils'
 
 timeParts()
 // { year: 2123, month: 4, date: 5, hour: 6, minute: 7, second: 8 }
 
-import { timePartsStr } from '@elzup/kit/lib/time/format'
+import { timePartsStr } from '@elzup/kit/time/format'
 
 timePartsStr()
 // { yyyy: "2123", mo: "04", dd: "05", hh: "06", mn: "07", ss: "08" }
@@ -244,10 +178,10 @@ timePartsStr()
 ```js
 import {
   fullWidth,
-  halfWith,
+  halfWidth,
   hardNormalizeText,
   softNormalizeText,
-} from '@elzup/kit/lib/char/width'
+} from '@elzup/kit/char/width'
 
 fullWidth('AbcＡｂ')
 // 'ＡｂｃＡｂ'
@@ -272,15 +206,15 @@ softNormalizeText('aBｃ（<¥＄％＃＆＊＠)］123')
 ### template/url googleSearchUrl
 
 ```js
-import { googleSearchUrl } from '@elzup/kit/lib/template/url'
+import { googleSearchUrl } from '@elzup/kit/template/url'
 googleSearchUrl('abc')
 // "https://www.google.co.jp/search?q=abc"
 ```
 
-### clamp
+### math/clamp
 
 ```js
-import { clamp, negaposi } from '@elzup/kit/lib/clamp'
+import { clamp, negaposi } from '@elzup/kit/math/clamp'
 // val, min, max
 
 clamp(1, 20, 30) // 20
@@ -291,10 +225,10 @@ negaposi(-500) // -1
 negaposi(0) // 0
 ```
 
-### transpose
+### arr/transpose
 
 ```js
-import { transpose } from '@elzup/kit/lib/transpose'
+import { transpose } from '@elzup/kit/arr/transpose'
 transpose([
   ['a', 'b'],
   ['c', 'd'],
@@ -304,10 +238,10 @@ transpose([
 //   ['b', 'd', 'e'], ]
 ```
 
-### performance
+### node/performance
 
 ```js
-import { performanceTimeUtil } = from '@elzup/kit/lib/performance'
+import { performanceTimeUtil } from '@elzup/kit/node/performance'
 const timer = performanceTimeUtil()
 timer.mark('step1')
 > step1:1234ms
@@ -336,37 +270,70 @@ custom.mark('step3', 1, 2, 3)
 
 [./src/\_\_test\_\_](./src/__test__)
 
-## v3 -> v4 migration
+## Migration from 4.5.0 to 5.0.0
 
-```
-rename src/{ => algo}/defrag.ts
-rename src/{ => algo}/permutation.ts
-rename src/{ => algo}/queueMerge.ts
-rename src/{ => algo}/scheduling.ts
-rename src/{ => char}/ascii.ts
-rename src/{ => char}/bom.ts
-rename src/{ => char}/constants.ts
-rename src/{ => char}/romanization.ts
-rename src/{ => niche}/anyHashMatch.ts
-rename src/{ => obj}/countup.ts
-rename src/{ => obj}/groupBy.ts
-rename src/{ => obj}/invert.ts
-rename src/{ => obj}/keyBy.ts
-rename src/{ => obj}/makeMap.ts
-rename src/{ => obj}/makeObj.ts
-rename src/{ => obj}/upsert.ts
-rename src/{ => template}/slack.ts
-rename src/{ => template}/url.ts
-rename src/{seedRand.ts => rand/make.ts}
-rename src/rand/{randRange.ts => range.ts}
+### Import paths
 
-rename src/{mapId.ts => obj/idfy.ts}
-rename src/{comps.ts => windowed.ts}
-rename src/{src/times.ts => time/format.ts}
-rename src/{formatTime.ts => time/utils.ts}
-rename src/{shiftChar.ts => char/shift.ts}
-rename src/{strinc.ts => incstr.ts}
+Import each module by `@elzup/kit/<category>/<module>`. There is no root import and no `lib/` in the path.
+
+```js
+// 4.5.0
+import { chunk } from '@elzup/kit/lib/chunk'
+// 5.0.0
+import { chunk } from '@elzup/kit/arr/chunk'
 ```
+
+| 4.5.0 (`@elzup/kit/lib/...`)                                                             | 5.0.0 (`@elzup/kit/...`)    |
+| ---------------------------------------------------------------------------------------- | --------------------------- |
+| `chunk`, `last`, `maxBy`, `range`, `rangeAdv`, `sortBy`, `transpose`, `uniq`, `windowed` | `arr/<name>`                |
+| `comps`                                                                                  | `arr/windowed`              |
+| `ascii`, `bom`, `constants`, `romanization`                                              | `char/<name>`               |
+| `shiftChar`                                                                              | `char/shift`                |
+| `strWidth`                                                                               | `char/width`                |
+| `binary`                                                                                 | `convert/binary`            |
+| `identity`, `makeToggle`, `noop`                                                         | `fp/<name>`                 |
+| `clamp`, `cycleRange`, `radix`                                                           | `math/<name>`               |
+| `anyHashMatch`, `getOne`, `regpick`                                                      | `niche/<name>`              |
+| `crypto`, `getEnv`, `hash`, `performance`                                                | `node/<name>`               |
+| `clean`, `countup`, `groupBy`, `invert`, `keyBy`, `makeMap`, `makeObj`, `upsert`         | `obj/<name>`                |
+| `mapId`                                                                                  | `obj/idfy`                  |
+| `seedRand`                                                                               | `rand/make`                 |
+| `rand/randRange`                                                                         | `rand/range`                |
+| `rand/choise`                                                                            | `rand/choice`               |
+| `chunkStr`, `format`, `incstr`, `pickUrl`, `stringify`, `trim`                           | `str/<name>`                |
+| `strinc`                                                                                 | `str/incstr`                |
+| `slack`, `url`                                                                           | `template/<name>`           |
+| `formatTime`, `times`                                                                    | `time/format`, `time/utils` |
+| `permutation`, `queueMerge`                                                              | `algo/<name>`               |
+
+### Renamed exports
+
+| 4.5.0                                  | 5.0.0                                               |
+| -------------------------------------- | --------------------------------------------------- |
+| `choise` / `choiseSeed`                | `choice` / `choiceSeed`                             |
+| `seedRand` / `seedRandAdvance`         | `randSeed` / `randSeedAdv` (`rand/make`)            |
+| `shiftChar`                            | `shift` (`char/shift`)                              |
+| `dulationFormat`                       | `durationFormat`                                    |
+| `times`                                | `timeParts` (`time/utils`); key `day` is now `date` |
+| `formatYmd`, `formatHms`, `formatTime` | moved to `time/format`                              |
+| `timesNow`, `shiftDate`, `jpDate`      | moved to `time/utils`                               |
+
+### Removed
+
+- Root import (`@elzup/kit`, `lib/index`)
+- `algo/defrag`: use [`rangeize`](https://github.com/elzup/rangeize)
+- `algo/scheduling`: use [`interval-scheduling`](https://github.com/elzup/interval-scheduling)
+- `template/terms`, `comps2`
+- `isDev` (`char/constants`): check `process.env.NODE_ENV` in your app
+- `seedRandBuf` / `randSeedBuf`, and `buf` in `randSeedAdv`
+
+### Behavior changes
+
+- **`rand/make` and `rand/seed` return different values.** The seeded PRNG is now pure JS (cyrb128 + sfc32), sync and browser-compatible. The same seed does not reproduce 4.5.0 values.
+- `node/crypto` `hashDigestAsync` moved to `crypto/digest` `digest` (Web Crypto only).
+- Added `crypto/digest` (`digest`, `digestHex`, `toHex`) and `crypto/random` (`randSecure`, a secure `Math.random` replacement usable as `rand` for `shuffle` / `choice`).
+- ESM is supported (`import` resolves to `lib/esm`).
+- Layering: `rand/` = reproducible randomness (sync, universal), `crypto/` = cryptographic (async, universal), `node/` = Node.js only.
 
 ## License
 

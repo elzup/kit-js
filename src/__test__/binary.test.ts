@@ -1,4 +1,4 @@
-import { binstr, hex2bin, hexCharToBin } from '../index'
+import { binstr, hex2bin, hexCharToBin } from '../convert/binary'
 
 test('binstr', () => {
   const buf = Buffer.from(new Float32Array([1.23]).buffer)

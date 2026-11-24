@@ -1,4 +1,6 @@
-import { sleep, timeout, timeoutCover } from '..'
+import { vi } from 'vitest'
+import { sleep } from '../time/sleep'
+import { timeout, timeoutCover } from '../time/timeout'
 
 async function heavyWork(msec: number) {
   await sleep(msec)
@@ -7,8 +9,8 @@ async function heavyWork(msec: number) {
 
 describe('timeout', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
-    const spy = jest.spyOn(global, 'setTimeout')
+    vi.useFakeTimers()
+    const spy = vi.spyOn(global, 'setTimeout')
 
     spy.mockClear()
   })
@@ -18,7 +20,7 @@ describe('timeout', () => {
       console.log('invalid timeout', e)
     })
 
-    jest.advanceTimersByTime(50)
+    vi.advanceTimersByTime(50)
     await Promise.resolve()
 
     expect(await res).toBe('end')
@@ -27,7 +29,7 @@ describe('timeout', () => {
   it('throw timeout', async () => {
     const res = timeout(heavyWork(200), 100).catch((e) => e.message)
 
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
     await Promise.resolve()
 
     expect(await res).toMatchInlineSnapshot(`"Timeout"`)
@@ -37,7 +39,7 @@ describe('timeout', () => {
     const safeTask = timeoutCover(heavyWork(100), 200, false)
     const overTask = timeoutCover(heavyWork(200), 100, false)
 
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
     await Promise.resolve()
 
     expect(await safeTask).toMatchInlineSnapshot(`"end"`)
@@ -54,7 +56,7 @@ describe('timeout', () => {
       false
     ).catch((e) => e.message)
 
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
     await Promise.resolve()
 
     expect(await res).toMatchInlineSnapshot(`"Other"`)

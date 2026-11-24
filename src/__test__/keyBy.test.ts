@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { keyBy } from '../index'
+import { keyBy } from '../obj/keyBy'
 
 describe('keyBy', () => {
   it('numbers', () => {

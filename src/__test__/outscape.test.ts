@@ -1,4 +1,5 @@
-import { hour, min, outscape } from '../index'
+import { outscape } from '../algo/outscape'
+import { hour, min } from '../time/constants'
 
 const min5 = 5 * min
 const min10 = 10 * min

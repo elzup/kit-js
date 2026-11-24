@@ -1,4 +1,4 @@
-import { getOne, unarray } from '../index'
+import { getOne, unarray } from '../niche/getOne'
 
 test('getOne', () => {
   expect(getOne(undefined)).toBe(undefined)

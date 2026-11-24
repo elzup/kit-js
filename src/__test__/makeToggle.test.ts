@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { makeCycle, makeToggle, toggle } from '../index'
+import { makeCycle, makeToggle, toggle } from '../fp/makeToggle'
 
 describe('makeToggle', () => {
   it('premitive array', () => {
@@ -28,7 +28,6 @@ describe('makeToggle', () => {
     expectType<(n: Id) => Id>(toggleArr)
   })
 
-  // eslint-disable-next-line jest/expect-expect
   it('undefined', () => {
     const toggleArr = makeToggle([])
 

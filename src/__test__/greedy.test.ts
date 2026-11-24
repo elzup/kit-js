@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import { greedy, greedyStrict } from '../index'
+import { greedy, greedyStrict } from '../algo/greedy'
 
 test('greedy', () => {
   expect(

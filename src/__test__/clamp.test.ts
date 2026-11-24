@@ -1,4 +1,4 @@
-import { clamp, negaposi } from '../index'
+import { clamp, negaposi } from '../math/clamp'
 
 describe('clamp', () => {
   it('under', () => {

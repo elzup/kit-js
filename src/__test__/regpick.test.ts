@@ -1,4 +1,4 @@
-import { regpick, regpickMatcher } from '../index'
+import { regpick, regpickMatcher } from '../niche/regpick'
 
 const binstr = (bs: boolean[]) => bs.map((v) => (v ? '1' : '0')).join('')
 
@@ -44,8 +44,6 @@ describe('regpick', () => {
     const b11000101 = [1, 1, 0, 0, 0, 1, 0, 1]
     const { HEAD_0, HEAD_01, HEAD_1, HEAD_10 } = regpickMatcher
     const { TAIL_0, TAIL_01, TAIL_1, TAIL_10, IN_010, IN_101 } = regpickMatcher
-
-    const {} = regpickMatcher
 
     expect(binstr(regpick(b00101010, Boolean, HEAD_0).prints)).toStrictEqual(
       '11000000'

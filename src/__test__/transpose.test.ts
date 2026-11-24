@@ -1,4 +1,4 @@
-import { transpose } from '../index'
+import { transpose } from '../arr/transpose'
 
 test('transpose', () => {
   expect(

@@ -10,15 +10,10 @@ import {
   charNonMisidentify,
   charNums,
   charStrongNonMisidentify,
-  isDev,
   printableAscii,
   safePrintableAscii,
-  sec,
-  min,
-  hour,
-  day,
-  week,
-} from '../index'
+} from '../char/constants'
+import { day, hour, min, sec, week } from '../time/constants'
 
 const constants = {
   charABC,
@@ -27,7 +22,6 @@ const constants = {
   char123abcABC,
   charAlphabets,
   charNums,
-  isDev,
   charMisidentify,
   charNonMisidentify,
   charStrongNonMisidentify,
@@ -58,7 +52,6 @@ test('constants', () => {
       "charStrongNonMisidentify": "ACHJKMNTXY34",
       "day": 86400000,
       "hour": 3600000,
-      "isDev": false,
       "min": 60000,
       "printableAscii": " !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~",
       "safePrintableAscii": "!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~",

@@ -1,19 +1,19 @@
+import { vi } from 'vitest'
+import { choice } from '../rand/choice'
+import { randRange } from '../rand/range'
+import { sample } from '../rand/sample'
+import { shuffle } from '../rand/shuffle'
 import {
-  choise,
-  choiseSeed,
-  randRange,
+  choiceSeed,
   randRangeSeed,
-  sample,
   sampleSeed,
-  shuffle,
   shuffleSeed,
-} from '../index'
+} from '../rand/seed'
 
 describe('randnext', () => {
   describe('use Math.random', () => {
     beforeEach(() => {
-      jest
-        .spyOn(global.Math, 'random')
+      vi.spyOn(global.Math, 'random')
         .mockReturnValueOnce(0.333)
         .mockReturnValueOnce(0.111)
         .mockReturnValueOnce(0.444)
@@ -23,7 +23,7 @@ describe('randnext', () => {
     })
 
     afterEach(() => {
-      jest.spyOn(global.Math, 'random').mockRestore()
+      vi.spyOn(global.Math, 'random').mockRestore()
     })
     it('randRange', () => {
       const v1 = randRange(10)
@@ -44,8 +44,8 @@ describe('randnext', () => {
 
       expect(res3).toStrictEqual([1, 2, 5])
     })
-    it('choise', () => {
-      const res = choise([1, 2, 3, 4, 5])
+    it('choice', () => {
+      const res = choice([1, 2, 3, 4, 5])
 
       expect(res).toMatchInlineSnapshot(`2`)
     })
@@ -70,8 +70,8 @@ describe('randnext', () => {
 
     expect(res3).toStrictEqual([1, 3, 5])
   })
-  it('choise', () => {
-    const res = choise([1, 2, 3, 4, 5], () => 0.3)
+  it('choice', () => {
+    const res = choice([1, 2, 3, 4, 5], () => 0.3)
 
     expect(res).toMatchInlineSnapshot(`2`)
   })
@@ -82,8 +82,8 @@ describe('rand seed', () => {
     const v1 = randRangeSeed(0, 10, 'a1')
     const v2 = randRangeSeed(20, 30, 'a1')
 
-    expect(v1).toMatchInlineSnapshot(`3`)
-    expect(v2).toMatchInlineSnapshot(`23`)
+    expect(v1).toMatchInlineSnapshot(`0`)
+    expect(v2).toMatchInlineSnapshot(`20`)
   })
 
   it('shuffleSeed', () => {
@@ -91,11 +91,11 @@ describe('rand seed', () => {
 
     expect(res).toMatchInlineSnapshot(`
       [
-        3,
-        4,
-        2,
         1,
         5,
+        4,
+        2,
+        3,
       ]
     `)
   })
@@ -106,7 +106,7 @@ describe('rand seed', () => {
 
     expect(res1).toMatchInlineSnapshot(`
       [
-        3,
+        5,
       ]
     `)
     expect(res3).toMatchInlineSnapshot(`
@@ -117,9 +117,9 @@ describe('rand seed', () => {
       ]
     `)
   })
-  it('choiseSeed', () => {
-    const res = choiseSeed([1, 2, 3, 4, 5], 'a')
+  it('choiceSeed', () => {
+    const res = choiceSeed([1, 2, 3, 4, 5], 'a')
 
-    expect(res).toMatchInlineSnapshot(`5`)
+    expect(res).toMatchInlineSnapshot(`4`)
   })
 })

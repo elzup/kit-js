@@ -1,26 +1,25 @@
+import { vi } from 'vitest'
 import {
   formatHms,
   formatTime,
   formatYmd,
   hm,
-  jpDate,
-  shiftDate,
-  timeParts,
+  isoJp,
   timePartsStr,
-  timesNow,
   ymd,
   ymdNum,
-} from '../index'
+} from '../time/format'
+import { jpDate, shiftDate, timeParts, timesNow } from '../time/utils'
 
-beforeAll(() => jest.useFakeTimers())
-afterAll(jest.useRealTimers)
+beforeAll(() => vi.useFakeTimers())
+afterAll(() => vi.useRealTimers())
 
 const date = new Date(4836380828000)
 // "2123-04-05 06:07:08"
 const lDate = new Date('2123-04-05 06:07:08')
 
 test('timeParts', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
 
   expect(timeParts(lDate)).toMatchInlineSnapshot(`
     {
@@ -60,9 +59,15 @@ test('timePartsStr', () => {
 test('hm', () => {
   expect(hm(lDate)).toMatchInlineSnapshot(`"0607"`)
 })
+test('isoJp', () => {
+  // absolute instant: lDate is local time, so its ISO string depends on the runner TZ
+  const utc = new Date('2123-04-04T21:07:08.000Z')
+
+  expect(isoJp(utc)).toBe('2123-04-05T06:07:08.000+09:00')
+})
 
 test('formatTime', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
   expect(formatTime(lDate)).toMatchInlineSnapshot(`"2123-04-05 06:07:08"`)
   expect(formatYmd(lDate)).toMatchInlineSnapshot(`"2123-04-05"`)
   expect(formatHms(lDate)).toMatchInlineSnapshot(`"06:07:08"`)
@@ -79,7 +84,7 @@ test('jpDate', () => {
 })
 
 test('ymd', () => {
-  jest.setSystemTime(lDate)
+  vi.setSystemTime(lDate)
 
   expect(ymd(lDate)).toMatchInlineSnapshot(`"21230405"`)
   expect(ymdNum(lDate)).toMatchInlineSnapshot(`21230405`)

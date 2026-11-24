@@ -1,4 +1,4 @@
-import { cycleRangeIn } from '../index'
+import { cycleRangeIn } from '../math/cycleRange'
 
 test('cycleRange', () => {
   expect(cycleRangeIn({ start: 5, end: 15 }, 3)).toBe(false)

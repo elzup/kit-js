@@ -1,4 +1,4 @@
-import { upsert, upsertMap } from '../index'
+import { upsert, upsertMap } from '../obj/upsert'
 
 describe('upsertMap', () => {
   it('map', () => {

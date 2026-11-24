@@ -1,12 +1,13 @@
-import { sleep } from '..'
+import { vi } from 'vitest'
+import { sleep } from '../time/sleep'
 
-jest.useFakeTimers()
+vi.useFakeTimers()
 
-const mockCallback = jest.fn((s) => s)
+const mockCallback = vi.fn((s) => s)
 
 describe('sleep', () => {
   beforeEach(() => {
-    const spy = jest.spyOn(global, 'setTimeout')
+    const spy = vi.spyOn(global, 'setTimeout')
 
     spy.mockClear()
     mockCallback.mockClear()
@@ -22,12 +23,12 @@ describe('sleep', () => {
     expect(setTimeout).toHaveBeenCalledTimes(1)
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000)
 
-    jest.advanceTimersByTime(200)
+    vi.advanceTimersByTime(200)
     await Promise.resolve()
 
     expect(mockCallback).not.toHaveBeenCalled()
 
-    jest.runAllTimers()
+    vi.runAllTimers()
     await Promise.resolve()
 
     expect(mockCallback).toHaveBeenCalledWith('end')

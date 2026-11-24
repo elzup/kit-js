@@ -1,4 +1,4 @@
-import { countup } from '../index'
+import { countup } from '../obj/countup'
 
 test('countup', () => {
   expect(countup(['a', 'b', 'a', 1, 0, 0, 0])).toMatchInlineSnapshot(`

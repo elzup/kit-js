@@ -1,4 +1,4 @@
-import { uniq } from '../index'
+import { uniq } from '../arr/uniq'
 
 test('uniq', () => {
   expect(uniq([1, 2, 3, 3, 2])).toStrictEqual([1, 2, 3])

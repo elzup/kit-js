@@ -1,4 +1,4 @@
-import { decToRadix, radixToDec } from '../index'
+import { decToRadix, radixToDec } from '../math/radix'
 
 test('decToRadix', () => {
   expect(decToRadix(100, 2)).toStrictEqual([1, 1, 0, 0, 1, 0, 0])
@@ -9,10 +9,10 @@ test('decToRadix', () => {
 test('decToRadix error', () => {
   expect(() => {
     decToRadix(100, 0)
-  }).toThrowErrorMatchingInlineSnapshot(`"base must be > 0"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: base must be > 0]`)
   expect(() => {
     decToRadix(-1, 100)
-  }).toThrowErrorMatchingInlineSnapshot(`"n must be >= 0"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[Error: n must be >= 0]`)
 })
 
 test('radixToDec', () => {

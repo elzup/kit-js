@@ -1,4 +1,4 @@
-import { romanization } from '../index'
+import { romanization } from '../char/romanization'
 
 describe('romanization', () => {
   it('basic', () => {

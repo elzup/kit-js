@@ -1,4 +1,4 @@
-import { rowspan, rowspanPos } from '../index'
+import { rowspan, rowspanPos } from '../algo/rowspan'
 
 describe('rowspan', () => {
   it('basic', () => {

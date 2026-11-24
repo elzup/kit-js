@@ -1,4 +1,4 @@
-import { range } from '../index'
+import { range } from '../arr/range'
 
 test('range', () => {
   expect(range(0)).toStrictEqual([])
@@ -6,5 +6,5 @@ test('range', () => {
 
   expect(() => {
     range(-10)
-  }).toThrowErrorMatchingInlineSnapshot(`"Invalid array length"`)
+  }).toThrowErrorMatchingInlineSnapshot(`[RangeError: Invalid array length]`)
 })

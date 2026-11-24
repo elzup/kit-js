@@ -1,4 +1,4 @@
-import { asciify, controlCharLib, isAscii, trimNonAscii } from '../index'
+import { asciify, controlCharLib, isAscii, trimNonAscii } from '../char/ascii'
 
 test('isAscii', () => {
   expect(isAscii('a')).toBeTruthy()
