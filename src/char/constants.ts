@@ -49,14 +49,6 @@ export const charABCabc123 = charABC + charAlphabets + charNums
 export const char123abcABC = charNums + charAlphabets + charABC
 
 /**
- * Environment check: true if NODE_ENV is 'development'.
- *
- * @example
- * if (isDev) console.log('Debug mode')
- */
-export const isDev = process?.env?.['NODE_ENV'] === 'development'
-
-/**
  * Characters that are NOT easily misidentified.
  * Excludes: 0, O, 8, B, 5, S, 9, G, 6, L, I, 1
  *

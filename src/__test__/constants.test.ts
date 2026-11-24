@@ -10,7 +10,6 @@ import {
   charNonMisidentify,
   charNums,
   charStrongNonMisidentify,
-  isDev,
   printableAscii,
   safePrintableAscii,
 } from '../char/constants'

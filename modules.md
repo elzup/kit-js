@@ -25,7 +25,6 @@ Benefits:
 | Module                 | Return | In Dep | Node Deps  | Category | Demand |
 | ---------------------- | ------ | ------ | ---------- | -------- | ------ |
 | algo/binSearch.ts      | number | 0      | -          | algo     | Medium |
-| algo/defrag.ts         | array  | 0      | -          | algo     | Low    |
 | algo/greedy.ts         | array  | 0      | -          | algo     | Low    |
 | algo/outscape.ts       | object | 0      | -          | algo     | Low    |
 | algo/permutation.ts    | array  | 0      | -          | algo     | Medium |
@@ -242,7 +241,7 @@ import { randSeed } from '@elzup/kit/rand/make'
 - Cryptographic: crypto, hash, niche/anyHashMatch
 - Buffer operations: binary, niche/buffer
 - Performance monitoring: performance
-- Algorithm (niche): algo/defrag, algo/greedy, algo/outscape, algo/rowspan
+- Algorithm (niche): algo/greedy, algo/outscape, algo/rowspan
 - Character (niche): char/bom, char/romanization
 - String encoding: incstr, radix, regpick, stringify
 - Template generators: template/slack, template/terms, template/url
