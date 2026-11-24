@@ -1,15 +1,14 @@
 {
   "name": "@elzup/kit",
   "version": "4.5.0",
-  "description": "elzup&#39;s utils",
-  "access": "public",
+  "description": "elzup's utils",
   "license": "MIT",
   "repository": "elzup/kit-js",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "yarn build:cjs && yarn build:esm",
+    "build": "node scripts/clean-lib.mts && yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json && node scripts/mark-esm.mts",
     "deploy": "npx npm@latest publish",
@@ -25,7 +24,7 @@
     "mutation:diff": "mutator --since main --fail-on-survived",
     "prepare": "husky",
     "depcruise": "depcruise --config .dependency-cruiser.js --include-only '^src' --output-type dot src | dot -T svg > dependencygraph.svg",
-    "check:dist": "node scripts/check-dist.mts",
+    "check:dist": "node scripts/check-dist.mts && node scripts/check-readme.mts",
     "prepublishOnly": "yarn test && yarn build && yarn check:dist"
   },
   "lint-staged": {
@@ -62,5 +61,9 @@
     "typescript": "5.9.3",
     "vite": "^8.3.8",
     "vitest": "^5.1.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
   }
 }
