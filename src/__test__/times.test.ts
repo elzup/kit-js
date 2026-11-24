@@ -60,11 +60,10 @@ test('hm', () => {
   expect(hm(lDate)).toMatchInlineSnapshot(`"0607"`)
 })
 test('isoJp', () => {
-  const gmt = lDate.toISOString()
-  const jst = isoJp(lDate)
+  // absolute instant: lDate is local time, so its ISO string depends on the runner TZ
+  const utc = new Date('2123-04-04T21:07:08.000Z')
 
-  expect(gmt).toMatchInlineSnapshot(`"2123-04-04T21:07:08.000Z"`)
-  expect(jst).toMatchInlineSnapshot(`"2123-04-05T06:07:08.000+09:00"`)
+  expect(isoJp(utc)).toBe('2123-04-05T06:07:08.000+09:00')
 })
 
 test('formatTime', () => {
